@@ -14,6 +14,15 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  fonts: {
+    families: [
+      { name: 'Noto Sans', weights: [400, 600], provider: 'google', global: true },
+      { name: 'Noto Sans Thai', weights: [400, 600], subsets: ['thai', 'latin'], provider: 'google', global: true },
+      { name: 'Noto Sans Display', weights: [400], provider: 'google', global: true },
+      { name: 'Noto Serif', weights: [600], provider: 'google', global: true }
+    ]
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },

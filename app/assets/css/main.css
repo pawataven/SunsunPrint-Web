@@ -1,21 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Noto Sans", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Noto Sans Display", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif", ui-serif, Georgia, serif;
 
-  --color-primary-50: oklch(0.97 0.02 250);
-  --color-primary-100: oklch(0.93 0.04 250);
-  --color-primary-500: oklch(0.62 0.19 255);
-  --color-primary-600: oklch(0.55 0.21 260);
-  --color-primary-700: oklch(0.48 0.2 262);
+  --color-primary-50: oklch(0.97 0.015 25);
+  --color-primary-100: oklch(0.94 0.03 25);
+  --color-primary-500: oklch(0.58 0.22 27);
+  --color-primary-600: oklch(0.51 0.2 27);
+  --color-primary-700: oklch(0.44 0.18 27);
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {
+  :root {
+    /* 120px gutter and 120px header come from the design; smaller screens can't afford them */
+    --page-gutter: 1rem;
+    --header-h: 5rem;
+
+    @variant md {
+      --page-gutter: 2.5rem;
+    }
+    @variant lg {
+      --page-gutter: 120px;
+    }
+    @variant xl {
+      --header-h: 6rem;
+    }
+    @variant 2xl {
+      --header-h: 120px;
+    }
+  }
+
   html {
     @apply antialiased;
   }
 
   body {
-    @apply bg-white text-neutral-900;
+    @apply bg-white font-semibold text-neutral-900;
   }
+}
+
+@utility page-x {
+  padding-inline: var(--page-gutter);
 }
