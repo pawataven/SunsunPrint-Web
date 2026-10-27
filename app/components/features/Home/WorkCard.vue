@@ -27,9 +27,17 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
       />
       <span
         aria-hidden="true"
-        class="absolute top-4 right-4 flex size-12 items-center justify-center bg-white text-neutral-900 transition-colors group-hover:bg-primary-600 group-hover:text-white lg:size-16 2xl:top-6 2xl:right-6 2xl:size-24"
+        class="absolute top-4 right-4 flex size-10 items-center justify-center bg-white text-neutral-900 transition-colors group-hover:bg-primary-600 group-hover:text-white lg:size-12 2xl:top-6 2xl:right-6 2xl:size-16"
       >
-        <Icon name="lucide:arrow-up-right" class="size-6 lg:size-8 2xl:size-10" />
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          class="size-5 lg:size-6 2xl:size-7"
+        >
+          <path d="M3 21 21 3M7 3h14v14" />
+        </svg>
       </span>
     </div>
 
