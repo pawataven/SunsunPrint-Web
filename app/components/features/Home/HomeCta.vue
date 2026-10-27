@@ -7,11 +7,11 @@ import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
     <div class="mx-auto flex max-w-390 flex-col items-center gap-12 lg:flex-row lg:justify-between 2xl:h-150">
       <div class="w-full sm:w-fit">
         <h2 id="cta-heading" class="text-5xl leading-none font-semibold whitespace-nowrap uppercase sm:text-8xl lg:text-7xl xl:text-8xl 2xl:text-[10rem]">
-          <span class="block font-sans">Let’s <span class="text-outline">Make</span></span>
-          <span class="block font-serif"><span class="text-outline">It</span> Happen</span>
+          <span v-reveal class="block font-sans">Let’s <span class="text-outline">Make</span></span>
+          <span v-reveal="150" class="block font-serif"><span class="text-outline">It</span> Happen</span>
         </h2>
 
-        <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-start xl:flex-row xl:items-center 2xl:mt-14">
+        <div v-reveal="300" class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between lg:flex-col lg:items-start xl:flex-row xl:items-center 2xl:mt-14">
           <p class="text-sm leading-relaxed sm:whitespace-nowrap lg:text-base 2xl:text-xl">
             มีแบบในใจแล้ว หรือกำลังมองหาวิธีผลิตงานให้เป็นจริง<br class="hidden sm:block">
             ส่งรายละเอียดของคุณมาเพื่อเริ่มต้นคุยกัน
@@ -26,7 +26,7 @@ import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
         </div>
       </div>
 
-      <img :src="logoUrl" alt="" class="w-56 shrink-0 lg:w-80 xl:w-104 2xl:w-137">
+      <img v-reveal:zoom="200" :src="logoUrl" alt="" class="w-56 shrink-0 lg:w-80 xl:w-104 2xl:w-137">
     </div>
   </section>
 </template>

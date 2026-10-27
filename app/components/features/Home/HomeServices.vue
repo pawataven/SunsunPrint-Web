@@ -6,13 +6,13 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 
 <template>
   <section aria-labelledby="services-heading" class="page-x bg-ink pt-20 pb-12 text-cream lg:pt-28 2xl:pt-38 2xl:pb-24">
-    <SectionHeading id="services-heading"  title="Everything" accent="In print." tone="dark">
+    <SectionHeading id="services-heading" v-reveal  title="Everything" accent="In print." tone="dark">
       ตั้งแต่งานป้ายขนาดเล็ก ไปจนถึงงานจัดแสดงพื้นที่ขนาดใหญ่<br>
       เลือกดูประเภทงานที่เหมาะกับโปรเจกต์ของคุณ
     </SectionHeading>
 
     <ul class="mt-10 border-t border-neutral-700 2xl:mt-16">
-      <li v-for="(service, index) in SERVICES" :key="service.category">
+      <li v-for="(service, index) in SERVICES" :key="service.category" v-reveal="index * 100">
         <NuxtLink
           :to="`/services/${service.category}`"
           class="group grid grid-cols-[3rem_1fr_auto] items-center gap-x-4 gap-y-1 border-b border-neutral-700 py-6 lg:min-h-40 lg:grid-cols-[237fr_601fr_755fr_87fr] lg:gap-x-0 lg:py-0 2xl:min-h-60"
@@ -33,7 +33,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
       </li>
     </ul>
 
-    <div class="mt-6 flex justify-between gap-4 text-xs text-ash uppercase lg:text-sm 2xl:mt-12 2xl:text-lg">
+    <div v-reveal class="mt-6 flex justify-between gap-4 text-xs text-ash uppercase lg:text-sm 2xl:mt-12 2xl:text-lg">
       <p>{{ SERVICES.length }} service categories</p>
       <p>Made for your next big idea</p>
     </div>
