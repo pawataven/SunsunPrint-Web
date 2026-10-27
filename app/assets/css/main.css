@@ -62,6 +62,12 @@
     @apply bg-white font-semibold text-ink;
   }
 
+  /* Tailwind v4 preflight resets buttons to the default arrow cursor */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
   /*
     Chromium ignores ::-webkit-scrollbar as soon as the standard scrollbar-width/-color are set, and the standard
     "thin" is wider than the design wants — so Chromium and Safari get the 6px pseudo-element version,
