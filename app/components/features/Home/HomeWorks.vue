@@ -1,19 +1,25 @@
 <script setup lang="ts">
-const categories = [
+import type { WorkCategoryId } from '~/types'
+import { WORK_CATEGORIES, WORKS } from '~/constants/works'
+
+const filterOptions: { id: WorkCategoryId | 'all', label: string }[] = [
   { id: 'all', label: 'All works' },
-  { id: 'signage', label: 'Signage' },
-  { id: 'stickers-graphics', label: 'Stickers & Graphics' },
-  { id: 'event-exhibition', label: 'Event & Exhibition' },
-  { id: 'product-display', label: 'Product Display' }
-] as const
+  ...WORK_CATEGORIES
+]
 
-type CategoryId = typeof categories[number]['id']
+const selectedCategory = ref<WorkCategoryId | 'all'>('all')
 
-const selectedCategory = ref<CategoryId>('all')
+const numberedWorks = WORKS.map((work, index) => ({ work, number: index + 1 }))
+
+const visibleWorks = computed(() =>
+  selectedCategory.value === 'all'
+    ? numberedWorks
+    : numberedWorks.filter(({ work }) => work.category === selectedCategory.value)
+)
 </script>
 
 <template>
-  <section aria-labelledby="works-heading" class="page-x pt-20 pb-16 lg:pt-28 2xl:pt-36">
+  <section aria-labelledby="works-heading" class="page-x pt-20 pb-16 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <h2 id="works-heading" class="text-5xl leading-[1.25] uppercase lg:text-7xl 2xl:text-8xl">
         <span class="block">Selected</span>
@@ -27,17 +33,39 @@ const selectedCategory = ref<CategoryId>('all')
 
     <div role="group" aria-label="Filter works by category" class="mt-8 flex flex-wrap gap-3 2xl:mt-10 2xl:gap-5">
       <button
-        v-for="category in categories"
-        :key="category.id"
+        v-for="option in filterOptions"
+        :key="option.id"
         type="button"
-        :aria-pressed="selectedCategory === category.id"
+        :aria-pressed="selectedCategory === option.id"
         class="rounded-full border border-neutral-900 px-4 py-1.5 text-sm font-semibold uppercase transition-colors hover:bg-neutral-100 aria-pressed:bg-neutral-900 aria-pressed:text-white xl:text-base 2xl:px-5 2xl:py-2 2xl:text-2xl"
-        @click="selectedCategory = category.id"
+        @click="selectedCategory = option.id"
       >
-        {{ category.label }}
+        {{ option.label }}
       </button>
     </div>
 
     <hr class="mt-10 border-primary-600/60 2xl:mt-16">
+
+    <!--
+      Portrait cards are pinned to the wide left column and span 3 rows, landscape cards to the right column and span 2,
+      so 2 portraits stack beside 3 landscapes as in the design while the DOM (and mobile) order stays by number
+    -->
+    <ul
+      v-if="visibleWorks.length"
+      class="mt-10 grid gap-y-12 lg:grid-cols-[843fr_717fr] lg:gap-x-16 2xl:mt-14 2xl:gap-x-30 2xl:gap-y-16"
+    >
+      <li
+        v-for="{ work, number } in visibleWorks"
+        :key="work.slug"
+        :class="work.orientation === 'portrait' ? 'lg:col-start-1 lg:row-span-3' : 'lg:col-start-2 lg:row-span-2'"
+      >
+        <WorkCard :work="work" :number="number" :total="WORKS.length" />
+      </li>
+    </ul>
+    <p v-else class="mt-14 font-normal text-neutral-500">ยังไม่มีผลงานในหมวดนี้</p>
+
+    <div class="mt-12 flex justify-end 2xl:mt-16">
+      <PrimaryLink to="/work">Explore our works</PrimaryLink>
+    </div>
   </section>
 </template>

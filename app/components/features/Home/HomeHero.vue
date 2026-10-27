@@ -17,13 +17,7 @@ import heroImageUrl from '~/assets/images/Home/signage_p04_01.png'
           </span>
         </h1>
 
-        <NuxtLink
-          to="/work"
-          class="inline-flex items-center gap-2 self-start bg-primary-600 px-4 py-2.5 text-sm font-semibold uppercase text-white transition-colors hover:bg-primary-700 xl:text-lg 2xl:px-5 2xl:py-3 2xl:text-2xl"
-        >
-          Explore our works
-          <Icon name="lucide:arrow-up-right" class="size-4 xl:size-5 2xl:size-6" />
-        </NuxtLink>
+        <PrimaryLink to="/work" class="self-start">Explore our works</PrimaryLink>
       </div>
 
       <div class="relative aspect-884/599 bg-neutral-200">
