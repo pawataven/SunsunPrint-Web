@@ -6,5 +6,6 @@ useSeoMeta({ title: 'SunsunPrint' })
   <div>
     <HomeHero />
     <HomeMarquee />
+    <HomeWorks />
   </div>
 </template>
