@@ -7,11 +7,15 @@ defineProps<{
   total: number
 }>()
 
+const emit = defineEmits<{
+  open: []
+}>()
+
 const formatIndex = (value: number) => String(value).padStart(3, '0')
 </script>
 
 <template>
-  <NuxtLink :to="`/work/${work.slug}`" class="group flex h-full flex-col">
+  <article class="group relative flex h-full flex-col">
     <div
       class="relative overflow-hidden bg-ivory"
       :class="work.orientation === 'portrait' ? 'aspect-7/8 lg:aspect-auto lg:min-h-80 lg:flex-1' : 'aspect-6/5'"
@@ -35,12 +39,22 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
 
     <div class="mt-4 flex items-start justify-between gap-4 2xl:mt-8">
       <div>
-        <h3 class="text-lg uppercase lg:text-xl 2xl:text-[28px]">{{ work.title }}</h3>
+        <h3 class="text-lg uppercase lg:text-xl 2xl:text-[28px]">
+          <!-- The ::after overlay stretches this button over the whole card so the image is clickable too -->
+          <button
+            type="button"
+            aria-haspopup="dialog"
+            class="text-left uppercase after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-brand-red"
+            @click="emit('open')"
+          >
+            {{ work.title }}
+          </button>
+        </h3>
         <p class="text-sm font-normal text-neutral-600 2xl:text-xl">{{ work.description }} / {{ work.tag }}</p>
       </div>
       <p class="shrink-0 text-sm font-normal text-neutral-500 2xl:text-xl">
         {{ formatIndex(number) }} / {{ formatIndex(total) }}
       </p>
     </div>
-  </NuxtLink>
+  </article>
 </template>

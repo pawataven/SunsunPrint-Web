@@ -19,6 +19,8 @@ export interface Work {
   tag: string
   category: WorkCategoryId
   orientation: 'portrait' | 'landscape'
+  /** Paragraphs shown in the work detail popup */
+  details: string[]
   /** Path under /public, e.g. /images/works/brand-space-graphics.jpg — leave empty to show a placeholder */
   image?: string
 }

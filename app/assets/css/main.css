@@ -53,6 +53,11 @@
     @apply antialiased;
   }
 
+  /* Modal dialogs don't lock page scroll on their own */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
   body {
     @apply bg-white font-semibold text-ink;
   }

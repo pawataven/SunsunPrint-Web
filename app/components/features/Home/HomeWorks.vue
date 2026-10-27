@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { WorkCategoryId } from '~/types'
+import type { Work, WorkCategoryId } from '~/types'
 import { WORK_CATEGORIES, WORKS } from '~/constants/works'
 
 const filterOptions: { id: WorkCategoryId | 'all', label: string }[] = [
@@ -8,6 +8,7 @@ const filterOptions: { id: WorkCategoryId | 'all', label: string }[] = [
 ]
 
 const selectedCategory = ref<WorkCategoryId | 'all'>('all')
+const openedWork = ref<Work | null>(null)
 
 const numberedWorks = WORKS.map((work, index) => ({ work, number: index + 1 }))
 
@@ -54,10 +55,12 @@ const visibleWorks = computed(() =>
         :key="work.slug"
         :class="work.orientation === 'portrait' ? 'lg:col-start-1 lg:row-span-3' : 'lg:col-start-2 lg:row-span-2'"
       >
-        <WorkCard :work="work" :number="number" :total="WORKS.length" />
+        <WorkCard :work="work" :number="number" :total="WORKS.length" @open="openedWork = work" />
       </li>
     </ul>
     <p v-else class="mt-14 font-normal text-neutral-500">ยังไม่มีผลงานในหมวดนี้</p>
+
+    <WorkDetailDialog :work="openedWork" @close="openedWork = null" />
 
     <div class="mt-12 flex justify-end 2xl:mt-16">
       <PrimaryLink to="/work">Explore our works</PrimaryLink>
