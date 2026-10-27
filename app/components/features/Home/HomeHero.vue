@@ -3,20 +3,20 @@
     <div class="grid gap-12 lg:grid-cols-[796fr_884fr] lg:gap-0">
       <div class="@container flex flex-col gap-8 lg:justify-between lg:gap-0 lg:pt-3">
         <p class="flex items-center gap-3 text-sm uppercase text-neutral-600 xl:text-lg 2xl:text-2xl">
-          <span class="h-0.5 w-12 bg-primary-600" aria-hidden="true" />
+          <span class="h-0.5 w-12 bg-brand-red" aria-hidden="true" />
           Print different. Think bigger.
         </p>
-        <h1 class="text-[min(23cqw,11.25rem)] leading-[0.92] text-neutral-900 uppercase">
+        <h1 class="text-[min(23cqw,11.25rem)] leading-[0.92] text-ink uppercase">
           <span class="-ml-[0.093em] block font-sans">Make</span>
           <span class="-ml-[0.04em] block font-sans font-normal">
-            It <span class="text-primary-600 font-serif">Real.</span>
+            It <span class="text-brand-red font-serif">Real.</span>
           </span>
         </h1>
 
         <PrimaryLink to="/work" class="self-start">Explore our works</PrimaryLink>
       </div>
 
-      <div class="relative aspect-884/599 bg-neutral-200">
+      <div class="relative aspect-884/599 bg-ivory">
         <NuxtImg
           src="/images/Home/signage_p04_01.png"
           alt="ป้ายไฟ SHANGARILA และตัวอักษร SARAH ผลงานของ SunsunPrint"
@@ -27,7 +27,7 @@
           class="size-full object-cover object-left"
         />
         <div
-          class="absolute top-0 right-2 flex size-24 -translate-y-2/5 items-center justify-center rounded-full bg-primary-600 lg:right-0 lg:size-32 lg:translate-x-1/2 2xl:size-41.25"
+          class="absolute top-0 right-2 flex size-24 -translate-y-2/5 items-center justify-center rounded-full bg-brand-red lg:right-0 lg:size-32 lg:translate-x-1/2 2xl:size-41.25"
           aria-hidden="true"
         >
           <span class="rotate-30 text-center text-xs leading-tight font-semibold text-white uppercase lg:text-sm 2xl:text-xl">

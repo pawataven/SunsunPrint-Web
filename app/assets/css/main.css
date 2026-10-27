@@ -5,11 +5,20 @@
   --font-display: "Noto Sans Display", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Noto Serif", ui-serif, Georgia, serif;
 
-  --color-primary-50: oklch(0.97 0.015 25);
-  --color-primary-100: oklch(0.94 0.03 25);
-  --color-primary-500: oklch(0.58 0.22 27);
-  --color-primary-600: oklch(0.51 0.2 27);
-  --color-primary-700: oklch(0.44 0.18 27);
+  /* Brand palette — suggested ratio: ivory 40%, red 30%, ink 15%, white 10%, deep red 5% */
+  --color-brand-red: #be0a0b;
+  --color-deep-red: #850b10;
+  --color-ink: #1e1e1e;
+  --color-ivory: #f5f1ea;
+  --color-white: #ffffff;
+  /* Off-white for large headings on dark (ink) backgrounds */
+  --color-cream: #f3f1e9;
+  /* Muted gray for supporting copy on dark (ink) backgrounds */
+  --color-graphite: #636363;
+  /* Secondary labels on dark (ink) backgrounds */
+  --color-ash: #96958f;
+  /* Body links and lists on dark (ink) backgrounds, a step lighter than ash */
+  --color-mist: #a5a49e;
 
   --animate-marquee: marquee 40s linear infinite;
 
@@ -45,10 +54,15 @@
   }
 
   body {
-    @apply bg-white font-semibold text-neutral-900;
+    @apply bg-white font-semibold text-ink;
   }
 }
 
 @utility page-x {
   padding-inline: var(--page-gutter);
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 0.0125em var(--color-white);
 }

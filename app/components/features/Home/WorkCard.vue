@@ -13,7 +13,7 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
 <template>
   <NuxtLink :to="`/work/${work.slug}`" class="group flex h-full flex-col">
     <div
-      class="relative overflow-hidden bg-neutral-200"
+      class="relative overflow-hidden bg-ivory"
       :class="work.orientation === 'portrait' ? 'aspect-7/8 lg:aspect-auto lg:min-h-80 lg:flex-1' : 'aspect-6/5'"
     >
       <NuxtImg
@@ -27,17 +27,9 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
       />
       <span
         aria-hidden="true"
-        class="absolute top-4 right-4 flex size-10 items-center justify-center bg-white text-neutral-900 transition-colors group-hover:bg-primary-600 group-hover:text-white lg:size-12 2xl:top-6 2xl:right-6 2xl:size-16"
+        class="absolute top-4 right-4 flex size-10 items-center justify-center bg-white text-ink transition-colors group-hover:bg-brand-red group-hover:text-white lg:size-12 2xl:top-6 2xl:right-6 2xl:size-16"
       >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.75"
-          class="size-5 lg:size-6 2xl:size-7"
-        >
-          <path d="M3 21 21 3M7 3h14v14" />
-        </svg>
+        <ArrowUpRight class="size-5 lg:size-6 2xl:size-7" />
       </span>
     </div>
 

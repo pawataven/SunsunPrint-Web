@@ -5,6 +5,13 @@ export interface WorkCategory {
   label: string
 }
 
+export interface Service {
+  category: WorkCategoryId
+  nameTh: string
+  nameEn: string
+  items: string
+}
+
 export interface Work {
   slug: string
   title: string

@@ -7,5 +7,8 @@ useSeoMeta({ title: 'SunsunPrint' })
     <HomeHero />
     <HomeMarquee />
     <HomeWorks />
+    <HomeServices />
+    <HomeCraft />
+    <HomeCta />
   </div>
 </template>
