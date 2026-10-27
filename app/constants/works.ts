@@ -14,7 +14,8 @@ export const WORKS: Work[] = [
     description: 'งานกราฟิกหน้าร้าน',
     tag: 'Signage',
     category: 'signage',
-    orientation: 'portrait'
+    orientation: 'portrait',
+    image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p07_01.png'
   },
   {
     slug: 'exhibition-booth',
@@ -22,7 +23,8 @@ export const WORKS: Work[] = [
     description: 'แบ็คดรอปและกราฟิกบูธ',
     tag: 'Event',
     category: 'event-exhibition',
-    orientation: 'landscape'
+    orientation: 'landscape',
+    image: '/images/03_Event_Exhibition/06_Booth_Foamboards/event_p06_02.png'
   },
   {
     slug: 'counter-display',
@@ -30,7 +32,8 @@ export const WORKS: Work[] = [
     description: 'ชั้นวางสินค้าพลาสวูด',
     tag: 'POSM',
     category: 'product-display',
-    orientation: 'landscape'
+    orientation: 'landscape',
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p02_03.png'
   },
   {
     slug: 'floor-graphics',
@@ -38,7 +41,8 @@ export const WORKS: Work[] = [
     description: 'งานสติ๊กเกอร์ติดพื้น',
     tag: 'Graphic',
     category: 'stickers-graphics',
-    orientation: 'portrait'
+    orientation: 'portrait',
+    image: '/images/02_Stickers_Graphics/01_Floor_Graphics/signage_p06_01.png'
   },
   {
     slug: 'vinyl-banner',
@@ -46,6 +50,7 @@ export const WORKS: Work[] = [
     description: 'ป้ายไวนิลโฆษณากลางแจ้ง',
     tag: 'Signage',
     category: 'signage',
-    orientation: 'landscape'
+    orientation: 'landscape',
+    image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_01.png'
   }
 ]

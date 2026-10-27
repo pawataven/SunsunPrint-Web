@@ -11,19 +11,19 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
 </script>
 
 <template>
-  <NuxtLink :to="`/work/${work.slug}`" class="group block">
+  <NuxtLink :to="`/work/${work.slug}`" class="group flex h-full flex-col">
     <div
       class="relative overflow-hidden bg-neutral-200"
-      :class="work.orientation === 'portrait' ? 'aspect-7/8' : 'aspect-6/5'"
+      :class="work.orientation === 'portrait' ? 'aspect-7/8 lg:aspect-auto lg:min-h-80 lg:flex-1' : 'aspect-6/5'"
     >
       <NuxtImg
         v-if="work.image"
         :src="work.image"
         :alt="work.title"
-        sizes="100vw lg:50vw"
+        sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw"
         format="webp"
         loading="lazy"
-        class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+        class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
       <span
         aria-hidden="true"

@@ -23,6 +23,10 @@ export default defineNuxtConfig({
     ]
   },
 
+  image: {
+    quality: 100
+  },
+
   icon: {
     // Unlayered icon CSS beats Tailwind's layered utilities, which made size-* classes on <Icon> do nothing
     cssLayer: 'base'

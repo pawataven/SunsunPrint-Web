@@ -48,7 +48,8 @@ const visibleWorks = computed(() =>
 
     <!--
       Portrait cards are pinned to the wide left column and span 3 rows, landscape cards to the right column and span 2,
-      so 2 portraits stack beside 3 landscapes as in the design while the DOM (and mobile) order stays by number
+      so 2 portraits stack beside 3 landscapes as in the design while the DOM (and mobile) order stays by number.
+      Row heights come from the fixed-ratio landscape cards; portrait images stretch to fill, so both columns end flush
     -->
     <ul
       v-if="visibleWorks.length"

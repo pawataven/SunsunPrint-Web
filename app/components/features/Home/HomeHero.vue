@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import heroImageUrl from '~/assets/images/Home/signage_p04_01.png'
-</script>
-
 <template>
   <section class="hero-offset page-x pt-16 pb-16 lg:pb-24 2xl:pb-30">
     <div class="grid gap-12 lg:grid-cols-[796fr_884fr] lg:gap-0">
@@ -21,11 +17,15 @@ import heroImageUrl from '~/assets/images/Home/signage_p04_01.png'
       </div>
 
       <div class="relative aspect-884/599 bg-neutral-200">
-        <img
-          :src="heroImageUrl"
+        <NuxtImg
+          src="/images/Home/signage_p04_01.png"
           alt="ป้ายไฟ SHANGARILA และตัวอักษร SARAH ผลงานของ SunsunPrint"
+          sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw"
+          format="webp"
+          preload
+          fetchpriority="high"
           class="size-full object-cover object-left"
-        >
+        />
         <div
           class="absolute top-0 right-2 flex size-24 -translate-y-2/5 items-center justify-center rounded-full bg-primary-600 lg:right-0 lg:size-32 lg:translate-x-1/2 2xl:size-41.25"
           aria-hidden="true"
