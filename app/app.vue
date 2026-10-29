@@ -15,9 +15,9 @@ useSeoMeta({
   ogType: 'website',
   ogSiteName: 'SUNSUN PRINT',
   ogLocale: 'th_TH',
-  ogImage: `${siteUrl}/images/Home/signage_p04_01.png`,
-  ogImageWidth: 1823,
-  ogImageHeight: 863,
+  ogImage: `${siteUrl}/og-image.jpg`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   ogImageAlt: 'ป้ายไฟ SHANGARILA และตัวอักษร SARAH ผลงานของ SUNSUN PRINT',
   twitterCard: 'summary_large_image'
 })

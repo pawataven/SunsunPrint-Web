@@ -27,7 +27,7 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
       <NuxtImg
         v-if="work.image"
         :src="work.image"
-        :alt="work.title"
+        :alt="`${work.description} ผลงานของ SUNSUN PRINT`"
         sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw"
         format="webp"
         loading="lazy"

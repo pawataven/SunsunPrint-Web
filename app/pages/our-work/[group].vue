@@ -21,6 +21,31 @@ const openedWork = ref<Work | null>(null)
 
 const formatIndex = (value: number) => String(value).padStart(2, '0')
 
+const breadcrumbs = computed(() => [
+  { name: 'หน้าแรก', path: '/' },
+  { name: 'ผลงาน', path: '/our-work' },
+  { name: group.value.title, path: `/our-work/${group.value.id}` }
+])
+
+const siteUrl = useRuntimeConfig().public.siteUrl.replace(/\/$/, '')
+
+// Mirrors the visible breadcrumb trail above the heading
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: () => JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      'itemListElement': breadcrumbs.value.map((crumb, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': crumb.name,
+        'item': `${siteUrl}${crumb.path}`
+      }))
+    })
+  }]
+})
+
 useSeoMeta({
   title: () => `${group.value.title} | ผลงาน | SunsunPrint`,
   description: () => group.value.description,
@@ -33,14 +58,23 @@ useSeoMeta({
   <div>
     <!-- From xl the logo hangs ~100–120px below the header bar, so the top padding clears it with room to spare -->
     <section aria-labelledby="work-group-heading" class="page-x pt-10 pb-12 lg:pt-24 lg:pb-24 xl:pt-36 2xl:pt-44 2xl:pb-30">
-      <NuxtLink
-        v-reveal
-        to="/our-work"
-        class="inline-flex items-center gap-2 text-sm text-neutral-600 transition-colors hover:text-brand-red xl:text-base 2xl:text-xl"
-      >
-        <Icon name="lucide:arrow-left" class="size-4 2xl:size-5" />
-        กลับไปหน้าผลงาน
-      </NuxtLink>
+      <nav v-reveal aria-label="เส้นทางนำทาง">
+        <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600 xl:text-base 2xl:text-xl">
+          <template v-for="(crumb, index) in breadcrumbs" :key="crumb.path">
+            <li v-if="index" aria-hidden="true" class="text-neutral-400">›</li>
+            <li>
+              <NuxtLink
+                v-if="index < breadcrumbs.length - 1"
+                :to="crumb.path"
+                class="transition-colors hover:text-brand-red"
+              >
+                {{ crumb.name }}
+              </NuxtLink>
+              <span v-else aria-current="page" class="text-ink">{{ crumb.name }}</span>
+            </li>
+          </template>
+        </ol>
+      </nav>
 
       <div v-reveal="80" class="mt-8 flex items-baseline gap-4 2xl:mt-12 2xl:gap-8">
         <h1 id="work-group-heading" class="text-3xl lg:text-5xl 2xl:text-6xl">{{ group.title }}</h1>

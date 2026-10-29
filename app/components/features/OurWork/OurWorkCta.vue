@@ -17,7 +17,7 @@
             the line box without counting the rotated IRL. that hangs below it, so the overhang got clipped. The padding
             grows the box over the overhang and the matching negative margin keeps the layout where it was
           -->
-          <span v-reveal="250" class="-mb-[0.4em] block pb-[0.4em] font-serif font-normal">
+          <span v-reveal="250" class="-mb-[0.4em] block pb-[0.4em] font-serif">
             It
             <span class="irl-outline ml-[0.1em] inline-block translate-y-[0.19em] font-sans font-semibold -rotate-14" data-text="IRL.">IRL.</span>
           </span>

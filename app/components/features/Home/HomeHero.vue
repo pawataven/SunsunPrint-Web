@@ -11,7 +11,7 @@
           <span class="sr-only">SUNSUN PRINT รับทำป้ายและงานพิมพ์ </span>
           <span v-reveal="120" class="-ml-[0.093em] block font-sans">Make</span>
           <span v-reveal="240" class="-ml-[0.04em] block font-sans font-normal">
-            It <span class="text-brand-red font-serif">Real.</span>
+            It <span class="text-brand-red font-serif font-semibold">Real.</span>
           </span>
         </h1>
 

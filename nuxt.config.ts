@@ -30,16 +30,20 @@ export default defineNuxtConfig({
   fonts: {
     // Preloading the three files every page paints with lets phones fetch them alongside the hero image instead of
     // after it; without it, slow connections showed the system font for a noticeable moment (font-display: swap)
+    // Weights are declared as a range because Google serves one variable file per family; a range is the spec form for
+    // a variable @font-face and lets every browser pick 400–600 from that single file. Serif text relies on inheriting
+    // 600 from its heading, so it must not sit inside a font-normal element
     families: [
-      { name: 'Noto Sans', weights: [400, 600], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'], weights: [400] } },
-      { name: 'Noto Sans Thai', weights: [400, 600], styles: ['normal'], subsets: ['thai', 'latin'], provider: 'google', global: true, preload: { subsets: ['thai'], weights: [400] } },
-      { name: 'Noto Sans Display', weights: [400], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true },
-      { name: 'Noto Serif', weights: [600], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'], weights: [600] } }
+      { name: 'Noto Sans', weights: ['400 600'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'] } },
+      { name: 'Noto Sans Thai', weights: ['400 600'], styles: ['normal'], subsets: ['thai', 'latin'], provider: 'google', global: true, preload: { subsets: ['thai'] } },
+      { name: 'Noto Sans Display', weights: ['400 600'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true },
+      { name: 'Noto Serif', weights: ['400 600'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'] } }
     ]
   },
 
   image: {
-    quality: 100
+    // 80 is visually indistinguishable here but cuts photo weight several-fold, which matters for mobile load speed
+    quality: 80
   },
 
   icon: {

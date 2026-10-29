@@ -40,7 +40,7 @@ const closeOnBackdropClick = (event: MouseEvent) => {
         <NuxtImg
           v-if="work.image"
           :src="work.image"
-          :alt="work.title"
+          :alt="`${work.description} ผลงานของ SUNSUN PRINT`"
           sizes="sm:100vw md:100vw lg:100vw xl:60vw 2xl:60vw"
           format="webp"
           class="absolute inset-0 size-full object-cover"
