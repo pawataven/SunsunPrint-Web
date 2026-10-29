@@ -26,7 +26,7 @@ import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
         </div>
       </div>
 
-      <img v-reveal:zoom="200" :src="logoUrl" alt="" class="w-56 shrink-0 lg:w-80 xl:w-104 2xl:w-137">
+      <img v-reveal:zoom="200" :src="logoUrl" alt="" class="w-56 shrink-0 max-lg:hidden lg:w-80 xl:w-104 2xl:w-137">
     </div>
   </section>
 </template>

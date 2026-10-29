@@ -8,8 +8,15 @@ const route = useRoute()
 // Category pages like /OurWork/signage live under their menu item, so it stays highlighted there too
 const isLinkActive = (to: string) => (to === '/' ? route.path === '/' : route.path === to || route.path.startsWith(`${to}/`))
 
+const menuButtonRef = useTemplateRef<HTMLButtonElement>('menuButton')
+
 watch(() => route.fullPath, () => {
   isMenuOpen.value = false
+})
+
+// Hands focus back to the button that opened the menu, so keyboard users continue from where they were
+watch(isMenuOpen, (open) => {
+  if (!open) menuButtonRef.value?.focus({ preventScroll: true })
 })
 </script>
 
@@ -44,41 +51,32 @@ watch(() => route.fullPath, () => {
       </nav>
 
       <button
+        ref="menuButton"
         type="button"
-        class="ml-auto inline-flex size-10 items-center justify-center text-ink xl:hidden"
+        class="ml-auto -mr-2 inline-flex size-10 items-center justify-center text-ink xl:hidden"
         :aria-expanded="isMenuOpen"
         aria-controls="mobile-menu"
         :aria-label="isMenuOpen ? 'ปิดเมนู' : 'เปิดเมนู'"
         @click="isMenuOpen = !isMenuOpen"
       >
-        <Icon :name="isMenuOpen ? 'lucide:x' : 'lucide:menu'" class="size-6" />
+        <!-- Three bars that fold into an X, so the toggle animates in step with the menu -->
+        <span class="relative block h-4 w-6" aria-hidden="true">
+          <span
+            class="absolute inset-x-0 top-0 h-0.5 bg-current transition-transform duration-300 ease-out"
+            :class="{ 'translate-y-[7px] rotate-45': isMenuOpen }"
+          />
+          <span
+            class="absolute inset-x-0 top-[7px] h-0.5 bg-current transition-opacity duration-200"
+            :class="{ 'opacity-0': isMenuOpen }"
+          />
+          <span
+            class="absolute inset-x-0 bottom-0 h-0.5 bg-current transition-transform duration-300 ease-out"
+            :class="{ '-translate-y-[7px] -rotate-45': isMenuOpen }"
+          />
+        </span>
       </button>
     </div>
 
-    <nav
-      v-show="isMenuOpen"
-      id="mobile-menu"
-      aria-label="เมนู"
-      class="absolute inset-x-0 top-full border-t border-ivory bg-white page-x pt-10 pb-6 shadow-lg xl:hidden"
-    >
-      <ul class="flex flex-col gap-1">
-        <li v-for="link in navLinks" :key="link.to">
-          <NuxtLink
-            :to="link.to"
-            class="block py-2 text-sm font-semibold uppercase tracking-wide hover:text-brand-red"
-            :class="isLinkActive(link.to) ? 'text-brand-red' : 'text-ink'"
-          >
-            {{ link.label }}
-          </NuxtLink>
-        </li>
-      </ul>
-      <NuxtLink
-        to="/contact"
-        class="mt-4 inline-flex items-center gap-1 bg-brand-red px-3 py-2 text-sm font-semibold uppercase tracking-wide text-white hover:bg-deep-red"
-      >
-        ขอใบเสนอราคา
-        <Icon name="lucide:arrow-right" class="size-4" />
-      </NuxtLink>
-    </nav>
+    <MobileMenu v-model="isMenuOpen" :is-link-active="isLinkActive" />
   </header>
 </template>
