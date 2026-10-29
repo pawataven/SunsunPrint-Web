@@ -64,7 +64,7 @@ const visibleWorks = computed(() =>
     <WorkDetailDialog :work="openedWork" @close="openedWork = null" />
 
     <div class="mt-10 flex justify-end lg:mt-12 2xl:mt-16">
-      <PrimaryLink v-reveal to="/OurWork">ดูผลงานทั้งหมด</PrimaryLink>
+      <PrimaryLink v-reveal to="/our-work">ดูผลงานทั้งหมด</PrimaryLink>
     </div>
   </section>
 </template>

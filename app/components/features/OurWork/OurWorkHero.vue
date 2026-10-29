@@ -18,6 +18,7 @@ const stats = [
 
         <div>
           <h1 class="text-[18cqw] leading-[0.92] uppercase">
+            <span class="sr-only">ผลงานป้ายและงานพิมพ์ของ SUNSUN PRINT </span>
             <span v-reveal="120" class="-ml-[0.06em] block font-sans text-ink">Our</span>
             <span v-reveal="240" class="-ml-[0.04em] block font-serif text-brand-red">Work.</span>
           </h1>

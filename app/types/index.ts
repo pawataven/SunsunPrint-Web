@@ -15,6 +15,8 @@ export interface WorkGroup {
   title: string
   /** Chip label in the gallery's group filter */
   label: string
+  /** Meta description of the group's own page (/our-work/<id>) */
+  description: string
   works: Work[]
   /** Sub-type chips shown above the group's carousel; each work opts in through its `subcategory` */
   filters?: WorkFilter[]

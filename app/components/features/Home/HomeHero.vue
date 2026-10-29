@@ -7,13 +7,15 @@
           <span class="trim-cap-start">Print different. Think bigger.</span>
         </p>
         <h1 class="text-[min(23cqw,11.25rem)] leading-[0.92] text-ink uppercase">
+          <!-- The visible slogan says nothing about the business, so search engines and screen readers get it spelled out -->
+          <span class="sr-only">SUNSUN PRINT รับทำป้ายและงานพิมพ์ </span>
           <span v-reveal="120" class="-ml-[0.093em] block font-sans">Make</span>
           <span v-reveal="240" class="-ml-[0.04em] block font-sans font-normal">
             It <span class="text-brand-red font-serif">Real.</span>
           </span>
         </h1>
 
-        <PrimaryLink v-reveal="400" to="/OurWork" class="self-start">ดูผลงานทั้งหมด</PrimaryLink>
+        <PrimaryLink v-reveal="400" to="/our-work" class="self-start">ดูผลงานทั้งหมด</PrimaryLink>
       </div>
 
       <!-- Stretches to the text column when that runs taller, so the two always share a top and bottom edge -->

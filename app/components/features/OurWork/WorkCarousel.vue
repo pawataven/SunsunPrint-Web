@@ -285,7 +285,7 @@ onBeforeUnmount(() => {
           :key="work.slug"
           class="shrink-0 basis-[85%] snap-start border-b border-neutral-300 pb-4 md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-4rem)/3)] 2xl:basis-[calc((100%-5rem)/3)] 2xl:pb-8"
         >
-          <WorkCard :work="work" :number="index + 1" :total="visibleWorks.length" @open="emit('open', work)" />
+          <WorkCard :work="work" :number="index + 1" :total="visibleWorks.length" :heading-level="4" @open="emit('open', work)" />
         </li>
       </ul>
     </div>

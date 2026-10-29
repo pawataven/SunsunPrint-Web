@@ -5,7 +5,7 @@ import { NAV_LINKS as navLinks } from '~/constants/navigation'
 const isMenuOpen = ref(false)
 const route = useRoute()
 
-// Category pages like /OurWork/signage live under their menu item, so it stays highlighted there too
+// Category pages like /our-work/signage live under their menu item, so it stays highlighted there too
 const isLinkActive = (to: string) => (to === '/' ? route.path === '/' : route.path === to || route.path.startsWith(`${to}/`))
 
 const menuButtonRef = useTemplateRef<HTMLButtonElement>('menuButton')

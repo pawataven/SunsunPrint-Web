@@ -1,6 +1,6 @@
 export const NAV_LINKS = [
   { label: 'หน้าแรก', to: '/' },
-  { label: 'ผลงาน', to: '/OurWork' },
+  { label: 'ผลงาน', to: '/our-work' },
   { label: 'บริการ', to: '/services' },
   { label: 'เกี่ยวกับเรา', to: '/about' }
 ]

@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { Work } from '~/types'
 
-defineProps<{
+withDefaults(defineProps<{
   work: Work
   number: number
   total: number
-}>()
+  /** Level that fits the outline of the page the card sits in, e.g. 2 directly under a page's h1 */
+  headingLevel?: 2 | 3 | 4
+}>(), {
+  headingLevel: 3
+})
 
 const emit = defineEmits<{
   open: []
@@ -39,7 +43,7 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
 
     <div class="mt-4 flex items-start justify-between gap-4 2xl:mt-8">
       <div>
-        <h3 class="text-lg uppercase lg:text-xl 2xl:text-[28px]">
+        <component :is="`h${headingLevel}`" class="text-lg uppercase lg:text-xl 2xl:text-[28px]">
           <!-- The ::after overlay stretches this button over the whole card so the image is clickable too -->
           <button
             type="button"
@@ -49,7 +53,7 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
           >
             {{ work.title }}
           </button>
-        </h3>
+        </component>
         <p class="text-sm font-normal text-neutral-600 2xl:text-xl">{{ work.description }} / {{ work.tag }}</p>
       </div>
       <p class="shrink-0 text-sm font-normal text-neutral-500 2xl:text-xl">

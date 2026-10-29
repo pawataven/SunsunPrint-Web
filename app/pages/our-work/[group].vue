@@ -23,7 +23,9 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 
 useSeoMeta({
   title: () => `${group.value.title} | ผลงาน | SunsunPrint`,
-  description: () => `รวมผลงาน${group.value.title}ของ SUNSUN PRINT ตัวอย่างงานจริงจากลูกค้า`
+  description: () => group.value.description,
+  ogTitle: () => `${group.value.title} | ผลงาน | SunsunPrint`,
+  ogDescription: () => group.value.description
 })
 </script>
 
@@ -33,7 +35,7 @@ useSeoMeta({
     <section aria-labelledby="work-group-heading" class="page-x pt-10 pb-12 lg:pt-24 lg:pb-24 xl:pt-36 2xl:pt-44 2xl:pb-30">
       <NuxtLink
         v-reveal
-        to="/OurWork"
+        to="/our-work"
         class="inline-flex items-center gap-2 text-sm text-neutral-600 transition-colors hover:text-brand-red xl:text-base 2xl:text-xl"
       >
         <Icon name="lucide:arrow-left" class="size-4 2xl:size-5" />
@@ -68,7 +70,7 @@ useSeoMeta({
           v-reveal="(index % 3) * 100"
           class="border-b border-neutral-300 pb-4 2xl:pb-8"
         >
-          <WorkCard :work="work" :number="index + 1" :total="visibleWorks.length" @open="openedWork = work" />
+          <WorkCard :work="work" :number="index + 1" :total="visibleWorks.length" :heading-level="2" @open="openedWork = work" />
         </li>
       </ul>
       <p v-else class="mt-10 font-normal text-neutral-500">ยังไม่มีผลงานในหมวดนี้</p>

@@ -288,7 +288,7 @@ const SIGNAGE_WORKS: Work[] = [
 ]
 
 export const WORK_GROUPS: WorkGroup[] = [
-  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', works: ALL_WORKS, exploreTo: '/OurWork/all' },
-  { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/OurWork/event' },
-  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/OurWork/signage' }
+  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', description: 'รวมตัวอย่างผลงานจริงของ SUNSUN PRINT ทุกหมวด ทั้งป้ายไวนิล ป้ายไฟ สติ๊กเกอร์ บูธอีเวนต์ และชั้นวางสินค้า', works: ALL_WORKS, exploreTo: '/our-work/all' },
+  { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', description: 'ตัวอย่างงานอีเวนต์จาก SUNSUN PRINT: แบ็คดรอปผ้า โต๊ะพับพร้อมผ้าคลุม แบ็คดรอปแขวนผนัง โรลอัพ และสแตนดี้พีพีบอร์ด', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/our-work/event' },
+  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', description: 'ตัวอย่างงานป้ายจาก SUNSUN PRINT: ป้ายอะคริลิก ป้ายพลาสวูด ป้ายสแตนเลส ป้ายไฟ ป้ายไวนิล และงานติดตั้งสติ๊กเกอร์', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/our-work/signage' }
 ]
