@@ -34,7 +34,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
     </ul>
 
     <div v-reveal class="mt-6 flex justify-between gap-4 text-xs text-ash uppercase lg:text-sm 2xl:mt-12 2xl:text-lg">
-      <p>{{ SERVICES.length }} service categories</p>
+      <p>บริการ {{ SERVICES.length }} หมวด</p>
       <p>Made for your next big idea</p>
     </div>
   </section>

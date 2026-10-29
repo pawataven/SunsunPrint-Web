@@ -29,7 +29,7 @@ onBeforeUnmount(() => {
 <template>
   <button
     type="button"
-    aria-label="Back to top"
+    aria-label="กลับขึ้นด้านบน"
     :tabindex="isVisible ? 0 : -1"
     :aria-hidden="!isVisible"
     class="fixed right-5 bottom-6 z-40 flex size-12 items-center justify-center border-2 border-brand-red text-brand-red transition duration-300 hover:bg-brand-red hover:text-white focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-ink lg:right-8 lg:bottom-10 lg:size-14"

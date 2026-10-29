@@ -5,6 +5,22 @@ export interface WorkCategory {
   label: string
 }
 
+export interface WorkFilter {
+  id: string
+  label: string
+}
+
+export interface WorkGroup {
+  id: string
+  title: string
+  /** Chip label in the gallery's group filter */
+  label: string
+  works: Work[]
+  /** Sub-type chips shown above the group's carousel; each work opts in through its `subcategory` */
+  filters?: WorkFilter[]
+  exploreTo: string
+}
+
 export interface Service {
   category: WorkCategoryId
   nameTh: string
@@ -18,6 +34,8 @@ export interface Work {
   description: string
   tag: string
   category: WorkCategoryId
+  /** Matches a `WorkFilter.id` of the group the work is listed in */
+  subcategory?: string
   orientation: 'portrait' | 'landscape'
   /** Paragraphs shown in the work detail popup */
   details: string[]

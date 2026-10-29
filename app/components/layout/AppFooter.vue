@@ -30,7 +30,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
 
     <div class="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[389fr_522fr_517fr_252fr] lg:gap-x-0 2xl:mt-20">
       <nav aria-labelledby="footer-nav-heading">
-        <h2 id="footer-nav-heading" :class="headingClass">Navigation</h2>
+        <h2 id="footer-nav-heading" :class="headingClass">เมนู</h2>
         <ul :class="listClass">
           <li v-for="link in NAV_LINKS" :key="link.to">
             <NuxtLink :to="link.to" class="uppercase transition-colors hover:text-cream">{{ link.label }}</NuxtLink>
@@ -39,7 +39,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
       </nav>
 
       <div>
-        <h2 :class="headingClass">Services</h2>
+        <h2 :class="headingClass">บริการ</h2>
         <ul :class="listClass">
           <li v-for="service in SERVICES" :key="service.category">
             <NuxtLink :to="`/services/${service.category}`" class="transition-colors hover:text-cream">
@@ -50,7 +50,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
       </div>
 
       <div>
-        <h2 :class="headingClass">Start a project</h2>
+        <h2 :class="headingClass">เริ่มโปรเจกต์</h2>
         <ul class="mt-6 flex flex-col gap-1 text-sm text-mist lg:text-base 2xl:mt-7 2xl:text-xl">
           <li v-for="step in projectSteps" :key="step">{{ step }}</li>
         </ul>
@@ -60,7 +60,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
       </div>
 
       <div>
-        <h2 :class="headingClass">Follow us</h2>
+        <h2 :class="headingClass">ติดตามเรา</h2>
         <p class="mt-6 text-sm whitespace-nowrap text-ash uppercase lg:text-base 2xl:mt-7 2xl:text-xl">Line / Facebook / IG</p>
         <ul class="mt-4 flex gap-3">
           <li v-for="social in SOCIAL_LINKS" :key="social.label">

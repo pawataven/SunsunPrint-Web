@@ -50,7 +50,7 @@ const closeOnBackdropClick = (event: MouseEvent) => {
       <div class="relative flex flex-col p-6 lg:p-10 2xl:p-15">
         <button
           type="button"
-          aria-label="Close"
+          aria-label="ปิด"
           class="absolute top-4 right-4 flex size-10 items-center justify-center bg-ink text-white transition-colors hover:bg-brand-red lg:top-6 lg:right-6 2xl:size-16"
           @click="dialogRef?.close()"
         >

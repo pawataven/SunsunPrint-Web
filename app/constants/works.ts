@@ -1,10 +1,10 @@
 import type { Work, WorkCategory } from '~/types'
 
 export const WORK_CATEGORIES: WorkCategory[] = [
-  { id: 'signage', label: 'Signage' },
-  { id: 'stickers-graphics', label: 'Stickers & Graphics' },
-  { id: 'event-exhibition', label: 'Event & Exhibition' },
-  { id: 'product-display', label: 'Product Display' }
+  { id: 'signage', label: 'งานป้าย' },
+  { id: 'stickers-graphics', label: 'งานสติ๊กเกอร์' },
+  { id: 'event-exhibition', label: 'งานอีเวนต์' },
+  { id: 'product-display', label: 'งานดิสเพลย์' }
 ]
 
 // TODO: replace with each project's real description once the shop provides it

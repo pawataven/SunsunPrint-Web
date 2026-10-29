@@ -1,10 +1,10 @@
 <template>
-  <section class="hero-offset page-x pt-16 pb-16 lg:pb-24 2xl:pb-30">
+  <section class="hero-offset page-x pb-16 lg:pb-24 2xl:pb-30">
     <div class="grid gap-12 lg:grid-cols-[796fr_884fr] lg:gap-0">
-      <div class="@container flex flex-col gap-8 lg:justify-between lg:gap-0 lg:pt-3">
+      <div class="@container flex flex-col gap-8 lg:justify-between lg:gap-0">
         <p v-reveal class="flex items-center gap-3 text-sm uppercase text-neutral-600 xl:text-lg 2xl:text-2xl">
           <span class="h-0.5 w-12 bg-brand-red" aria-hidden="true" />
-          Print different. Think bigger.
+          <span class="trim-cap-start">Print different. Think bigger.</span>
         </p>
         <h1 class="text-[min(23cqw,11.25rem)] leading-[0.92] text-ink uppercase">
           <span v-reveal="120" class="-ml-[0.093em] block font-sans">Make</span>
@@ -13,10 +13,11 @@
           </span>
         </h1>
 
-        <PrimaryLink v-reveal="400" to="/work" class="self-start">Explore our works</PrimaryLink>
+        <PrimaryLink v-reveal="400" to="/OurWork" class="self-start">ดูผลงานทั้งหมด</PrimaryLink>
       </div>
 
-      <div class="relative aspect-884/599 bg-ivory">
+      <!-- Stretches to the text column when that runs taller, so the two always share a top and bottom edge -->
+      <div class="relative aspect-884/599 bg-ivory lg:self-stretch">
         <NuxtImg
           v-reveal:wipe="150"
           src="/images/Home/signage_p04_01.png"
@@ -40,13 +41,3 @@
     </div>
   </section>
 </template>
-
-<style scoped>
-@media (width >= 64rem) {
-  .hero-offset {
-    /* The image height follows the viewport width (column width × 599/884), so the gap above it takes
-       whatever screen height is left — capped at the design's 240px — to keep the hero on one screen */
-    padding-top: clamp(2rem, calc(100svh - var(--header-h) - (100vw - 2 * var(--page-gutter)) * 599 / 1680 - 1.5rem), 15rem);
-  }
-}
-</style>

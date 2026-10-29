@@ -102,6 +102,26 @@
   padding-inline: var(--page-gutter);
 }
 
+/* Shared by every page hero so the gap under the header is identical from page to page */
+@utility hero-offset {
+  padding-top: 4rem;
+
+  @media (width >= 64rem) {
+    /* The hero image height follows the viewport width (content width × 599/1680), so the gap above it takes
+       whatever screen height is left — capped at the design's 240px — to keep the hero on one screen */
+    padding-top: clamp(2rem, calc(100svh - var(--header-h) - (100vw - 2 * var(--page-gutter)) * 599 / 1680 - 1.5rem), 15rem);
+  }
+}
+
+/* Trims the line-height gap above capitals so a heading's visible top lines up with the box next to it (no-op in Firefox) */
+@utility trim-cap-start {
+  text-box: trim-start cap alphabetic;
+}
+
+@utility trim-baseline-end {
+  text-box: trim-end cap alphabetic;
+}
+
 @utility text-outline {
   color: transparent;
   -webkit-text-stroke: 0.0125em var(--color-white);

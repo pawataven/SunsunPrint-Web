@@ -20,7 +20,7 @@ import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
             to="/contact"
             class="inline-flex shrink-0 items-center gap-6 self-start bg-white px-4 py-3 text-sm text-ink uppercase transition-colors hover:bg-ink hover:text-white sm:self-auto lg:text-base 2xl:gap-10 2xl:px-6 2xl:py-4 2xl:text-xl"
           >
-            Request a quote
+            ขอใบเสนอราคา
             <ArrowUpRight :stroke-width="1.25" class="size-5 2xl:size-8" />
           </NuxtLink>
         </div>

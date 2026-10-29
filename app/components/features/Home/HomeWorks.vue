@@ -3,7 +3,7 @@ import type { Work, WorkCategoryId } from '~/types'
 import { WORK_CATEGORIES, WORKS } from '~/constants/works'
 
 const filterOptions: { id: WorkCategoryId | 'all', label: string }[] = [
-  { id: 'all', label: 'All works' },
+  { id: 'all', label: 'ทั้งหมด' },
   ...WORK_CATEGORIES
 ]
 
@@ -26,7 +26,7 @@ const visibleWorks = computed(() =>
       สำรวจรูปแบบงานพิมพ์และงานผลิตจากตัวอย่างที่ร้านส่งมา
     </SectionHeading>
 
-    <div v-reveal="120" role="group" aria-label="Filter works by category" class="mt-8 flex flex-wrap gap-3 2xl:mt-10 2xl:gap-5">
+    <div v-reveal="120" role="group" aria-label="กรองผลงานตามหมวดหมู่" class="mt-8 flex flex-wrap gap-3 2xl:mt-10 2xl:gap-5">
       <button
         v-for="option in filterOptions"
         :key="option.id"
@@ -64,7 +64,7 @@ const visibleWorks = computed(() =>
     <WorkDetailDialog :work="openedWork" @close="openedWork = null" />
 
     <div class="mt-12 flex justify-end 2xl:mt-16">
-      <PrimaryLink v-reveal to="/work">Explore our works</PrimaryLink>
+      <PrimaryLink v-reveal to="/OurWork">ดูผลงานทั้งหมด</PrimaryLink>
     </div>
   </section>
 </template>

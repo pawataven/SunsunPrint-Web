@@ -11,7 +11,7 @@ const slogans = [
 </script>
 
 <template>
-  <section aria-label="Slogans" class="overflow-hidden bg-brand-red text-white">
+  <section aria-label="สโลแกน" class="overflow-hidden bg-brand-red text-white">
     <!-- The track holds two identical copies and slides by -50%, so the second copy lands exactly where the first began -->
     <div class="flex w-max animate-marquee hover:[animation-play-state:paused]">
       <ul

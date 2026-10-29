@@ -1,8 +1,8 @@
 export const NAV_LINKS = [
-  { label: 'Home', to: '/' },
-  { label: 'Our Work', to: '/work' },
-  { label: 'Services', to: '/services' },
-  { label: 'About', to: '/about' }
+  { label: 'หน้าแรก', to: '/' },
+  { label: 'ผลงาน', to: '/OurWork' },
+  { label: 'บริการ', to: '/services' },
+  { label: 'เกี่ยวกับเรา', to: '/about' }
 ]
 
 // TODO: replace '#' with the shop's real LINE / Facebook / Instagram URLs
