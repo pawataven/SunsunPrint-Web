@@ -15,11 +15,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   fonts: {
+    // Preloading the three files every page paints with lets phones fetch them alongside the hero image instead of
+    // after it; without it, slow connections showed the system font for a noticeable moment (font-display: swap)
     families: [
-      { name: 'Noto Sans', weights: [400, 600], provider: 'google', global: true },
-      { name: 'Noto Sans Thai', weights: [400, 600], subsets: ['thai', 'latin'], provider: 'google', global: true },
-      { name: 'Noto Sans Display', weights: [400], provider: 'google', global: true },
-      { name: 'Noto Serif', weights: [600], provider: 'google', global: true }
+      { name: 'Noto Sans', weights: [400, 600], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'], weights: [400] } },
+      { name: 'Noto Sans Thai', weights: [400, 600], styles: ['normal'], subsets: ['thai', 'latin'], provider: 'google', global: true, preload: { subsets: ['thai'], weights: [400] } },
+      { name: 'Noto Sans Display', weights: [400], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true },
+      { name: 'Noto Serif', weights: [600], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'], weights: [600] } }
     ]
   },
 
