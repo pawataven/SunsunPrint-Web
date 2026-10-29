@@ -10,5 +10,6 @@ useSeoMeta({
     <OurWorkHero />
     <HomeMarquee/>
     <OurWorkGallery />
+    <OurWorkCta />
   </div>
 </template>
