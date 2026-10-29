@@ -26,6 +26,7 @@ export interface Service {
   nameTh: string
   nameEn: string
   items: string
+  to: string
 }
 
 export interface Work {

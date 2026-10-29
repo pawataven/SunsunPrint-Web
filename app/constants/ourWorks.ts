@@ -287,9 +287,8 @@ const SIGNAGE_WORKS: Work[] = [
   }
 ]
 
-// TODO: point each group's link at its own listing page once those exist
 export const WORK_GROUPS: WorkGroup[] = [
-  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', works: ALL_WORKS, exploreTo: '/OurWork' },
-  { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/OurWork' },
-  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/OurWork' }
+  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', works: ALL_WORKS, exploreTo: '/OurWork/all' },
+  { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/OurWork/event' },
+  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/OurWork/signage' }
 ]

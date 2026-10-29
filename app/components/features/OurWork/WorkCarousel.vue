@@ -9,25 +9,7 @@ const props = defineProps<{
   exploreTo: string
 }>()
 
-const selectedFilter = ref('all')
-
-const filterOptions = computed(() =>
-  props.filters?.length
-    ? [
-        { id: 'all', label: 'ทั้งหมด', count: props.works.length },
-        ...props.filters.map(filter => ({
-          ...filter,
-          count: props.works.filter(work => work.subcategory === filter.id).length
-        }))
-      ]
-    : []
-)
-
-const visibleWorks = computed(() =>
-  selectedFilter.value === 'all'
-    ? props.works
-    : props.works.filter(work => work.subcategory === selectedFilter.value)
-)
+const { selectedFilter, filterOptions, visibleWorks } = useSubcategoryFilter(() => props.works, () => props.filters)
 
 const emit = defineEmits<{
   open: [work: Work]
@@ -41,6 +23,9 @@ const thumbWidthPercent = ref(100)
 const scrollProgress = ref(0)
 
 const formatIndex = (value: number) => String(value).padStart(2, '0')
+
+// Phones get a short stacked preview instead of a sideways carousel; the explore button leads to the full category page
+const MOBILE_PREVIEW_COUNT = 3
 
 const getStep = (track: HTMLUListElement) => {
   const firstCard = track.firstElementChild as HTMLElement | null
@@ -244,12 +229,13 @@ onBeforeUnmount(() => {
     <div v-reveal class="flex items-center justify-between gap-4">
       <div class="flex items-baseline gap-4 2xl:gap-8">
         <h3 :id="`${id}-heading`" class="text-lg uppercase lg:text-xl 2xl:text-[28px]">{{ title }}</h3>
-        <p class="text-sm font-normal text-neutral-500 2xl:text-xl" aria-live="polite">
+        <p class="text-sm font-normal text-neutral-500 md:hidden">{{ formatIndex(visibleWorks.length) }} ผลงาน</p>
+        <p class="text-sm font-normal text-neutral-500 max-md:hidden 2xl:text-xl" aria-live="polite">
           {{ formatIndex(visibleWorks.length ? firstVisibleIndex + 1 : 0) }} / {{ formatIndex(visibleWorks.length) }}
         </p>
       </div>
 
-      <div class="flex gap-2 2xl:gap-3">
+      <div class="flex gap-2 max-md:hidden 2xl:gap-3">
         <button
           type="button"
           :disabled="isAtStart"
@@ -286,10 +272,10 @@ onBeforeUnmount(() => {
       <ul
         ref="track"
         :class="[
-          isSnapSuspended ? '' : 'snap-x snap-mandatory',
-          isDraggingCards ? 'cursor-grabbing select-none [&_*]:cursor-grabbing' : 'cursor-grab'
+          isSnapSuspended ? '' : 'md:snap-x md:snap-mandatory',
+          isDraggingCards ? 'cursor-grabbing select-none [&_*]:cursor-grabbing' : 'md:cursor-grab'
         ]"
-        class="flex gap-6 overflow-x-auto [scrollbar-width:none] lg:gap-8 2xl:gap-10"
+        class="flex flex-col gap-10 md:flex-row md:gap-6 md:overflow-x-auto md:[scrollbar-width:none] lg:gap-8 2xl:gap-10"
         @scroll.passive="updateScrollState"
         @pointerdown="startCardDrag"
         @pointermove="moveCardDrag"
@@ -301,7 +287,8 @@ onBeforeUnmount(() => {
         <li
           v-for="(work, index) in visibleWorks"
           :key="work.slug"
-          class="shrink-0 basis-[85%] snap-start border-b border-neutral-300 pb-4 md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-4rem)/3)] 2xl:basis-[calc((100%-5rem)/3)] 2xl:pb-8"
+          :class="{ 'max-md:hidden': index >= MOBILE_PREVIEW_COUNT }"
+          class="snap-start border-b border-neutral-300 pb-4 md:shrink-0 md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-4rem)/3)] 2xl:basis-[calc((100%-5rem)/3)] 2xl:pb-8"
         >
           <WorkCard :work="work" :number="index + 1" :total="visibleWorks.length" @open="emit('open', work)" />
         </li>
@@ -309,10 +296,10 @@ onBeforeUnmount(() => {
     </div>
     <p v-else class="mt-6 font-normal text-neutral-500">ยังไม่มีผลงานในหมวดนี้</p>
 
-    <div class="mt-8 flex items-center gap-8 2xl:mt-12 2xl:gap-12">
+    <div class="mt-8 flex items-center justify-end gap-8 2xl:mt-12 2xl:gap-12">
       <!-- Mouse/touch convenience mirroring the arrow buttons, so it stays out of the accessibility tree -->
       <div
-        class="flex-1 touch-none py-3"
+        class="flex-1 touch-none py-3 max-md:hidden"
         :class="thumbWidthPercent < 100 ? 'cursor-pointer' : 'pointer-events-none'"
         aria-hidden="true"
         @pointerdown="startThumbDrag"

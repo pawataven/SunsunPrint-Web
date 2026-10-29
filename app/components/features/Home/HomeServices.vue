@@ -5,7 +5,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 </script>
 
 <template>
-  <section aria-labelledby="services-heading" class="page-x bg-ink pt-20 pb-12 text-cream lg:pt-28 2xl:pt-38 2xl:pb-24">
+  <section aria-labelledby="services-heading" class="page-x bg-ink pt-12 pb-10 text-cream lg:pt-28 lg:pb-12 2xl:pt-38 2xl:pb-24">
     <SectionHeading id="services-heading" v-reveal  title="Everything" accent="In print." tone="dark">
       ตั้งแต่งานป้ายขนาดเล็ก ไปจนถึงงานจัดแสดงพื้นที่ขนาดใหญ่<br>
       เลือกดูประเภทงานที่เหมาะกับโปรเจกต์ของคุณ
@@ -14,7 +14,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
     <ul class="mt-10 border-t border-neutral-700 2xl:mt-16">
       <li v-for="(service, index) in SERVICES" :key="service.category" v-reveal="index * 100">
         <NuxtLink
-          :to="`/services/${service.category}`"
+          :to="service.to"
           class="group grid grid-cols-[3rem_1fr_auto] items-center gap-x-4 gap-y-1 border-b border-neutral-700 py-6 lg:min-h-40 lg:grid-cols-[237fr_601fr_755fr_87fr] lg:gap-x-0 lg:py-0 2xl:min-h-60"
         >
           <span class="text-base lg:text-xl 2xl:text-2xl">{{ formatIndex(index + 1) }} /</span>

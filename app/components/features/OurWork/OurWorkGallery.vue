@@ -16,7 +16,7 @@ const visibleGroups = computed(() =>
 </script>
 
 <template>
-  <section aria-labelledby="gallery-heading" class="page-x pt-20 pb-16 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
+  <section aria-labelledby="gallery-heading" class="page-x pt-12 pb-12 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
     <div v-reveal class="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
       <h2 id="gallery-heading" class="text-5xl leading-tight text-ink lg:text-7xl 2xl:text-8xl">
         <span class="font-sans uppercase">Made to</span>
@@ -41,7 +41,7 @@ const visibleGroups = computed(() =>
 
     <hr v-reveal:line="200" class="mt-6 border-neutral-300 2xl:mt-8">
 
-    <div class="mt-12 flex flex-col gap-16 lg:mt-16 lg:gap-24 2xl:mt-20 2xl:gap-30">
+    <div class="mt-10 flex flex-col gap-12 lg:mt-16 lg:gap-24 2xl:mt-20 2xl:gap-30">
       <WorkCarousel
         v-for="group in visibleGroups"
         :id="`work-group-${group.id}`"

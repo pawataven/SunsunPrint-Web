@@ -20,7 +20,7 @@ const visibleWorks = computed(() =>
 </script>
 
 <template>
-  <section aria-labelledby="works-heading" class="page-x pt-20 pb-16 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
+  <section aria-labelledby="works-heading" class="page-x pt-12 pb-12 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
     <SectionHeading id="works-heading" v-reveal title="Selected" accent="Works.">
       งานป้าย งานอีเวนต์ งานสติกเกอร์ และดิสเพลย์สินค้า<br>
       สำรวจรูปแบบงานพิมพ์และงานผลิตจากตัวอย่างที่ร้านส่งมา
@@ -48,7 +48,7 @@ const visibleWorks = computed(() =>
     -->
     <ul
       v-if="visibleWorks.length"
-      class="mt-10 grid gap-y-12 lg:grid-cols-[843fr_717fr] lg:gap-x-16 2xl:mt-14 2xl:gap-x-30 2xl:gap-y-16"
+      class="mt-10 grid gap-y-10 lg:grid-cols-[843fr_717fr] lg:gap-x-16 lg:gap-y-12 2xl:mt-14 2xl:gap-x-30 2xl:gap-y-16"
     >
       <li
         v-for="{ work, number } in visibleWorks"
@@ -63,7 +63,7 @@ const visibleWorks = computed(() =>
 
     <WorkDetailDialog :work="openedWork" @close="openedWork = null" />
 
-    <div class="mt-12 flex justify-end 2xl:mt-16">
+    <div class="mt-10 flex justify-end lg:mt-12 2xl:mt-16">
       <PrimaryLink v-reveal to="/OurWork">ดูผลงานทั้งหมด</PrimaryLink>
     </div>
   </section>

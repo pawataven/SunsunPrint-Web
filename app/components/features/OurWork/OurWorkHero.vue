@@ -6,7 +6,7 @@ const stats = [
 </script>
 
 <template>
-  <section class="hero-offset page-x pb-16 lg:pb-24 2xl:pb-30">
+  <section class="hero-offset page-x pb-12 lg:pb-24 2xl:pb-30">
     <div class="grid gap-16 lg:grid-cols-[880fr_800fr] lg:gap-0">
       <!-- Type below is sized in cqw because the photo's height is a fixed share of this column's width (68cqw),
            and the whole stack has to fit inside it at every desktop width -->
@@ -66,10 +66,10 @@ const stats = [
         </div>
         <div
           v-reveal:pop="900"
-          class="absolute top-[4cqw] right-[2cqw] flex size-[20.6cqw] -translate-y-1/2 items-center justify-center rounded-full bg-brand-red lg:right-0 lg:translate-x-1/2"
+          class="hero-badge absolute right-[2cqw] flex -translate-y-1/2 items-center justify-center rounded-full bg-brand-red lg:right-0 lg:translate-x-1/2"
           aria-hidden="true"
         >
-          <span class="text-center text-[3.2cqw] leading-tight text-white uppercase">
+          <span class="text-center text-[calc(var(--badge-size)*0.155)] leading-tight text-white uppercase">
             Print<br>is real!
           </span>
         </div>

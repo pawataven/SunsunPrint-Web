@@ -1,8 +1,8 @@
 <template>
-  <section aria-labelledby="our-work-cta-heading" class="page-x overflow-hidden pt-16 pb-20 lg:pt-20 lg:pb-28 2xl:pt-24 2xl:pb-36">
+  <section aria-labelledby="our-work-cta-heading" class="page-x overflow-hidden pt-12 pb-14 lg:pt-20 lg:pb-28 2xl:pt-24 2xl:pb-36">
     <p v-reveal class="text-xs tracking-[0.2em] text-ink uppercase 2xl:text-base">Sunsun Print / Creative Production</p>
 
-    <div class="mt-10 grid items-center gap-16 lg:mt-14 lg:grid-cols-[1fr_1fr] lg:gap-12 2xl:mt-20">
+    <div class="mt-10 grid items-center gap-12 lg:mt-14 lg:grid-cols-[1fr_1fr] lg:gap-12 2xl:mt-20">
       <div class="@container">
         <p v-reveal="80" class="flex items-center gap-3 text-sm text-brand-red uppercase xl:text-base 2xl:text-xl">
           <span class="h-0.5 w-10 bg-brand-red 2xl:w-12" aria-hidden="true" />
@@ -17,7 +17,7 @@
           </span>
         </h2>
 
-        <p v-reveal="350" class="mt-12 max-w-xl font-sans leading-relaxed text-neutral-600 lg:mt-20 lg:text-lg 2xl:mt-28 2xl:max-w-2xl 2xl:text-xl">
+        <p v-reveal="350" class="mt-8 max-w-xl font-sans leading-relaxed text-neutral-600 lg:mt-20 lg:text-lg 2xl:mt-28 2xl:max-w-2xl 2xl:text-xl">
           ไอเดียดี ๆ ไม่ควรอยู่แค่บนหน้าจอ ให้ SUNSUN PRINT เปลี่ยนไอเดียของคุณเป็นงานป้าย งานพิมพ์
           และงานดิสเพลย์ที่จับต้องได้จริง
         </p>

@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-offset page-x pb-16 lg:pb-24 2xl:pb-30">
+  <section class="hero-offset page-x pb-12 lg:pb-24 2xl:pb-30">
     <div class="grid gap-12 lg:grid-cols-[796fr_884fr] lg:gap-0">
       <div class="@container flex flex-col gap-8 lg:justify-between lg:gap-0">
         <p v-reveal class="flex items-center gap-3 text-sm uppercase text-neutral-600 xl:text-lg 2xl:text-2xl">
@@ -17,7 +17,7 @@
       </div>
 
       <!-- Stretches to the text column when that runs taller, so the two always share a top and bottom edge -->
-      <div class="relative aspect-884/599 bg-ivory lg:self-stretch">
+      <div class="@container relative aspect-884/599 bg-ivory lg:self-stretch">
         <NuxtImg
           v-reveal:wipe="150"
           src="/images/Home/signage_p04_01.png"
@@ -30,10 +30,10 @@
         />
         <div
           v-reveal:pop="900"
-          class="absolute top-0 right-2 flex size-24 -translate-y-2/5 items-center justify-center rounded-full bg-brand-red lg:right-0 lg:size-32 lg:translate-x-1/2 2xl:size-41.25"
+          class="hero-badge absolute right-[2cqw] flex -translate-y-1/2 items-center justify-center rounded-full bg-brand-red lg:right-0 lg:translate-x-1/2"
           aria-hidden="true"
         >
-          <span class="rotate-30 text-center text-xs leading-tight font-semibold text-white uppercase lg:text-sm 2xl:text-xl">
+          <span class="rotate-30 text-center text-[calc(var(--badge-size)*0.13)] leading-tight font-semibold text-white uppercase">
             Design<br>Print<br>Impact
           </span>
         </div>

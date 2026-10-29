@@ -9,7 +9,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 </script>
 
 <template>
-  <section aria-labelledby="craft-heading" class="page-x py-20 lg:py-24 2xl:py-30">
+  <section aria-labelledby="craft-heading" class="page-x py-12 lg:py-24 2xl:py-30">
     <div class="grid items-center gap-12 lg:grid-cols-[841fr_718fr] lg:gap-16 2xl:gap-30">
       <NuxtImg
         v-reveal:wipe

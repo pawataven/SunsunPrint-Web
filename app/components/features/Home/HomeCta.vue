@@ -3,8 +3,8 @@ import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
 </script>
 
 <template>
-  <section aria-labelledby="cta-heading" class="page-x bg-brand-red py-16 text-white lg:py-20 2xl:py-0">
-    <div class="mx-auto flex max-w-390 flex-col items-center gap-12 lg:flex-row lg:justify-between 2xl:h-150">
+  <section aria-labelledby="cta-heading" class="page-x bg-brand-red py-12 text-white lg:py-20 2xl:py-0">
+    <div class="mx-auto flex max-w-390 flex-col items-center gap-10 lg:flex-row lg:gap-12 lg:justify-between 2xl:h-150">
       <div class="w-full sm:w-fit">
         <h2 id="cta-heading" class="text-5xl leading-none font-semibold whitespace-nowrap uppercase sm:text-8xl lg:text-7xl xl:text-8xl 2xl:text-[10rem]">
           <span v-reveal class="block font-sans">Let’s <span class="text-outline">Make</span></span>

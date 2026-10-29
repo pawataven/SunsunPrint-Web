@@ -1,28 +1,19 @@
 import type { Service } from '~/types'
 
+// Only categories that have a work page on /OurWork are listed, so every row leads somewhere real
 export const SERVICES: Service[] = [
   {
     category: 'signage',
     nameTh: 'งานป้าย',
     nameEn: 'Signage',
-    items: 'อะคริลิก, พลาสวูด, สแตนเลส, ป้ายไฟ, ไวนิล'
-  },
-  {
-    category: 'stickers-graphics',
-    nameTh: 'งานสติ๊กเกอร์',
-    nameEn: 'Graphics',
-    items: 'กระจก, ผนัง, พื้น, ไดคัท, ตกแต่งพื้นที่'
+    items: 'อะคริลิก, พลาสวูด, สแตนเลส, ป้ายไฟ, ไวนิล, สติ๊กเกอร์',
+    to: '/OurWork/signage'
   },
   {
     category: 'event-exhibition',
     nameTh: 'งานอีเวนต์',
     nameEn: 'Event',
-    items: 'แบ็คดรอป, โรลอัพ, สแตนดี้, กราฟิกบูธ'
-  },
-  {
-    category: 'product-display',
-    nameTh: 'งานชั้นวางสินค้า',
-    nameEn: 'Display',
-    items: 'ชั้นวางพลาสวูด, POSM, ดิสเพลย์สินค้า'
+    items: 'แบ็คดรอปผ้า, โต๊ะพับพร้อมผ้า, แบ็คดรอปแขวน, โรลอัพ, สแตนดี้',
+    to: '/OurWork/event'
   }
 ]

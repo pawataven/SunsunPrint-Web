@@ -104,12 +104,28 @@
 
 /* Shared by every page hero so the gap under the header is identical from page to page */
 @utility hero-offset {
-  padding-top: 4rem;
+  padding-top: 3rem;
 
   @media (width >= 64rem) {
     /* The hero image height follows the viewport width (content width × 599/1680), so the gap above it takes
        whatever screen height is left — capped at the design's 240px — to keep the hero on one screen */
     padding-top: clamp(2rem, calc(100svh - var(--header-h) - (100vw - 2 * var(--page-gutter)) * 599 / 1680 - 1.5rem), 15rem);
+  }
+}
+
+/*
+  The round red badge on each page's hero photo, shared so every hero's badge is the same size. Phones size it from the
+  photo (full width there, 20.6cqw); desktop photos differ in width per page, so from lg it follows the content width
+  instead (165px of the design's 1680px). Its center sits 19.4% of its own size below the photo's top edge
+*/
+@utility hero-badge {
+  --badge-size: 20.6cqw;
+  width: var(--badge-size);
+  height: var(--badge-size);
+  top: calc(var(--badge-size) * 0.194);
+
+  @media (width >= 64rem) {
+    --badge-size: calc((100vw - 2 * var(--page-gutter)) * 165 / 1680);
   }
 }
 

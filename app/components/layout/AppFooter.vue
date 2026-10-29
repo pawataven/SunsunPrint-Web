@@ -16,7 +16,8 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
 </script>
 
 <template>
-  <footer class="page-x bg-ink pt-12 pb-8 text-cream lg:pt-16 2xl:pb-14">
+  <!-- Extra bottom padding below lg keeps the last line clear of the fixed back-to-top button -->
+  <footer class="page-x bg-ink pt-12 pb-24 text-cream lg:pt-16 lg:pb-8 2xl:pb-14">
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div>
         <img :src="logoUrl" alt="SunsunPrint" class="w-28 2xl:w-41">
@@ -28,7 +29,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
 
     <hr class="mt-10 border-neutral-700 2xl:mt-14">
 
-    <div class="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[389fr_522fr_517fr_252fr] lg:gap-x-0 2xl:mt-20">
+    <div class="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-[389fr_522fr_517fr_252fr] lg:gap-x-0 2xl:mt-20">
       <nav aria-labelledby="footer-nav-heading">
         <h2 id="footer-nav-heading" :class="headingClass">เมนู</h2>
         <ul :class="listClass">
@@ -42,7 +43,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
         <h2 :class="headingClass">บริการ</h2>
         <ul :class="listClass">
           <li v-for="service in SERVICES" :key="service.category">
-            <NuxtLink :to="`/services/${service.category}`" class="transition-colors hover:text-cream">
+            <NuxtLink :to="service.to" class="transition-colors hover:text-cream">
               {{ service.nameTh }} / <span class="uppercase">{{ service.nameEn }}</span>
             </NuxtLink>
           </li>
@@ -61,7 +62,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
 
       <div>
         <h2 :class="headingClass">ติดตามเรา</h2>
-        <p class="mt-6 text-sm whitespace-nowrap text-ash uppercase lg:text-base 2xl:mt-7 2xl:text-xl">Line / Facebook / IG</p>
+        <p class="mt-6 text-sm text-ash uppercase lg:text-base lg:whitespace-nowrap 2xl:mt-7 2xl:text-xl">Line / Facebook / IG</p>
         <ul class="mt-4 flex gap-3">
           <li v-for="social in SOCIAL_LINKS" :key="social.label">
             <a

@@ -5,6 +5,9 @@ import { NAV_LINKS as navLinks } from '~/constants/navigation'
 const isMenuOpen = ref(false)
 const route = useRoute()
 
+// Category pages like /OurWork/signage live under their menu item, so it stays highlighted there too
+const isLinkActive = (to: string) => (to === '/' ? route.path === '/' : route.path === to || route.path.startsWith(`${to}/`))
+
 watch(() => route.fullPath, () => {
   isMenuOpen.value = false
 })
@@ -26,7 +29,8 @@ watch(() => route.fullPath, () => {
           v-for="link in navLinks"
           :key="link.to"
           :to="link.to"
-          class="text-2xl font-semibold uppercase text-ink transition-colors hover:text-brand-red aria-[current=page]:text-brand-red"
+          class="text-2xl font-semibold uppercase transition-colors hover:text-brand-red"
+          :class="isLinkActive(link.to) ? 'text-brand-red' : 'text-ink'"
         >
           {{ link.label }}
         </NuxtLink>
@@ -61,7 +65,8 @@ watch(() => route.fullPath, () => {
         <li v-for="link in navLinks" :key="link.to">
           <NuxtLink
             :to="link.to"
-            class="block py-2 text-sm font-semibold uppercase tracking-wide text-ink hover:text-brand-red aria-[current=page]:text-brand-red"
+            class="block py-2 text-sm font-semibold uppercase tracking-wide hover:text-brand-red"
+            :class="isLinkActive(link.to) ? 'text-brand-red' : 'text-ink'"
           >
             {{ link.label }}
           </NuxtLink>
