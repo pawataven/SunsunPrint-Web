@@ -1,10 +1,9 @@
 <script setup lang="ts">
-// Stickers and product displays have no work page of their own yet, so they open the closest one that shows them
 const categories = [
-  { title: ['Signage'], label: 'งานป้าย', to: '/our-work/signage' },
-  { title: ['Stickers', '& Graphics'], label: 'งานสติ๊กเกอร์', to: '/our-work/signage' },
-  { title: ['Event &', 'Booth'], label: 'งานอีเวนต์', to: '/our-work/event' },
-  { title: ['Product', 'Display'], label: 'ชั้นวางสินค้า', to: '/our-work/all' }
+  { title: ['Signage'], label: 'งานป้าย', to: '#signage' },
+  { title: ['Stickers', '& Graphics'], label: 'งานสติ๊กเกอร์', to: '#stickers-graphics' },
+  { title: ['Event &', 'Booth'], label: 'งานอีเวนต์', to: '#event-booth' },
+  { title: ['Product', 'Display'], label: 'ชั้นวางสินค้า', to: '#product-display' }
 ]
 
 const formatIndex = (value: number) => String(value).padStart(2, '0')
