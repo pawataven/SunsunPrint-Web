@@ -9,6 +9,14 @@ const projectSteps = [
   'แจ้งรายละเอียดเพื่อประเมินราคา'
 ]
 
+const { open: openLineDialog } = useLineDialog()
+
+const handleSocialClick = (event: MouseEvent, opensLineDialog: boolean) => {
+  if (!opensLineDialog) return
+  event.preventDefault()
+  openLineDialog()
+}
+
 const currentYear = new Date().getFullYear()
 
 const headingClass = 'text-base uppercase lg:text-lg 2xl:text-xl'
@@ -55,9 +63,9 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
         <ul class="mt-6 flex flex-col gap-1 text-sm text-mist lg:text-base 2xl:mt-7 2xl:text-xl">
           <li v-for="step in projectSteps" :key="step">{{ step }}</li>
         </ul>
-        <NuxtLink to="/contact" class="mt-6 inline-block text-sm text-mist transition-colors hover:text-cream lg:text-base 2xl:mt-10 2xl:text-xl">
+        <LineLink class="mt-6 inline-block text-sm text-mist transition-colors hover:text-cream lg:text-base 2xl:mt-10 2xl:text-xl">
           ทำไอเดียของคุณให้เป็นจริง
-        </NuxtLink>
+        </LineLink>
       </div>
 
       <div>
@@ -71,6 +79,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
               target="_blank"
               rel="noopener noreferrer"
               class="flex size-9 items-center justify-center rounded-full bg-cream text-ink transition-colors hover:bg-brand-red hover:text-white 2xl:size-11"
+              @click="handleSocialClick($event, social.opensLineDialog)"
             >
               <Icon :name="social.icon" class="size-4 2xl:size-5" />
             </a>

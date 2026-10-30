@@ -37,13 +37,12 @@
         </p>
 
         <div v-reveal="470" class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 2xl:mt-[37px]">
-          <NuxtLink
-            to="/contact"
+          <LineLink
             class="inline-flex items-center justify-between gap-6 bg-ink px-5 py-3 text-base text-white transition-colors hover:bg-brand-red 2xl:h-16 2xl:w-65 2xl:px-6 2xl:py-0 2xl:text-lg"
           >
             เริ่มโปรเจกต์ของคุณ
             <ArrowUpRight :stroke-width="1.5" class="size-4 2xl:size-5" />
-          </NuxtLink>
+          </LineLink>
           <p class="text-xs text-neutral-500 uppercase 2xl:text-[13px]">Any scale. Any brief.</p>
         </div>
       </div>

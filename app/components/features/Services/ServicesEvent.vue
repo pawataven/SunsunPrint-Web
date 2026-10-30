@@ -51,13 +51,12 @@ const items = ['Fabric backdrop', 'Roll-up', 'X-stand', 'PP board', 'Table cover
         </ul>
 
         <div v-reveal="460" class="mt-[max(1.5rem,3cqw)] flex flex-wrap items-center gap-x-[max(1.25rem,2cqw)] gap-y-3">
-          <NuxtLink
-            to="/contact"
+          <LineLink
             class="inline-flex h-[max(2.75rem,6cqw)] items-center gap-[max(1.5rem,4cqw)] bg-white px-[max(1rem,2.2cqw)] font-sans text-[max(0.875rem,1.8cqw)] text-ink transition-colors hover:bg-brand-red hover:text-white"
           >
             สอบถามงานอีเวนต์
             <ArrowUpRight :stroke-width="1.5" class="size-[0.9em]" />
-          </NuxtLink>
+          </LineLink>
           <NuxtLink
             to="#product-display"
             class="inline-flex items-center gap-[0.4em] border-b border-white pb-[0.2em] text-[max(0.75rem,1.4cqw)] uppercase transition-opacity hover:opacity-75"

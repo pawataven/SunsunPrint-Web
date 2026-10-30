@@ -40,13 +40,12 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
           </li>
         </ol>
 
-        <NuxtLink
+        <LineLink
           v-reveal="550"
-          to="/contact"
           class="mt-10 inline-flex border border-brand-red px-4 py-2 text-sm font-semibold text-brand-red uppercase transition-colors hover:bg-brand-red hover:text-white lg:text-base 2xl:mt-20 2xl:px-5 2xl:py-2.5 2xl:text-xl"
         >
           ปรึกษางานกับเรา
-        </NuxtLink>
+        </LineLink>
       </div>
     </div>
   </section>

@@ -68,13 +68,12 @@ const closeOnBackdropClick = (event: MouseEvent) => {
           <p v-for="paragraph in work.details" :key="paragraph">{{ paragraph }}</p>
         </div>
 
-        <NuxtLink
-          to="/contact"
+        <LineLink
           class="mt-10 inline-flex items-center gap-3 self-start bg-brand-red px-5 py-3 text-white transition-colors hover:bg-deep-red lg:mt-auto 2xl:px-7 2xl:py-5 2xl:text-xl"
         >
           สอบถามงานลักษณะนี้
           <ArrowUpRight :stroke-width="1.5" class="size-4 2xl:size-5" />
-        </NuxtLink>
+        </LineLink>
       </div>
     </div>
   </dialog>

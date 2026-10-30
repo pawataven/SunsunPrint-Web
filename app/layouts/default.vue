@@ -6,5 +6,6 @@
     </main>
     <AppFooter />
     <BackToTop />
+    <LineContactDialog />
   </div>
 </template>

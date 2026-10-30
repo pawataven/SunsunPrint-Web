@@ -13,6 +13,15 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 
 const close = () => (isOpen.value = false)
 
+const { open: openLineDialog } = useLineDialog()
+
+const handleSocialClick = (event: MouseEvent, opensLineDialog: boolean) => {
+  if (!opensLineDialog) return
+  event.preventDefault()
+  close()
+  openLineDialog()
+}
+
 const closeOnEscape = (event: KeyboardEvent) => {
   if (event.key === 'Escape') close()
 }
@@ -78,14 +87,13 @@ onBeforeUnmount(() => {
         </nav>
 
         <div class="menu-item page-x flex flex-wrap items-center justify-between gap-4 pt-6 pb-8" :style="{ '--item-delay': `${100 + navLinks.length * 50}ms` }">
-          <NuxtLink
-            to="/contact"
+          <LineLink
             class="inline-flex items-center gap-6 bg-brand-red px-5 py-3 font-semibold text-white transition-colors hover:bg-deep-red"
             @click="close"
           >
             ขอใบเสนอราคา
             <Icon name="lucide:arrow-right" class="size-5" />
-          </NuxtLink>
+          </LineLink>
           <ul class="flex gap-3">
             <li v-for="social in socialLinks" :key="social.label">
               <a
@@ -94,6 +102,7 @@ onBeforeUnmount(() => {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex size-10 items-center justify-center rounded-full bg-ink text-white transition-colors hover:bg-brand-red"
+                @click="handleSocialClick($event, social.opensLineDialog)"
               >
                 <Icon :name="social.icon" class="size-4" />
               </a>

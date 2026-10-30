@@ -41,13 +41,12 @@ watch(isMenuOpen, (open) => {
         >
           {{ link.label }}
         </NuxtLink>
-        <NuxtLink
-          to="/contact"
+        <LineLink
           class="inline-flex items-center gap-1 bg-brand-red px-4 py-2 text-2xl font-semibold uppercase text-white transition-colors hover:bg-deep-red"
         >
           ขอใบเสนอราคา
           <Icon name="lucide:arrow-right" class="size-6" />
-        </NuxtLink>
+        </LineLink>
       </nav>
 
       <button

@@ -44,13 +44,12 @@ const formats = ['Plaswood', 'Counter display', 'Product shelf', 'POSM']
         </ul>
 
         <div v-reveal="460" class="mt-[max(1.5rem,3.5cqw)] flex flex-wrap items-center gap-x-[max(1.25rem,2.3cqw)] gap-y-3">
-          <NuxtLink
-            to="/contact"
+          <LineLink
             class="inline-flex h-[max(2.75rem,6.9cqw)] items-center gap-[max(1.5rem,4.6cqw)] bg-ink px-[max(1rem,2.53cqw)] font-sans text-[max(0.875rem,2.07cqw)] text-white transition-colors hover:bg-brand-red"
           >
             สอบถามชั้นวางสินค้า
             <ArrowUpRight :stroke-width="1.5" class="size-[0.9em]" />
-          </NuxtLink>
+          </LineLink>
           <NuxtLink
             to="#how-to-start"
             class="inline-flex items-center gap-[0.4em] border-b border-ink pb-[0.2em] text-[max(0.75rem,1.61cqw)] uppercase transition-colors hover:text-brand-red"

@@ -16,13 +16,12 @@ import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
             มีแบบในใจแล้ว หรือกำลังมองหาวิธีผลิตงานให้เป็นจริง<br class="hidden sm:block">
             ส่งรายละเอียดของคุณมาเพื่อเริ่มต้นคุยกัน
           </p>
-          <NuxtLink
-            to="/contact"
+          <LineLink
             class="inline-flex shrink-0 items-center gap-6 self-start bg-white px-4 py-3 text-sm text-ink uppercase transition-colors hover:bg-ink hover:text-white sm:self-auto lg:text-base 2xl:gap-10 2xl:px-6 2xl:py-4 2xl:text-xl"
           >
             ขอใบเสนอราคา
             <ArrowUpRight :stroke-width="1.25" class="size-5 2xl:size-8" />
-          </NuxtLink>
+          </LineLink>
         </div>
       </div>
 

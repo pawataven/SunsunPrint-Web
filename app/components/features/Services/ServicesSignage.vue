@@ -33,13 +33,12 @@ const materials = ['Acrylic', 'Plaswood', 'Stainless', 'Illuminated sign', 'Viny
         </ul>
 
         <div v-reveal="460" class="mt-[max(1.5rem,3cqw)] flex flex-wrap items-center gap-x-[max(1.25rem,2cqw)] gap-y-3">
-          <NuxtLink
-            to="/contact"
+          <LineLink
             class="inline-flex h-[max(2.75rem,6cqw)] items-center gap-[max(1.5rem,4cqw)] bg-white px-[max(1rem,2.2cqw)] font-sans text-[max(0.875rem,1.8cqw)] text-ink transition-colors hover:bg-ink hover:text-white"
           >
             สอบถามงานป้าย
             <Icon name="lucide:arrow-right" class="size-[1.1em]" />
-          </NuxtLink>
+          </LineLink>
           <NuxtLink
             to="#stickers-graphics"
             class="inline-flex items-center gap-[0.4em] border-b border-white pb-[0.2em] text-[max(0.75rem,1.4cqw)] uppercase transition-opacity hover:opacity-75"
