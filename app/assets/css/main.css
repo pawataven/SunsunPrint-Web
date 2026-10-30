@@ -138,6 +138,27 @@
   text-box: trim-end cap alphabetic;
 }
 
+/*
+  The outlined "IRL." in the CTA headings (needs data-text with the same text). Stroking the glyphs directly also traces
+  the overlapping contours inside each letter, so the outline is built in two layers: the text in red with a thick red
+  stroke underneath, and a plain white copy on top that hides the inner lines
+*/
+@layer components {
+  .irl-outline {
+    position: relative;
+    color: var(--color-brand-red);
+    -webkit-text-stroke: 0.08em var(--color-brand-red);
+  }
+
+  .irl-outline::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--color-white);
+    -webkit-text-stroke: 0;
+  }
+}
+
 @utility text-outline {
   color: transparent;
   -webkit-text-stroke: 0.0125em var(--color-white);
