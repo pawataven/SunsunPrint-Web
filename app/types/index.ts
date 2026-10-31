@@ -75,6 +75,8 @@ export interface ProjectBrief {
   phone: string
   email: string
   lineId: string
+  /** One of `CONTACT_CHANNELS`; picking LINE or email makes that field required */
+  preferredContact: string
   consent: boolean
 }
 

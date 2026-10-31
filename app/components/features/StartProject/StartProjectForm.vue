@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BriefStep } from '~/composables/useProjectBrief'
+import { CONTACT_CHANNELS } from '~/constants/startProject'
 
 interface StageCopy {
   eyebrow: string
@@ -51,7 +52,7 @@ const { brief, step, saveDraft, restoreDraft, clearDraft, reset } = useProjectBr
 
 const stageCopy = computed(() => STEP_COPY[step.value])
 
-type FieldErrors = Partial<Record<'type' | 'subtype' | 'quantity' | 'fileLink' | 'hasUploadedFiles' | 'name' | 'phone' | 'email' | 'consent', string>>
+type FieldErrors = Partial<Record<'type' | 'subtype' | 'quantity' | 'fileLink' | 'hasUploadedFiles' | 'name' | 'phone' | 'lineId' | 'email' | 'consent', string>>
 
 const errors = ref<FieldErrors>({})
 const hasTriedCurrentStep = ref(false)
@@ -65,7 +66,7 @@ const formRef = useTemplateRef<HTMLFormElement>('form')
 
 const validateStep = (target: BriefStep): FieldErrors => {
   const found: FieldErrors = {}
-  const { type, subtype, quantity, hasFiles, fileLink, hasUploadedFiles, name, phone, email, consent } = brief.value
+  const { type, subtype, quantity, hasFiles, fileLink, hasUploadedFiles, name, phone, lineId, email, preferredContact, consent } = brief.value
   if (target === 1 && !type) found.type = 'เลือกประเภทงานก่อนไปขั้นถัดไป'
   if (target === 2) {
     if (!subtype) found.subtype = 'เลือกประเภทงานย่อย'
@@ -82,7 +83,9 @@ const validateStep = (target: BriefStep): FieldErrors => {
     const phoneDigits = phone.replace(/\D/g, '')
     if (!phoneDigits) found.phone = 'กรุณากรอกเบอร์โทรศัพท์'
     else if (phoneDigits.length < MIN_PHONE_DIGITS) found.phone = 'เบอร์โทรศัพท์ยังไม่ครบ ลองตรวจสอบอีกครั้ง'
-    if (email.trim() && !EMAIL_PATTERN.test(email.trim())) found.email = 'รูปแบบอีเมลไม่ถูกต้อง'
+    if (preferredContact === CONTACT_CHANNELS.line && !lineId.trim()) found.lineId = 'กรอก LINE ID เพื่อให้ร้านติดต่อทาง LINE'
+    if (preferredContact === CONTACT_CHANNELS.email && !email.trim()) found.email = 'กรอกอีเมลเพื่อให้ร้านติดต่อทางอีเมล'
+    else if (email.trim() && !EMAIL_PATTERN.test(email.trim())) found.email = 'รูปแบบอีเมลไม่ถูกต้อง'
     if (!consent) found.consent = 'กรุณายินยอมให้ใช้ข้อมูลก่อนส่งบรีฟ'
   }
   return found

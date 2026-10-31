@@ -1,4 +1,4 @@
-import { INSTALLATION_OPTIONS, NO_FINISH, UNSURE_CHOICE } from '~/constants/startProject'
+import { CONTACT_CHANNELS, INSTALLATION_OPTIONS, NO_FINISH, UNSURE_CHOICE } from '~/constants/startProject'
 import type { ProjectBrief } from '~/types'
 
 export type BriefStep = 1 | 2 | 3
@@ -26,6 +26,7 @@ const createEmptyBrief = (): ProjectBrief => ({
   phone: '',
   email: '',
   lineId: '',
+  preferredContact: CONTACT_CHANNELS.any,
   consent: false
 })
 

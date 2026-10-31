@@ -45,6 +45,7 @@ export const buildBriefMessage = (brief: ProjectBrief) => {
     `ชื่อผู้ติดต่อ: ${orNotGiven(brief.name)}`,
     `เบอร์โทรศัพท์: ${orNotGiven(brief.phone)}`,
     `LINE ID: ${orNotGiven(brief.lineId)}`,
-    `อีเมล: ${orNotGiven(brief.email)}`
+    `อีเมล: ${orNotGiven(brief.email)}`,
+    `ช่องทางที่สะดวกให้ติดต่อ: ${orNotGiven(brief.preferredContact)}`
   ].join('\n')
 }
