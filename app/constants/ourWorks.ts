@@ -121,7 +121,8 @@ const EVENT_FILTERS: WorkFilter[] = [
   { id: 'table-covers', label: 'โต๊ะพับพร้อมผ้า' },
   { id: 'hanging-backdrops', label: 'แบ็คดรอปแขวน' },
   { id: 'rollups', label: 'โรลอัพ' },
-  { id: 'standees', label: 'สแตนดี้' }
+  { id: 'standees', label: 'สแตนดี้' },
+  { id: 'booths', label: 'บูธ' }
 ]
 
 const EVENT_WORKS: Work[] = [
@@ -201,6 +202,39 @@ const EVENT_WORKS: Work[] = [
     orientation: 'landscape',
     details: WORK_DETAILS.ppBoardStandees,
     image: '/images/03_Event_Exhibition/05_PP_Board_Standees/event_p05_01.png'
+  },
+  {
+    slug: 'event-booth',
+    title: 'Exhibition Booth',
+    description: 'บูธแสดงสินค้า',
+    tag: 'Event',
+    category: 'event-exhibition',
+    subcategory: 'booths',
+    orientation: 'landscape',
+    details: WORK_DETAILS.tofusanBooth,
+    image: '/images/03_Event_Exhibition/06_Booth_Foamboards/event_p06_02.png'
+  },
+  {
+    slug: 'event-booth-2',
+    title: 'Exhibition Booth',
+    description: 'บูธแสดงสินค้า',
+    tag: 'Event',
+    category: 'event-exhibition',
+    subcategory: 'booths',
+    orientation: 'landscape',
+    details: WORK_DETAILS.sawanuTravelBooth,
+    image: '/images/03_Event_Exhibition/06_Booth_Foamboards/event_p06_01.png'
+  },
+  {
+    slug: 'event-booth-3',
+    title: 'Exhibition Booth',
+    description: 'บูธแสดงสินค้า',
+    tag: 'Event',
+    category: 'event-exhibition',
+    subcategory: 'booths',
+    orientation: 'landscape',
+    details: WORK_DETAILS.tomraBooth,
+    image: '/images/03_Event_Exhibition/06_Booth_Foamboards/event_p06_03.png'
   }
 ]
 
@@ -237,6 +271,39 @@ const SIGNAGE_WORKS: Work[] = [
     image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_02.png'
   },
   {
+    slug: 'signage-acrylic-3',
+    title: 'Acrylic Room Sign',
+    description: 'ป้ายชื่อห้องอะคริลิก',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'acrylic-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.acrylicRoomSigns,
+    image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_03.png'
+  },
+  {
+    slug: 'signage-acrylic-4',
+    title: 'Acrylic Menu Board',
+    description: 'ป้ายเมนูอะคริลิก',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'acrylic-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.larmcharmAcrylicMenu,
+    image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_04.png'
+  },
+  {
+    slug: 'signage-acrylic-5',
+    title: 'Room Number Sign',
+    description: 'ป้ายเลขห้อง',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'acrylic-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.terraceRoomNumberSign,
+    image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_05.png'
+  },
+  {
     slug: 'signage-plaswood',
     title: 'Plaswood Sign',
     description: 'ป้ายพลาสวูด',
@@ -248,6 +315,39 @@ const SIGNAGE_WORKS: Work[] = [
     image: '/images/01_Signage/02_Plaswood_Signs/signage_p02_01.png'
   },
   {
+    slug: 'signage-plaswood-2',
+    title: 'Plaswood Cutout',
+    description: 'ป้ายพลาสวูดไดคัทตัวการ์ตูน',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'plaswood-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.foxPlaswoodCutout,
+    image: '/images/01_Signage/02_Plaswood_Signs/signage_p02_02.png'
+  },
+  {
+    slug: 'signage-plaswood-3',
+    title: 'Smoking Area Sign',
+    description: 'ป้ายบอกจุดสูบบุหรี่',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'plaswood-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.smokingAreaSign,
+    image: '/images/01_Signage/02_Plaswood_Signs/signage_p02_03.png'
+  },
+  {
+    slug: 'signage-plaswood-4',
+    title: 'Fire Escape Plan',
+    description: 'ป้ายแผนผังเส้นทางหนีไฟ',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'plaswood-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.kpFireEscapePlan,
+    image: '/images/01_Signage/02_Plaswood_Signs/signage_p02_04.png'
+  },
+  {
     slug: 'signage-stainless',
     title: 'Stainless Sign',
     description: 'ป้ายสแตนเลส',
@@ -257,6 +357,17 @@ const SIGNAGE_WORKS: Work[] = [
     orientation: 'landscape',
     details: WORK_DETAILS.journalStainlessSign,
     image: '/images/01_Signage/03_Stainless_Signs/signage_p03_01.png'
+  },
+  {
+    slug: 'signage-stainless-2',
+    title: 'Company Name Plate',
+    description: 'ป้ายชื่อบริษัทสแตนเลส',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'stainless-signs',
+    orientation: 'landscape',
+    details: WORK_DETAILS.lalibertaStainlessSign,
+    image: '/images/01_Signage/03_Stainless_Signs/signage_p03_02.png'
   },
   {
     slug: 'signage-illuminated',
@@ -292,6 +403,28 @@ const SIGNAGE_WORKS: Work[] = [
     image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_02.png'
   },
   {
+    slug: 'signage-vinyl-banner-3',
+    title: 'Building Banner',
+    description: 'ป้ายไวนิลหน้าอาคาร',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'vinyl-banners',
+    orientation: 'landscape',
+    details: WORK_DETAILS.beauteSalonBanner,
+    image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_03.png'
+  },
+  {
+    slug: 'signage-vinyl-banner-4',
+    title: 'Entrance Banner',
+    description: 'ป้ายไวนิลเหนือทางเข้าอาคาร',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'vinyl-banners',
+    orientation: 'landscape',
+    details: WORK_DETAILS.admissionCenterBanner,
+    image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_04.png'
+  },
+  {
     slug: 'signage-sticker-installation',
     title: 'Sticker Installation',
     description: 'งานติดตั้งสติ๊กเกอร์',
@@ -301,6 +434,80 @@ const SIGNAGE_WORKS: Work[] = [
     orientation: 'landscape',
     details: WORK_DETAILS.pharmacyWindowSticker,
     image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p06_02.png'
+  },
+  {
+    slug: 'signage-stair-graphics',
+    title: 'Stair Graphics',
+    description: 'งานสติ๊กเกอร์ติดบันได',
+    tag: 'Signage',
+    category: 'signage',
+    subcategory: 'sticker-installation',
+    orientation: 'landscape',
+    details: WORK_DETAILS.stairGraphics,
+    image: '/images/02_Stickers_Graphics/03_Stair_Graphics/signage_p07_02.png'
+  }
+]
+
+const DISPLAY_WORKS: Work[] = [
+  {
+    slug: 'display-shelf-shapes',
+    title: 'Display Shelf',
+    description: 'ชั้นวางสินค้าพลาสวูด',
+    tag: 'POSM',
+    category: 'product-display',
+    orientation: 'landscape',
+    details: WORK_DETAILS.displayShelfShapes,
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_01.png'
+  },
+  {
+    slug: 'display-counter',
+    title: 'Counter Display',
+    description: 'ดิสเพลย์ตั้งโต๊ะพลาสวูด',
+    tag: 'POSM',
+    category: 'product-display',
+    orientation: 'landscape',
+    details: WORK_DETAILS.bergamotCounterDisplay,
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p02_03.png'
+  },
+  {
+    slug: 'display-counter-2',
+    title: 'Counter Display',
+    description: 'ดิสเพลย์ตั้งโต๊ะพลาสวูด',
+    tag: 'POSM',
+    category: 'product-display',
+    orientation: 'landscape',
+    details: WORK_DETAILS.projectHealthAlaDisplay,
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_02.png'
+  },
+  {
+    slug: 'display-step-shelf',
+    title: 'Step Display Shelf',
+    description: 'ชั้นวางสินค้าแบบขั้นบันได',
+    tag: 'POSM',
+    category: 'product-display',
+    orientation: 'landscape',
+    details: WORK_DETAILS.threeBearStepDisplay,
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_03.png'
+  },
+  {
+    slug: 'display-counter-stand',
+    title: 'Counter Stand',
+    description: 'สแตนด์ป้ายข้อมูลสินค้าตั้งโต๊ะ',
+    tag: 'POSM',
+    category: 'product-display',
+    orientation: 'landscape',
+    details: WORK_DETAILS.bodyScrubCounterStands,
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p02_01.png'
+  },
+  {
+    slug: 'display-floor-shelf',
+    title: 'Display Shelf',
+    description: 'ชั้นวางสินค้าพลาสวูด',
+    tag: 'POSM',
+    category: 'product-display',
+    orientation: 'landscape',
+    details: WORK_DETAILS.holistikPetFoodDisplay,
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p02_02.png'
   }
 ]
 
@@ -418,7 +625,8 @@ const PACKAGING_WORKS: Work[] = [
 
 export const WORK_GROUPS: WorkGroup[] = [
   { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', description: 'รวมตัวอย่างผลงานจริงของ SUNSUN PRINT ทุกหมวด ทั้งป้ายไวนิล ป้ายไฟ สติ๊กเกอร์ บูธอีเวนต์ ชั้นวางสินค้า กล่องบรรจุภัณฑ์ และถุงกระดาษ', works: ALL_WORKS, exploreTo: '/our-work/all' },
-  { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', description: 'ตัวอย่างงานอีเวนต์จาก SUNSUN PRINT: แบ็คดรอปผ้า โต๊ะพับพร้อมผ้าคลุม แบ็คดรอปแขวนผนัง โรลอัพ และสแตนดี้พีพีบอร์ด', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/our-work/event' },
+  { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', description: 'ตัวอย่างงานอีเวนต์จาก SUNSUN PRINT: แบ็คดรอปผ้า โต๊ะพับพร้อมผ้าคลุม แบ็คดรอปแขวนผนัง โรลอัพ สแตนดี้พีพีบอร์ด และบูธแสดงสินค้า', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/our-work/event' },
   { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', description: 'ตัวอย่างงานป้ายจาก SUNSUN PRINT: ป้ายอะคริลิก ป้ายพลาสวูด ป้ายสแตนเลส ป้ายไฟ ป้ายไวนิล และงานติดตั้งสติ๊กเกอร์', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/our-work/signage' },
+  { id: 'display', title: 'งานดิสเพลย์', label: 'ดิสเพลย์', description: 'ตัวอย่างงานดิสเพลย์จาก SUNSUN PRINT: ชั้นวางสินค้าพลาสวูด ชั้นวางแบบขั้นบันได ดิสเพลย์ตั้งโต๊ะ และสแตนด์ป้ายข้อมูลสินค้าสำหรับจุดขาย', works: DISPLAY_WORKS, exploreTo: '/our-work/display' },
   { id: 'packaging', title: 'งานบรรจุภัณฑ์', label: 'บรรจุภัณฑ์', description: 'ตัวอย่างงานบรรจุภัณฑ์จาก SUNSUN PRINT: กล่องขนม กล่องของขวัญ กล่องเครื่องสำอาง ถุงกระดาษพิมพ์ลาย และเทคนิคปั๊มนูน ปั๊มฟอยล์ทอง สปอตยูวี', works: PACKAGING_WORKS, filters: PACKAGING_FILTERS, exploreTo: '/our-work/packaging' }
 ]

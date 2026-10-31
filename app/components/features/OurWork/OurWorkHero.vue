@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { WORK_GROUPS } from '~/constants/ourWorks'
+
+// A piece is listed under "all" as well as its own category, so photos are de-duplicated by path
+const photoCount = new Set(
+  WORK_GROUPS.flatMap(group => group.works.flatMap(work => [work.image, ...(work.gallery ?? [])]))
+    .filter(Boolean)
+).size
+const categoryCount = WORK_GROUPS.filter(group => group.id !== 'all').length
+
+const formatCount = (value: number) => String(value).padStart(2, '0')
+
 const stats = [
-  { value: '36', label: 'ภาพผลงาน' },
-  { value: '04', label: 'หมวดงาน' }
+  { value: formatCount(photoCount), label: 'ภาพผลงาน' },
+  { value: formatCount(categoryCount), label: 'หมวดงาน' }
 ]
 </script>
 
