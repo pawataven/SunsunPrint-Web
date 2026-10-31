@@ -96,6 +96,28 @@ const ALL_WORKS: Work[] = [
     orientation: 'landscape',
     details: PLACEHOLDER_DETAILS,
     image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_01.png'
+  },
+  {
+    slug: 'all-cosmetic-box',
+    title: 'Cosmetic Box',
+    description: 'กล่องเครื่องสำอางและสกินแคร์',
+    tag: 'Packaging',
+    category: 'packaging',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_02.png',
+    gallery: ['/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_01.png']
+  },
+  {
+    slug: 'all-paper-bag',
+    title: 'Paper Bag',
+    description: 'ถุงกระดาษพิมพ์ลาย',
+    tag: 'Packaging',
+    category: 'packaging',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_02.png',
+    gallery: ['/images/07_Paper_Bags/02_Retail_Bags/bag_p02_01.png', '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_03.png']
   }
 ]
 
@@ -287,8 +309,121 @@ const SIGNAGE_WORKS: Work[] = [
   }
 ]
 
+const PACKAGING_FILTERS: WorkFilter[] = [
+  { id: 'boxes', label: 'กล่องบรรจุภัณฑ์' },
+  { id: 'finishing', label: 'เทคนิคตกแต่งกล่อง' },
+  { id: 'paper-bags', label: 'ถุงกระดาษ' }
+]
+
+const PACKAGING_WORKS: Work[] = [
+  {
+    slug: 'packaging-bakery-box',
+    title: 'Bakery Box',
+    description: 'กล่องขนมและเบเกอรี่',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'boxes',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/05_Packaging_Boxes/01_Bakery_Boxes/box_p01_01.png'
+  },
+  {
+    slug: 'packaging-gift-box',
+    title: 'Gift Box',
+    description: 'กล่องของขวัญและของที่ระลึก',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'boxes',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_01.png',
+    gallery: ['/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_02.png']
+  },
+  {
+    slug: 'packaging-cosmetic-box',
+    title: 'Cosmetic Box',
+    description: 'กล่องเครื่องสำอางและสกินแคร์',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'boxes',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_01.png',
+    gallery: ['/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_02.png']
+  },
+  {
+    slug: 'packaging-embossing',
+    title: 'Embossing',
+    description: 'เทคนิคปั๊มนูน',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'finishing',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/06_Box_Finishing/finishing_emboss.png'
+  },
+  {
+    slug: 'packaging-gold-foil',
+    title: 'Gold Foil Stamping',
+    description: 'เทคนิคปั๊มฟอยล์ทอง',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'finishing',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/06_Box_Finishing/finishing_gold_foil.png'
+  },
+  {
+    slug: 'packaging-spot-uv',
+    title: 'Spot UV',
+    description: 'เทคนิคสปอตยูวี',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'finishing',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/06_Box_Finishing/finishing_spot_uv.png'
+  },
+  {
+    slug: 'packaging-wine-bag',
+    title: 'Wine Bag',
+    description: 'ถุงกระดาษใส่ไวน์และเครื่องดื่ม',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'paper-bags',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/07_Paper_Bags/01_Wine_Bags/bag_p01_01.png',
+    gallery: ['/images/07_Paper_Bags/01_Wine_Bags/bag_p01_02.png']
+  },
+  {
+    slug: 'packaging-shopping-bag',
+    title: 'Shopping Bag',
+    description: 'ถุงกระดาษใส่สินค้า',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'paper-bags',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_02.png',
+    gallery: ['/images/07_Paper_Bags/02_Retail_Bags/bag_p02_01.png', '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_03.png']
+  },
+  {
+    slug: 'packaging-gift-bag',
+    title: 'Gift Bag',
+    description: 'ถุงกระดาษของขวัญและของที่ระลึก',
+    tag: 'Packaging',
+    category: 'packaging',
+    subcategory: 'paper-bags',
+    orientation: 'landscape',
+    details: PLACEHOLDER_DETAILS,
+    image: '/images/07_Paper_Bags/03_Gift_Bags/bag_p03_01.png'
+  }
+]
+
 export const WORK_GROUPS: WorkGroup[] = [
-  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', description: 'รวมตัวอย่างผลงานจริงของ SUNSUN PRINT ทุกหมวด ทั้งป้ายไวนิล ป้ายไฟ สติ๊กเกอร์ บูธอีเวนต์ และชั้นวางสินค้า', works: ALL_WORKS, exploreTo: '/our-work/all' },
+  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', description: 'รวมตัวอย่างผลงานจริงของ SUNSUN PRINT ทุกหมวด ทั้งป้ายไวนิล ป้ายไฟ สติ๊กเกอร์ บูธอีเวนต์ ชั้นวางสินค้า กล่องบรรจุภัณฑ์ และถุงกระดาษ', works: ALL_WORKS, exploreTo: '/our-work/all' },
   { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', description: 'ตัวอย่างงานอีเวนต์จาก SUNSUN PRINT: แบ็คดรอปผ้า โต๊ะพับพร้อมผ้าคลุม แบ็คดรอปแขวนผนัง โรลอัพ และสแตนดี้พีพีบอร์ด', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/our-work/event' },
-  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', description: 'ตัวอย่างงานป้ายจาก SUNSUN PRINT: ป้ายอะคริลิก ป้ายพลาสวูด ป้ายสแตนเลส ป้ายไฟ ป้ายไวนิล และงานติดตั้งสติ๊กเกอร์', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/our-work/signage' }
+  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', description: 'ตัวอย่างงานป้ายจาก SUNSUN PRINT: ป้ายอะคริลิก ป้ายพลาสวูด ป้ายสแตนเลส ป้ายไฟ ป้ายไวนิล และงานติดตั้งสติ๊กเกอร์', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/our-work/signage' },
+  { id: 'packaging', title: 'งานบรรจุภัณฑ์', label: 'บรรจุภัณฑ์', description: 'ตัวอย่างงานบรรจุภัณฑ์จาก SUNSUN PRINT: กล่องขนม กล่องของขวัญ กล่องเครื่องสำอาง ถุงกระดาษพิมพ์ลาย และเทคนิคปั๊มนูน ปั๊มฟอยล์ทอง สปอตยูวี', works: PACKAGING_WORKS, filters: PACKAGING_FILTERS, exploreTo: '/our-work/packaging' }
 ]

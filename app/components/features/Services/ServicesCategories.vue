@@ -3,7 +3,8 @@ const categories = [
   { title: ['Signage'], label: 'งานป้าย', to: '#signage' },
   { title: ['Stickers', '& Graphics'], label: 'งานสติ๊กเกอร์', to: '#stickers-graphics' },
   { title: ['Event &', 'Booth'], label: 'งานอีเวนต์', to: '#event-booth' },
-  { title: ['Product', 'Display'], label: 'ชั้นวางสินค้า', to: '#product-display' }
+  { title: ['Product', 'Display'], label: 'ชั้นวางสินค้า', to: '#product-display' },
+  { title: ['Packaging', '& Bags'], label: 'งานบรรจุภัณฑ์', to: '#packaging' }
 ]
 
 const formatIndex = (value: number) => String(value).padStart(2, '0')
@@ -21,9 +22,10 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
       </p>
     </div>
 
-    <!-- The 1px gap over a gray background draws the shared cell borders without doubling them where cells meet -->
-    <ul class="mt-10 grid gap-px border border-neutral-400 bg-neutral-400 sm:grid-cols-2 lg:mt-11 lg:grid-cols-4">
-      <li v-for="(category, index) in categories" :key="category.label" v-reveal="200 + index * 100" class="bg-white">
+    <!-- The 1px gap over a gray background draws the shared cell borders without doubling them where cells meet.
+         Five cells only fit one row from xl, where "Packaging" still fits its cell; until then the odd one out spans the row -->
+    <ul class="mt-10 grid gap-px border border-neutral-400 bg-neutral-400 sm:grid-cols-2 lg:mt-11 xl:grid-cols-5">
+      <li v-for="(category, index) in categories" :key="category.label" v-reveal="200 + index * 100" class="bg-white sm:last:odd:col-span-2 xl:last:odd:col-span-1">
         <NuxtLink
           :to="category.to"
           class="group grid h-full min-h-52 grid-rows-[auto_1fr_auto] p-6 lg:min-h-56 2xl:h-70"

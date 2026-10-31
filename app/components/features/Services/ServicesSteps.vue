@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const steps = [
-  { title: 'เลือกประเภทงาน', detail: 'เลือกงานป้าย สติ๊กเกอร์ อีเวนต์ หรือชั้นวางสินค้า' },
+  { title: 'เลือกประเภทงาน', detail: 'เลือกงานป้าย สติ๊กเกอร์ อีเวนต์ ชั้นวางสินค้า หรือบรรจุภัณฑ์' },
   { title: 'ส่งรายละเอียดและตัวอย่าง', detail: 'แจ้งขนาด จำนวน และข้อมูลที่เกี่ยวข้องกับงาน' },
   { title: 'ติดต่อเพื่อประเมินราคา', detail: 'ส่งข้อมูลให้ SUNSUN PRINT ตรวจรายละเอียดก่อนเสนอราคา' }
 ]
@@ -10,7 +10,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 
 <template>
   <section id="how-to-start" aria-labelledby="steps-heading" class="page-x bg-white pt-16 pb-16 lg:pt-28 lg:pb-28 2xl:pt-38 2xl:pb-38">
-    <p v-reveal class="text-xs text-brand-red uppercase 2xl:text-sm">05 / Start your project</p>
+    <p v-reveal class="text-xs text-brand-red uppercase 2xl:text-sm">06 / Start your project</p>
 
     <div class="mt-6 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between 2xl:mt-8">
       <h2 id="steps-heading" class="text-6xl leading-[0.9] uppercase lg:text-[7rem] 2xl:text-[8.75rem]">

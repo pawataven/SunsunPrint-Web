@@ -4,7 +4,8 @@ export const WORK_CATEGORIES: WorkCategory[] = [
   { id: 'signage', label: 'งานป้าย' },
   { id: 'stickers-graphics', label: 'งานสติ๊กเกอร์' },
   { id: 'event-exhibition', label: 'งานอีเวนต์' },
-  { id: 'product-display', label: 'งานดิสเพลย์' }
+  { id: 'product-display', label: 'งานดิสเพลย์' },
+  { id: 'packaging', label: 'งานบรรจุภัณฑ์' }
 ]
 
 // TODO: replace with each project's real description once the shop provides it
@@ -15,14 +16,15 @@ const PLACEHOLDER_DETAILS = [
 
 export const WORKS: Work[] = [
   {
-    slug: 'brand-space-graphics',
-    title: 'Brand Space Graphics',
-    description: 'งานกราฟิกหน้าร้าน',
-    tag: 'Signage',
-    category: 'signage',
+    slug: 'gift-box-packaging',
+    title: 'Gift Box',
+    description: 'กล่องบรรจุภัณฑ์พิมพ์ลาย',
+    tag: 'Packaging',
+    category: 'packaging',
     orientation: 'portrait',
     details: PLACEHOLDER_DETAILS,
-    image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p07_01.png'
+    image: '/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_01.png',
+    gallery: ['/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_02.png']
   },
   {
     slug: 'exhibition-booth',

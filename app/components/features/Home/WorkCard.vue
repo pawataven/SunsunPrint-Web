@@ -34,6 +34,13 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
         class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
       <span
+        v-if="work.gallery?.length"
+        class="absolute bottom-4 left-4 flex items-center gap-1.5 bg-white/90 px-2.5 py-1 text-xs text-ink lg:text-sm 2xl:bottom-6 2xl:left-6 2xl:px-3.5 2xl:py-1.5 2xl:text-lg"
+      >
+        <Icon name="lucide:images" class="size-[1.1em]" aria-hidden="true" />
+        {{ work.gallery.length + 1 }} รูป
+      </span>
+      <span
         aria-hidden="true"
         class="absolute top-4 right-4 flex size-10 items-center justify-center bg-white text-ink transition-colors group-hover:bg-brand-red group-hover:text-white lg:size-12 2xl:top-6 2xl:right-6 2xl:size-16"
       >

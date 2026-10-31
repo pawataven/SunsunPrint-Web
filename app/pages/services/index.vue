@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const title = 'บริการรับทำป้าย งานพิมพ์ และงานอีเวนต์ | SunsunPrint'
-const description = 'SUNSUN PRINT รับทำป้าย สติ๊กเกอร์ อุปกรณ์อีเวนต์ และชั้นวางสินค้า ในรูปแบบที่เหมาะกับงานของคุณ ตั้งแต่ออกแบบจนติดตั้ง'
+const title = 'บริการรับทำป้าย งานพิมพ์ งานอีเวนต์ และบรรจุภัณฑ์ | SunsunPrint'
+const description = 'SUNSUN PRINT รับทำป้าย สติ๊กเกอร์ อุปกรณ์อีเวนต์ ชั้นวางสินค้า กล่องบรรจุภัณฑ์ และถุงกระดาษ ในรูปแบบที่เหมาะกับงานของคุณ ตั้งแต่ออกแบบจนติดตั้ง'
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 </script>
@@ -14,6 +14,7 @@ useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
     <ServicesStickers />
     <ServicesEvent />
     <ServicesDisplay />
+    <ServicesPackaging />
     <ServicesSteps />
     <ServicesCta />
   </div>

@@ -1,4 +1,4 @@
-export type WorkCategoryId = 'signage' | 'stickers-graphics' | 'event-exhibition' | 'product-display'
+export type WorkCategoryId = 'signage' | 'stickers-graphics' | 'event-exhibition' | 'product-display' | 'packaging'
 
 export interface WorkCategory {
   id: WorkCategoryId
@@ -40,6 +40,10 @@ export interface ProjectType {
   /** Choices offered in the detail step once this type is picked */
   subtypes: string[]
   materials: string[]
+  /** Special finishes offered as an extra choice in the detail step, e.g. gold foil on a box */
+  finishes?: string[]
+  /** Boxes and bags are sized by width, depth and height, and are delivered rather than installed */
+  isPackaging?: boolean
   image: string
   /** CSS object-position for the card's wide crop, when the subject isn't in the middle of the photo */
   imagePosition?: string
@@ -52,10 +56,14 @@ export interface ProjectBrief {
   material: string
   /** Centimetres, as typed */
   width: string
+  /** Only asked for packaging */
+  depth: string
   height: string
   quantity: string
   /** yyyy-mm-dd from the date input */
   dueDate: string
+  /** Only asked for types that offer `finishes` */
+  finish: string
   installation: string
   location: string
   notes: string
@@ -83,4 +91,6 @@ export interface Work {
   details: string[]
   /** Path under /public, e.g. /images/works/brand-space-graphics.jpg — leave empty to show a placeholder */
   image?: string
+  /** More photos of the same piece, shown after `image` in the work detail popup */
+  gallery?: string[]
 }

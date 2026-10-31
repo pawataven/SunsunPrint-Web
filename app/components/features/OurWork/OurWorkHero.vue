@@ -24,7 +24,7 @@ const stats = [
           </h1>
 
           <p v-reveal="320" class="mt-4 font-sans text-[max(0.875rem,2.2cqw)] leading-normal text-ink lg:mt-[1.5cqw]">
-            <span class="lg:block">ทุกไอเดียเริ่มต้นจากการออกแบบ และกลายเป็นงานพิมพ์ที่จับต้องได้</span> <span class="lg:block">สำรวจตัวอย่างงานป้าย งานสติ๊กเกอร์ งานอีเวนต์ และดิสเพลย์สินค้า</span>
+            <span class="lg:block">ทุกไอเดียเริ่มต้นจากการออกแบบ และกลายเป็นงานพิมพ์ที่จับต้องได้</span> <span class="lg:block">สำรวจตัวอย่างงานป้าย สติ๊กเกอร์ งานอีเวนต์ ดิสเพลย์ และบรรจุภัณฑ์</span>
           </p>
         </div>
 

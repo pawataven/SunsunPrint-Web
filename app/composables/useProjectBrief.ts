@@ -1,4 +1,4 @@
-import { INSTALLATION_OPTIONS, UNSURE_MATERIAL } from '~/constants/startProject'
+import { INSTALLATION_OPTIONS, NO_FINISH, UNSURE_CHOICE } from '~/constants/startProject'
 import type { ProjectBrief } from '~/types'
 
 export type BriefStep = 1 | 2 | 3
@@ -9,11 +9,13 @@ const DRAFT_STORAGE_KEY = 'sunsunprint:quote-draft:v1'
 const createEmptyBrief = (): ProjectBrief => ({
   type: null,
   subtype: '',
-  material: UNSURE_MATERIAL,
+  material: UNSURE_CHOICE,
   width: '',
+  depth: '',
   height: '',
   quantity: '1',
   dueDate: '',
+  finish: NO_FINISH,
   installation: INSTALLATION_OPTIONS[0]!,
   location: '',
   notes: '',
@@ -37,10 +39,11 @@ export const useProjectBrief = () => {
   const brief = useState('project-brief', createEmptyBrief)
   const step = useState<BriefStep>('project-brief-step', () => 1)
 
-  // The subtype and material lists belong to the type, so a different type starts them over
+  // The subtype, material and finish lists belong to the type, so a different type starts them over
   const selectType = () => {
     brief.value.subtype = ''
-    brief.value.material = UNSURE_MATERIAL
+    brief.value.material = UNSURE_CHOICE
+    brief.value.finish = NO_FINISH
   }
 
   const saveDraft = () => {

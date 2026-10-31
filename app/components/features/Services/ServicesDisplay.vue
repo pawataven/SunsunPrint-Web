@@ -51,10 +51,10 @@ const formats = ['Plaswood', 'Counter display', 'Product shelf', 'POSM']
             <ArrowUpRight :stroke-width="1.5" class="size-[0.9em]" />
           </LineLink>
           <NuxtLink
-            to="#how-to-start"
+            to="#packaging"
             class="inline-flex items-center gap-[0.4em] border-b border-ink pb-[0.2em] text-[max(0.75rem,1.61cqw)] uppercase transition-colors hover:text-brand-red"
           >
-            Next / How to start
+            Next service
             <Icon name="lucide:arrow-down" class="size-[1.1em]" />
           </NuxtLink>
         </div>

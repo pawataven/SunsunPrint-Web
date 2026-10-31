@@ -41,10 +41,33 @@ export const PROJECT_TYPES: ProjectType[] = [
     image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_02.png',
     imagePosition: 'center 12%',
     alt: 'ชั้นวางสินค้าตั้งโต๊ะพิมพ์ลาย ALA+ Project Health ผลงานของ SunsunPrint'
+  },
+  {
+    id: 'packaging',
+    label: 'Packaging',
+    title: 'บรรจุภัณฑ์และถุงกระดาษ',
+    summary: 'กล่อง · ถุงกระดาษ · ปั๊มฟอยล์ · สปอตยูวี',
+    subtypes: [
+      'กล่องขนมและเบเกอรี่',
+      'กล่องของขวัญและของที่ระลึก',
+      'กล่องเครื่องสำอางและสกินแคร์',
+      'กล่องสินค้าอื่น ๆ',
+      'ถุงกระดาษใส่ไวน์และเครื่องดื่ม',
+      'ถุงกระดาษใส่สินค้าทั่วไป',
+      'ถุงกระดาษของขวัญและของที่ระลึก'
+    ],
+    materials: ['กระดาษอาร์ตการ์ด', 'กระดาษกล่องแป้งหลังขาว', 'กระดาษคราฟท์', 'กระดาษลูกฟูก'],
+    finishes: ['ปั๊มนูน', 'ปั๊มฟอยล์ทอง', 'สปอตยูวี'],
+    isPackaging: true,
+    image: '/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_02.png',
+    imagePosition: 'center 40%',
+    alt: 'กล่องบรรจุภัณฑ์พิมพ์ลาย Big Mootoo หลายใบวางเรียงกัน ผลงานของ SunsunPrint'
   }
 ]
 
-export const UNSURE_MATERIAL = 'ไม่แน่ใจ / ให้ร้านแนะนำ'
+export const UNSURE_CHOICE = 'ไม่แน่ใจ / ให้ร้านแนะนำ'
+
+export const NO_FINISH = 'ไม่ต้องการ'
 
 export const INSTALLATION_OPTIONS = ['ไม่แน่ใจ', 'ต้องการให้ติดตั้ง', 'รับไปติดตั้งเอง']
 

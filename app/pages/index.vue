@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import logoUrl from '~/assets/images/SUNSUN_PRINT.png'
 
-const title = 'SunsunPrint รับทำป้าย งานพิมพ์ งานอีเวนต์ และดิสเพลย์สินค้า'
-const description = 'SUNSUN PRINT รับผลิตป้ายอะคริลิก ป้ายไฟ ป้ายไวนิล สติ๊กเกอร์ งานอีเวนต์ และชั้นวางสินค้า ตั้งแต่ออกแบบจนติดตั้ง'
+const title = 'SunsunPrint รับทำป้าย งานพิมพ์ งานอีเวนต์ ดิสเพลย์สินค้า และบรรจุภัณฑ์'
+const description = 'SUNSUN PRINT รับผลิตป้ายอะคริลิก ป้ายไฟ ป้ายไวนิล สติ๊กเกอร์ งานอีเวนต์ ชั้นวางสินค้า กล่องบรรจุภัณฑ์ และถุงกระดาษ ตั้งแต่ออกแบบจนติดตั้ง'
 
 useSeoMeta({ title, description, ogTitle: title, ogDescription: description })
 

@@ -11,7 +11,42 @@ const emit = defineEmits<{
 
 const dialogRef = useTemplateRef<HTMLDialogElement>('dialog')
 
+const photos = computed(() => (props.work?.image ? [props.work.image, ...(props.work.gallery ?? [])] : []))
+const photoIndex = ref(0)
+const hasManyPhotos = computed(() => photos.value.length > 1)
+
+// Wraps around at both ends, so the buttons never dead-end on a set of two or three photos
+const showPhoto = (direction: 1 | -1) => {
+  photoIndex.value = (photoIndex.value + direction + photos.value.length) % photos.value.length
+}
+
+const showPhotoFromKey = (event: KeyboardEvent) => {
+  if (!hasManyPhotos.value) return
+  if (event.key === 'ArrowLeft') showPhoto(-1)
+  if (event.key === 'ArrowRight') showPhoto(1)
+}
+
+const SWIPE_THRESHOLD_PX = 40
+let swipeStartX: number | null = null
+
+const startSwipe = (event: PointerEvent) => {
+  swipeStartX = event.pointerType === 'mouse' ? null : event.clientX
+}
+
+const endSwipe = (event: PointerEvent) => {
+  if (swipeStartX === null || !hasManyPhotos.value) return
+  const distance = event.clientX - swipeStartX
+  swipeStartX = null
+  if (Math.abs(distance) >= SWIPE_THRESHOLD_PX) showPhoto(distance < 0 ? 1 : -1)
+}
+
+const getPhotoAlt = (description: string, index: number) =>
+  hasManyPhotos.value
+    ? `${description} รูปที่ ${index + 1} จาก ${photos.value.length} ผลงานของ SUNSUN PRINT`
+    : `${description} ผลงานของ SUNSUN PRINT`
+
 watch(() => props.work, (work) => {
+  photoIndex.value = 0
   const dialog = dialogRef.value
   if (!dialog) return
   if (work && !dialog.open) dialog.showModal()
@@ -34,17 +69,47 @@ const closeOnBackdropClick = (event: MouseEvent) => {
     class="m-auto max-h-[90vh] w-[min(95rem,calc(100vw-2rem))] overflow-y-auto bg-ivory text-ink backdrop:bg-[rgb(30_30_30/0.75)] lg:overflow-hidden"
     @close="emit('close')"
     @click="closeOnBackdropClick"
+    @keydown="showPhotoFromKey"
   >
     <div v-if="work" class="grid lg:h-[min(47.5rem,90vh)] lg:grid-cols-[525fr_388fr]">
-      <div class="relative aspect-4/3 bg-white lg:aspect-auto">
+      <!-- Every photo of the set is stacked and only the current one shows, so switching cross-fades instead of going
+           blank while the next file loads. pan-y leaves vertical scrolling to the browser and horizontal swipes to us -->
+      <div class="relative aspect-4/3 touch-pan-y overflow-hidden bg-white lg:aspect-auto" @pointerdown="startSwipe" @pointerup="endSwipe">
         <NuxtImg
-          v-if="work.image"
-          :src="work.image"
-          :alt="`${work.description} ผลงานของ SUNSUN PRINT`"
+          v-for="(photo, index) in photos"
+          :key="photo"
+          :src="photo"
+          :alt="getPhotoAlt(work.description, index)"
+          :aria-hidden="index !== photoIndex"
           sizes="sm:100vw md:100vw lg:100vw xl:60vw 2xl:60vw"
           format="webp"
-          class="absolute inset-0 size-full object-cover"
+          class="absolute inset-0 size-full object-cover transition-opacity duration-300"
+          :class="index === photoIndex ? 'opacity-100' : 'opacity-0'"
         />
+
+        <div v-if="hasManyPhotos" class="absolute right-4 bottom-4 left-4 flex items-center justify-between gap-4 lg:right-6 lg:bottom-6 lg:left-6">
+          <p class="bg-white/90 px-3 py-1.5 text-sm text-ink 2xl:text-base" aria-live="polite">
+            <span class="sr-only">รูปที่ </span>{{ photoIndex + 1 }} / {{ photos.length }}
+          </p>
+          <div class="flex gap-2">
+            <button
+              type="button"
+              aria-label="รูปก่อนหน้า"
+              class="flex size-10 items-center justify-center bg-white text-ink transition-colors hover:bg-brand-red hover:text-white 2xl:size-14"
+              @click="showPhoto(-1)"
+            >
+              <Icon name="lucide:arrow-left" class="size-5 2xl:size-6" />
+            </button>
+            <button
+              type="button"
+              aria-label="รูปถัดไป"
+              class="flex size-10 items-center justify-center bg-white text-ink transition-colors hover:bg-brand-red hover:text-white 2xl:size-14"
+              @click="showPhoto(1)"
+            >
+              <Icon name="lucide:arrow-right" class="size-5 2xl:size-6" />
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="relative flex flex-col p-6 lg:p-10 2xl:p-15">

@@ -10,14 +10,14 @@
         </p>
 
         <h1 class="text-[20cqw] leading-[0.92] text-ink uppercase">
-          <span class="sr-only">บริการรับทำป้าย งานพิมพ์ งานอีเวนต์ และดิสเพลย์สินค้าของ SUNSUN PRINT </span>
+          <span class="sr-only">บริการรับทำป้าย งานพิมพ์ งานอีเวนต์ ดิสเพลย์สินค้า และบรรจุภัณฑ์ของ SUNSUN PRINT </span>
           <span v-reveal="120" class="-ml-[0.06em] block font-sans">More</span>
           <span v-reveal="200" class="-ml-[0.04em] block font-sans">Than</span>
           <span v-reveal="280" class="-ml-[0.04em] block font-serif text-brand-red normal-case">Print.</span>
         </h1>
 
         <p v-reveal="360" class="font-sans text-[max(0.875rem,2.7cqw)] leading-relaxed text-neutral-700">
-          <span class="lg:block">ไม่ใช่แค่งานพิมพ์ แต่คือวิธีทำให้แบรนด์เป็นที่มองเห็น</span> <span class="lg:block">สำรวจงานป้าย สติ๊กเกอร์ อุปกรณ์อีเวนต์ และชั้นวางสินค้า</span> <span class="lg:block">ในรูปแบบที่เหมาะกับงานของคุณ</span>
+          <span class="lg:block">ไม่ใช่แค่งานพิมพ์ แต่คือวิธีทำให้แบรนด์เป็นที่มองเห็น</span> <span class="lg:block">สำรวจงานป้าย สติ๊กเกอร์ งานอีเวนต์ ชั้นวางสินค้า และบรรจุภัณฑ์</span> <span class="lg:block">ในรูปแบบที่เหมาะกับงานของคุณ</span>
         </p>
       </div>
 

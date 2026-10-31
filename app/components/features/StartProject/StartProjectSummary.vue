@@ -10,12 +10,13 @@ const { brief } = useProjectBrief()
 const NOT_GIVEN = 'ไม่ได้ระบุ'
 
 const summaryRows = computed(() => {
-  const { type, subtype, quantity, width, height, hasFiles, fileLink } = brief.value
+  const { type, subtype, quantity, width, depth, height, hasFiles, fileLink } = brief.value
+  const projectType = PROJECT_TYPES.find(item => item.id === type)
   return [
-    { label: 'ประเภทงาน', value: PROJECT_TYPES.find(projectType => projectType.id === type)?.title },
+    { label: 'ประเภทงาน', value: projectType?.title },
     { label: 'งานย่อย', value: subtype },
     { label: 'จำนวน', value: quantity && `${quantity} ชิ้น` },
-    { label: 'ขนาด', value: formatBriefSize(width, height) },
+    { label: 'ขนาด', value: formatBriefSize({ width, depth: projectType?.isPackaging ? depth : '', height }) },
     { label: 'ไฟล์แนบ', value: hasFiles ? fileLink : 'ไม่มี' }
   ]
 })

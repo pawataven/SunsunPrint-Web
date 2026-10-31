@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { INSTALLATION_OPTIONS, PROJECT_TYPES, UNSURE_MATERIAL } from '~/constants/startProject'
+import { INSTALLATION_OPTIONS, NO_FINISH, PROJECT_TYPES, UNSURE_CHOICE } from '~/constants/startProject'
 
 defineProps<{
   errors: { subtype?: string, quantity?: string, fileLink?: string, hasUploadedFiles?: string }
@@ -8,7 +8,9 @@ defineProps<{
 const { brief } = useProjectBrief()
 
 const selectedType = computed(() => PROJECT_TYPES.find(type => type.id === brief.value.type))
-const materialOptions = computed(() => [UNSURE_MATERIAL, ...(selectedType.value?.materials ?? [])])
+const materialOptions = computed(() => [UNSURE_CHOICE, ...(selectedType.value?.materials ?? [])])
+const finishOptions = computed(() => selectedType.value?.finishes && [NO_FINISH, ...selectedType.value.finishes, UNSURE_CHOICE])
+const isPackaging = computed(() => selectedType.value?.isPackaging ?? false)
 
 const padDatePart = (value: number) => String(value).padStart(2, '0')
 const now = new Date()
@@ -35,21 +37,30 @@ const today = `${now.getFullYear()}-${padDatePart(now.getMonth() + 1)}-${padDate
       />
       <FormField v-model="brief.material" label="วัสดุที่ต้องการ" :options="materialOptions" class="col-span-2 sm:col-span-3" />
 
-      <FormField v-model="brief.width" label="กว้าง (ซม.)" inputmode="decimal" placeholder="เช่น 100" class="sm:col-span-2" />
-      <FormField v-model="brief.height" label="สูง (ซม.)" inputmode="decimal" placeholder="เช่น 200" class="sm:col-span-2" />
+      <FormField v-model="brief.width" label="กว้าง (ซม.)" inputmode="decimal" :placeholder="isPackaging ? 'เช่น 20' : 'เช่น 100'" class="sm:col-span-2" />
+      <FormField v-if="isPackaging" v-model="brief.depth" label="ลึก (ซม.)" inputmode="decimal" placeholder="เช่น 10" class="sm:col-span-2" />
+      <FormField v-model="brief.height" label="สูง (ซม.)" inputmode="decimal" :placeholder="isPackaging ? 'เช่น 30' : 'เช่น 200'" class="sm:col-span-2" />
+      <!-- Packaging adds a depth field, so quantity moves down a row and shares it with the finish and the date -->
       <FormField
         v-model="brief.quantity"
         label="จำนวน (ชิ้น)"
         inputmode="numeric"
         required
         :error="errors.quantity"
-        class="col-span-2 sm:col-span-2"
+        :class="isPackaging ? 'sm:col-span-2' : 'col-span-2 sm:col-span-2'"
       />
 
-      <FormField v-model="brief.dueDate" type="date" label="วันที่ต้องการใช้งาน" :min="today" class="col-span-2 sm:col-span-3" />
-      <FormField v-model="brief.installation" label="ต้องการบริการติดตั้งหรือไม่" :options="INSTALLATION_OPTIONS" class="col-span-2 sm:col-span-3" />
+      <template v-if="isPackaging">
+        <FormField v-if="finishOptions" v-model="brief.finish" label="เทคนิคตกแต่งพิเศษ" :options="finishOptions" class="col-span-2 sm:col-span-2" />
+        <FormField v-model="brief.dueDate" type="date" label="วันที่ต้องการใช้งาน" :min="today" class="col-span-2 sm:col-span-2" />
+        <FormField v-model="brief.location" label="สถานที่จัดส่ง / จังหวัด (ถ้ามี)" placeholder="เช่น กรุงเทพฯ เขต..." class="col-span-2 sm:col-span-6" />
+      </template>
+      <template v-else>
+        <FormField v-model="brief.dueDate" type="date" label="วันที่ต้องการใช้งาน" :min="today" class="col-span-2 sm:col-span-3" />
+        <FormField v-model="brief.installation" label="ต้องการบริการติดตั้งหรือไม่" :options="INSTALLATION_OPTIONS" class="col-span-2 sm:col-span-3" />
+        <FormField v-model="brief.location" label="สถานที่ติดตั้ง / จังหวัด (ถ้ามี)" placeholder="เช่น กรุงเทพฯ เขต..." class="col-span-2 sm:col-span-6" />
+      </template>
 
-      <FormField v-model="brief.location" label="สถานที่ติดตั้ง / จังหวัด (ถ้ามี)" placeholder="เช่น กรุงเทพฯ เขต..." class="col-span-2 sm:col-span-6" />
       <FormField
         v-model="brief.notes"
         label="รายละเอียดเพิ่มเติม / ไอเดียงาน (ถ้ามี)"

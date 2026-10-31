@@ -8,6 +8,11 @@ defineProps<{
 const { brief, selectType } = useProjectBrief()
 
 const formatIndex = (value: number) => String(value).padStart(2, '0')
+
+// Cards sit two to a row on a six-column grid; an odd count puts three narrower ones in the first row instead, so every
+// row is full and no photo is stretched across the whole form
+const hasOddCount = PROJECT_TYPES.length % 2 === 1
+const getCardSpanClass = (index: number) => (hasOddCount && index < 3 ? 'lg:col-span-2' : 'lg:col-span-3')
 </script>
 
 <template>
@@ -20,14 +25,16 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
       role="radiogroup"
       aria-labelledby="type-step-heading"
       :aria-describedby="error ? 'type-step-error' : undefined"
-      class="mt-5 grid gap-4 sm:grid-cols-2 lg:mt-8 lg:gap-6 2xl:mt-13.5 2xl:gap-10"
+      class="mt-5 grid gap-4 sm:grid-cols-2 lg:mt-8 lg:grid-cols-6 lg:gap-6 2xl:mt-13.5 2xl:gap-10"
     >
-      <!-- The 1px inset shadow doubles the red border of the chosen card without the card growing and nudging its neighbours -->
+      <!-- The 1px inset shadow doubles the red border of the chosen card without the card growing and nudging its neighbours.
+           On two columns an odd card out at the end spans the row instead of leaving a gap beside it -->
       <label
         v-for="(type, index) in PROJECT_TYPES"
         :key="type.id"
         :for="`project-type-input-${type.id}`"
-        class="group flex cursor-pointer flex-col border border-neutral-300 bg-white p-4 transition-colors hover:border-ink has-checked:border-brand-red has-checked:shadow-[inset_0_0_0_1px_var(--color-brand-red)] has-focus-visible:outline-2 has-focus-visible:outline-offset-4 has-focus-visible:outline-brand-red lg:p-6"
+        :class="getCardSpanClass(index)"
+        class="group flex cursor-pointer flex-col border border-neutral-300 bg-white sm:max-lg:last:odd:col-span-2 p-4 transition-colors hover:border-ink has-checked:border-brand-red has-checked:shadow-[inset_0_0_0_1px_var(--color-brand-red)] has-focus-visible:outline-2 has-focus-visible:outline-offset-4 has-focus-visible:outline-brand-red lg:p-6"
       >
         <input
           :id="`project-type-input-${type.id}`"

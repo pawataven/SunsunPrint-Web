@@ -17,12 +17,19 @@ const visibleWorks = computed(() =>
     ? numberedWorks
     : numberedWorks.filter(({ work }) => work.category === selectedCategory.value)
 )
+
+// Landscape cards are pinned to the right column only for the full set, which is what the design's layout is built from.
+// A filtered set flows from the left instead, so a lone landscape card doesn't leave the left column empty
+const getCardPlacementClass = (work: Work) => {
+  if (work.orientation === 'portrait') return 'lg:col-start-1 lg:row-span-3'
+  return selectedCategory.value === 'all' ? 'lg:col-start-2 lg:row-span-2' : 'lg:row-span-2'
+}
 </script>
 
 <template>
   <section aria-labelledby="works-heading" class="page-x pt-12 pb-12 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
     <SectionHeading id="works-heading" v-reveal title="Selected" accent="Works.">
-      งานป้าย งานอีเวนต์ งานสติกเกอร์ และดิสเพลย์สินค้า<br>
+      งานป้าย งานอีเวนต์ งานสติกเกอร์ ดิสเพลย์ และบรรจุภัณฑ์<br>
       สำรวจรูปแบบงานพิมพ์และงานผลิตจากตัวอย่างที่ร้านส่งมา
     </SectionHeading>
 
@@ -50,13 +57,12 @@ const visibleWorks = computed(() =>
       v-if="visibleWorks.length"
       class="mt-10 grid gap-y-10 lg:grid-cols-[843fr_717fr] lg:gap-x-16 lg:gap-y-12 2xl:mt-14 2xl:gap-x-30 2xl:gap-y-16"
     >
-      <li
-        v-for="{ work, number } in visibleWorks"
-        :key="work.slug"
-        v-reveal="work.orientation === 'portrait' ? 0 : 150"
-        :class="work.orientation === 'portrait' ? 'lg:col-start-1 lg:row-span-3' : 'lg:col-start-2 lg:row-span-2'"
-      >
-        <WorkCard :work="work" :number="number" :total="WORKS.length" @open="openedWork = work" />
+      <li v-for="{ work, number } in visibleWorks" :key="work.slug" :class="getCardPlacementClass(work)">
+        <!-- v-reveal marks its element with a class that a :class re-render would wipe, so it lives on a wrapper whose
+             classes never change while the item's placement switches with the filter -->
+        <div v-reveal="work.orientation === 'portrait' ? 0 : 150" class="h-full">
+          <WorkCard :work="work" :number="number" :total="WORKS.length" @open="openedWork = work" />
+        </div>
       </li>
     </ul>
     <p v-else class="mt-14 font-normal text-neutral-500">ยังไม่มีผลงานในหมวดนี้</p>
