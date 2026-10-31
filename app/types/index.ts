@@ -31,6 +31,43 @@ export interface Service {
   to: string
 }
 
+export interface ProjectType {
+  id: WorkCategoryId
+  /** English catalog label on the type card, e.g. "Signage" */
+  label: string
+  title: string
+  summary: string
+  /** Choices offered in the detail step once this type is picked */
+  subtypes: string[]
+  materials: string[]
+  image: string
+  /** CSS object-position for the card's wide crop, when the subject isn't in the middle of the photo */
+  imagePosition?: string
+  alt: string
+}
+
+export interface ProjectBrief {
+  type: WorkCategoryId | null
+  subtype: string
+  material: string
+  /** Centimetres, as typed */
+  width: string
+  height: string
+  quantity: string
+  /** yyyy-mm-dd from the date input */
+  dueDate: string
+  installation: string
+  location: string
+  notes: string
+  /** Kept in the browser only: the brief travels as a LINE message, so the visitor sends these in the chat themselves */
+  files: File[]
+  name: string
+  phone: string
+  email: string
+  lineId: string
+  consent: boolean
+}
+
 export interface Work {
   slug: string
   title: string

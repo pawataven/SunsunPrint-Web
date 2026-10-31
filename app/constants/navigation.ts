@@ -7,6 +7,9 @@ export const NAV_LINKS = [
 
 export const LINE_ID = '@npn3701j'
 export const LINE_ADD_FRIEND_URL = `https://line.me/R/ti/p/${LINE_ID}`
+// Opens a chat with the official account with `text` already typed in; the visitor still presses send in LINE
+export const buildLineMessageUrl = (text: string) =>
+  `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(text)}`
 
 // LINE opens the QR dialog instead of leaving the site; its href stays as the fallback before the page is interactive
 export const SOCIAL_LINKS = [

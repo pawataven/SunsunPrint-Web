@@ -18,39 +18,10 @@ const closeOnBackdropClick = (event: MouseEvent) => {
   if (event.target === dialogRef.value) dialogRef.value?.close()
 }
 
-const copyState = ref<'idle' | 'copied' | 'failed'>('idle')
-let resetCopyStateTimer: ReturnType<typeof setTimeout> | undefined
-
-// The older execCommand route still works where the Clipboard API is refused: non-HTTPS origins and the in-app
-// browsers of LINE and Facebook, which is where many visitors will open this
-const copyWithSelection = (text: string) => {
-  const field = document.createElement('textarea')
-  field.value = text
-  field.setAttribute('readonly', '')
-  field.style.position = 'fixed'
-  field.style.opacity = '0'
-  dialogRef.value?.append(field)
-  field.select()
-  const copied = document.execCommand('copy')
-  field.remove()
-  return copied
-}
-
-const copyLineId = async () => {
-  try {
-    await navigator.clipboard.writeText(LINE_ID)
-    copyState.value = 'copied'
-  } catch {
-    // If both routes fail, the ID is still on screen and selectable
-    copyState.value = copyWithSelection(LINE_ID) ? 'copied' : 'failed'
-  }
-  clearTimeout(resetCopyStateTimer)
-  resetCopyStateTimer = setTimeout(() => (copyState.value = 'idle'), 2000)
-}
+const { copyState, copy } = useCopyText(() => dialogRef.value)
+const copyLineId = () => copy(LINE_ID)
 
 const copyButtonLabel = computed(() => ({ idle: 'คัดลอก ID', copied: 'คัดลอกแล้ว', failed: 'คัดลอกไม่สำเร็จ' })[copyState.value])
-
-onBeforeUnmount(() => clearTimeout(resetCopyStateTimer))
 </script>
 
 <template>

@@ -87,13 +87,14 @@ onBeforeUnmount(() => {
         </nav>
 
         <div class="menu-item page-x flex flex-wrap items-center justify-between gap-4 pt-6 pb-8" :style="{ '--item-delay': `${100 + navLinks.length * 50}ms` }">
-          <LineLink
+          <NuxtLink
+            to="/start-project"
             class="inline-flex items-center gap-6 bg-brand-red px-5 py-3 font-semibold text-white transition-colors hover:bg-deep-red"
             @click="close"
           >
             ขอใบเสนอราคา
             <Icon name="lucide:arrow-right" class="size-5" />
-          </LineLink>
+          </NuxtLink>
           <ul class="flex gap-3">
             <li v-for="social in socialLinks" :key="social.label">
               <a
