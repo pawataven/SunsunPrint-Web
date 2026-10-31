@@ -1,10 +1,5 @@
 import type { Work, WorkFilter, WorkGroup } from '~/types'
-
-// TODO: replace with each project's real description once the shop provides it
-const PLACEHOLDER_DETAILS = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-  'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.'
-]
+import { WORK_DETAILS } from './workDetails'
 
 const ALL_WORKS: Work[] = [
   {
@@ -14,7 +9,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Signage',
     category: 'signage',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ohJuiceVinylBanner,
     image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_01.png'
   },
   {
@@ -24,7 +19,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Signage',
     category: 'signage',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.saranIlluminatedSign,
     image: '/images/01_Signage/04_Illuminated_Signs/signage_p04_01.png'
   },
   {
@@ -34,7 +29,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Event',
     category: 'event-exhibition',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.tofusanBooth,
     image: '/images/03_Event_Exhibition/06_Booth_Foamboards/event_p06_02.png'
   },
   {
@@ -44,7 +39,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Graphic',
     category: 'stickers-graphics',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.comingSoonWindowGraphics,
     image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p07_01.png'
   },
   {
@@ -54,7 +49,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Graphic',
     category: 'stickers-graphics',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ohJuiceFloorGraphic,
     image: '/images/02_Stickers_Graphics/01_Floor_Graphics/signage_p06_01.png'
   },
   {
@@ -64,7 +59,7 @@ const ALL_WORKS: Work[] = [
     tag: 'POSM',
     category: 'product-display',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.bergamotCounterDisplay,
     image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p02_03.png'
   },
   {
@@ -74,7 +69,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Signage',
     category: 'signage',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.pickUpAcrylicSign,
     image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_01.png'
   },
   {
@@ -84,7 +79,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Event',
     category: 'event-exhibition',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.milkshakeRollups,
     image: '/images/03_Event_Exhibition/04_Rollups/event_p04_01.png'
   },
   {
@@ -94,7 +89,7 @@ const ALL_WORKS: Work[] = [
     tag: 'POSM',
     category: 'product-display',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.displayShelfShapes,
     image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_01.png'
   },
   {
@@ -104,7 +99,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Packaging',
     category: 'packaging',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.bohCosmeticBox,
     image: '/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_02.png',
     gallery: ['/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_01.png']
   },
@@ -115,7 +110,7 @@ const ALL_WORKS: Work[] = [
     tag: 'Packaging',
     category: 'packaging',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.mrBeastShoppingBag,
     image: '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_02.png',
     gallery: ['/images/07_Paper_Bags/02_Retail_Bags/bag_p02_01.png', '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_03.png']
   }
@@ -138,7 +133,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'fabric-displays',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.carrierDpuFabricBackdrops,
     image: '/images/03_Event_Exhibition/01_Fabric_Backdrops/event_p01_01.png'
   },
   {
@@ -149,7 +144,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'fabric-displays',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ramkhamhaengFabricBackdrop,
     image: '/images/03_Event_Exhibition/01_Fabric_Backdrops/event_p01_02.png'
   },
   {
@@ -160,7 +155,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'table-covers',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.tableCovers,
     image: '/images/03_Event_Exhibition/02_Fabric_Table_Covers/event_p02_01.png'
   },
   {
@@ -171,7 +166,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'hanging-backdrops',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.dpuHangingBackdrop,
     image: '/images/03_Event_Exhibition/03_Hanging_Backdrops/event_p03_01.png'
   },
   {
@@ -182,7 +177,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'rollups',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.milkshakeRollups,
     image: '/images/03_Event_Exhibition/04_Rollups/event_p04_01.png'
   },
   {
@@ -193,7 +188,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'rollups',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.carrierRollups,
     image: '/images/03_Event_Exhibition/04_Rollups/event_p04_02.png'
   },
   {
@@ -204,7 +199,7 @@ const EVENT_WORKS: Work[] = [
     category: 'event-exhibition',
     subcategory: 'standees',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ppBoardStandees,
     image: '/images/03_Event_Exhibition/05_PP_Board_Standees/event_p05_01.png'
   }
 ]
@@ -227,7 +222,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'acrylic-signs',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.pickUpAcrylicSign,
     image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_01.png'
   },
   {
@@ -238,7 +233,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'acrylic-signs',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.dpuAcrylicLogo,
     image: '/images/01_Signage/01_Acrylic_Signs/signage_p01_02.png'
   },
   {
@@ -249,7 +244,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'plaswood-signs',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.fruitPlaswoodCutouts,
     image: '/images/01_Signage/02_Plaswood_Signs/signage_p02_01.png'
   },
   {
@@ -260,7 +255,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'stainless-signs',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.journalStainlessSign,
     image: '/images/01_Signage/03_Stainless_Signs/signage_p03_01.png'
   },
   {
@@ -271,7 +266,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'illuminated-signs',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.saranIlluminatedSign,
     image: '/images/01_Signage/04_Illuminated_Signs/signage_p04_01.png'
   },
   {
@@ -282,7 +277,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'vinyl-banners',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ohJuiceVinylBanner,
     image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_01.png'
   },
   {
@@ -293,7 +288,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'vinyl-banners',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.dpuArtsBanner,
     image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_02.png'
   },
   {
@@ -304,7 +299,7 @@ const SIGNAGE_WORKS: Work[] = [
     category: 'signage',
     subcategory: 'sticker-installation',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.pharmacyWindowSticker,
     image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p06_02.png'
   }
 ]
@@ -324,7 +319,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'boxes',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.milkshakeBakeryBox,
     image: '/images/05_Packaging_Boxes/01_Bakery_Boxes/box_p01_01.png'
   },
   {
@@ -335,7 +330,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'boxes',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.bigMootooGiftBox,
     image: '/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_01.png',
     gallery: ['/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_02.png']
   },
@@ -347,7 +342,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'boxes',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.bohCosmeticBox,
     image: '/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_01.png',
     gallery: ['/images/05_Packaging_Boxes/03_Cosmetic_Boxes/box_p03_02.png']
   },
@@ -359,7 +354,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'finishing',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.embossing,
     image: '/images/06_Box_Finishing/finishing_emboss.png'
   },
   {
@@ -370,7 +365,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'finishing',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.goldFoil,
     image: '/images/06_Box_Finishing/finishing_gold_foil.png'
   },
   {
@@ -381,7 +376,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'finishing',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.spotUv,
     image: '/images/06_Box_Finishing/finishing_spot_uv.png'
   },
   {
@@ -392,7 +387,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'paper-bags',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.mondaviWineBag,
     image: '/images/07_Paper_Bags/01_Wine_Bags/bag_p01_01.png',
     gallery: ['/images/07_Paper_Bags/01_Wine_Bags/bag_p01_02.png']
   },
@@ -404,7 +399,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'paper-bags',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.mrBeastShoppingBag,
     image: '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_02.png',
     gallery: ['/images/07_Paper_Bags/02_Retail_Bags/bag_p02_01.png', '/images/07_Paper_Bags/02_Retail_Bags/bag_p02_03.png']
   },
@@ -416,7 +411,7 @@ const PACKAGING_WORKS: Work[] = [
     category: 'packaging',
     subcategory: 'paper-bags',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.dogGiftBag,
     image: '/images/07_Paper_Bags/03_Gift_Bags/bag_p03_01.png'
   }
 ]

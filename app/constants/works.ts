@@ -1,4 +1,5 @@
 import type { Work, WorkCategory } from '~/types'
+import { WORK_DETAILS } from './workDetails'
 
 export const WORK_CATEGORIES: WorkCategory[] = [
   { id: 'signage', label: 'งานป้าย' },
@@ -6,12 +7,6 @@ export const WORK_CATEGORIES: WorkCategory[] = [
   { id: 'event-exhibition', label: 'งานอีเวนต์' },
   { id: 'product-display', label: 'งานดิสเพลย์' },
   { id: 'packaging', label: 'งานบรรจุภัณฑ์' }
-]
-
-// TODO: replace with each project's real description once the shop provides it
-const PLACEHOLDER_DETAILS = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-  'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.'
 ]
 
 export const WORKS: Work[] = [
@@ -22,7 +17,7 @@ export const WORKS: Work[] = [
     tag: 'Packaging',
     category: 'packaging',
     orientation: 'portrait',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.bigMootooGiftBox,
     image: '/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_01.png',
     gallery: ['/images/05_Packaging_Boxes/02_Gift_Boxes/box_p02_02.png']
   },
@@ -33,7 +28,7 @@ export const WORKS: Work[] = [
     tag: 'Event',
     category: 'event-exhibition',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.tofusanBooth,
     image: '/images/03_Event_Exhibition/06_Booth_Foamboards/event_p06_02.png'
   },
   {
@@ -43,7 +38,7 @@ export const WORKS: Work[] = [
     tag: 'POSM',
     category: 'product-display',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.bergamotCounterDisplay,
     image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p02_03.png'
   },
   {
@@ -53,7 +48,7 @@ export const WORKS: Work[] = [
     tag: 'Graphic',
     category: 'stickers-graphics',
     orientation: 'portrait',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ohJuiceFloorGraphic,
     image: '/images/02_Stickers_Graphics/01_Floor_Graphics/signage_p06_01.png'
   },
   {
@@ -63,7 +58,7 @@ export const WORKS: Work[] = [
     tag: 'Signage',
     category: 'signage',
     orientation: 'landscape',
-    details: PLACEHOLDER_DETAILS,
+    details: WORK_DETAILS.ohJuiceVinylBanner,
     image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_01.png'
   }
 ]
