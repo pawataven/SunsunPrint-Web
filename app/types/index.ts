@@ -59,8 +59,10 @@ export interface ProjectBrief {
   installation: string
   location: string
   notes: string
-  /** Kept in the browser only: the brief travels as a LINE message, so the visitor sends these in the chat themselves */
-  files: File[]
+  /** Files go to the shop's shared Google Drive folder, outside the site; the brief carries the link to them */
+  hasFiles: boolean
+  fileLink: string
+  hasUploadedFiles: boolean
   name: string
   phone: string
   email: string

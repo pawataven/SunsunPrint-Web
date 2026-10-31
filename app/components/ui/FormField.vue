@@ -1,10 +1,12 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   label: string
-  type?: 'text' | 'tel' | 'email' | 'date'
+  type?: 'text' | 'tel' | 'email' | 'date' | 'url'
   placeholder?: string
   autocomplete?: string
-  inputmode?: 'text' | 'tel' | 'email' | 'numeric' | 'decimal'
+  inputmode?: 'text' | 'tel' | 'email' | 'numeric' | 'decimal' | 'url'
+  /** Guidance under the field, read out with it */
+  hint?: string
   min?: string
   required?: boolean
   error?: string
@@ -17,6 +19,7 @@ withDefaults(defineProps<{
   autocomplete: undefined,
   inputmode: undefined,
   min: undefined,
+  hint: undefined,
   error: undefined,
   options: undefined
 })
@@ -25,6 +28,7 @@ const model = defineModel<string>({ required: true })
 
 const id = useId()
 const errorId = `${id}-error`
+const hintId = `${id}-hint`
 
 const spacingClass = 'mt-2 lg:mt-3 2xl:mt-6'
 const fieldClass = 'block w-full border border-neutral-200 bg-ivory/50 px-4 font-sans text-base font-normal text-ink transition-colors placeholder:text-neutral-400 hover:border-neutral-400 focus:border-ink focus:bg-white focus:shadow-[inset_0_0_0_1px_var(--color-ink)] focus:outline-none aria-invalid:border-brand-red 2xl:px-5 2xl:text-lg'
@@ -42,7 +46,7 @@ const fieldClass = 'block w-full border border-neutral-200 bg-ivory/50 px-4 font
         :placeholder="placeholder"
         :required="required"
         :aria-invalid="error ? true : undefined"
-        :aria-describedby="error ? errorId : undefined"
+        :aria-describedby="[hint && hintId, error && errorId].filter(Boolean).join(' ') || undefined"
         :class="[spacingClass, fieldClass, 'min-h-28 resize-y py-3 2xl:py-4']"
       />
       <span v-else-if="options" :class="[spacingClass, 'relative block']">
@@ -51,7 +55,7 @@ const fieldClass = 'block w-full border border-neutral-200 bg-ivory/50 px-4 font
           v-model="model"
           :required="required"
           :aria-invalid="error ? true : undefined"
-          :aria-describedby="error ? errorId : undefined"
+          :aria-describedby="[hint && hintId, error && errorId].filter(Boolean).join(' ') || undefined"
           :class="[fieldClass, 'h-12 appearance-none pr-12 lg:h-14', { 'text-neutral-400': !model }]"
         >
           <option v-if="placeholder" value="" disabled>{{ placeholder }}</option>
@@ -70,10 +74,11 @@ const fieldClass = 'block w-full border border-neutral-200 bg-ivory/50 px-4 font
         :min="min"
         :required="required"
         :aria-invalid="error ? true : undefined"
-        :aria-describedby="error ? errorId : undefined"
+        :aria-describedby="[hint && hintId, error && errorId].filter(Boolean).join(' ') || undefined"
         :class="[spacingClass, fieldClass, 'h-12 lg:h-14']"
       >
     </label>
+    <p v-if="hint" :id="hintId" class="mt-2 font-sans text-xs font-normal text-neutral-500 lg:text-sm 2xl:text-base">{{ hint }}</p>
     <p v-if="error" :id="errorId" class="mt-2 flex items-center gap-1.5 font-sans text-sm text-brand-red 2xl:text-base">
       <Icon name="lucide:circle-alert" class="size-4 shrink-0" />
       {{ error }}

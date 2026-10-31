@@ -39,47 +39,44 @@ const STEP_COPY: Record<BriefStep, StageCopy> = {
     headingLead: '',
     headingAccent: 'touch.',
     srHeading: 'ขอใบเสนอราคา ขั้นที่ 3 จาก 3: ข้อมูลติดต่อ',
-    nextLabel: 'ส่งบรีฟทาง LINE'
+    nextLabel: 'ตรวจสอบบรีฟ'
   }
-}
-
-const SENT_COPY: StageCopy = {
-  eyebrow: 'Brief ready',
-  heading: 'Almost',
-  headingLead: '',
-  headingAccent: 'there.',
-  srHeading: 'ขอใบเสนอราคา: เปิดแชท LINE พร้อมบรีฟแล้ว',
-  footnote: '* มีงานชิ้นอื่นอยากบรีฟด้วย เริ่มใหม่ได้เลย',
-  nextLabel: 'เริ่มบรีฟใหม่'
 }
 
 // Thai landlines have 9 digits and mobiles 10
 const MIN_PHONE_DIGITS = 9
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const LINK_PATTERN = /^https?:\/\/\S+\.\S+$/
 
-const { brief, step, isSent, reset } = useProjectBrief()
+const { brief, step } = useProjectBrief()
 
-const stageCopy = computed(() => (isSent.value ? SENT_COPY : STEP_COPY[step.value]))
-const stageKey = computed(() => (isSent.value ? 'sent' : step.value))
+const stageCopy = computed(() => STEP_COPY[step.value])
 
-type FieldErrors = Partial<Record<'type' | 'subtype' | 'quantity' | 'name' | 'phone' | 'email' | 'consent', string>>
+type FieldErrors = Partial<Record<'type' | 'subtype' | 'quantity' | 'fileLink' | 'hasUploadedFiles' | 'name' | 'phone' | 'email' | 'consent', string>>
 
 const errors = ref<FieldErrors>({})
 const hasTriedCurrentStep = ref(false)
-const hasBackButton = computed(() => step.value > 1 && !isSent.value)
+const hasBackButton = computed(() => step.value > 1)
 const hasFootnoteRow = computed(() => hasBackButton.value && Boolean(stageCopy.value.footnote))
 
 const briefMessage = computed(() => buildBriefMessage(brief.value))
+const isReviewOpen = ref(false)
 
 const formRef = useTemplateRef<HTMLFormElement>('form')
 
 const validateStep = (target: BriefStep): FieldErrors => {
   const found: FieldErrors = {}
-  const { type, subtype, quantity, name, phone, email, consent } = brief.value
+  const { type, subtype, quantity, hasFiles, fileLink, hasUploadedFiles, name, phone, email, consent } = brief.value
   if (target === 1 && !type) found.type = 'เลือกประเภทงานก่อนไปขั้นถัดไป'
   if (target === 2) {
     if (!subtype) found.subtype = 'เลือกประเภทงานย่อย'
     if (!/^\d+$/.test(quantity.trim()) || Number(quantity) < 1) found.quantity = 'ใส่จำนวนเป็นตัวเลขตั้งแต่ 1 ขึ้นไป'
+    // The link is what ties the files in the shared folder to this brief, so a visitor with files can't leave it out
+    if (hasFiles) {
+      if (!fileLink.trim()) found.fileLink = 'วางลิงก์ไฟล์งานที่อัปโหลดไว้'
+      else if (!LINK_PATTERN.test(fileLink.trim())) found.fileLink = 'ลิงก์ไม่ถูกต้อง ต้องขึ้นต้นด้วย https://'
+      if (!hasUploadedFiles) found.hasUploadedFiles = 'ติ๊กยืนยันหลังอัปโหลดไฟล์เรียบร้อยแล้ว'
+    }
   }
   if (target === 3) {
     if (!name.trim()) found.name = 'กรุณากรอกชื่อผู้ติดต่อ'
@@ -132,15 +129,13 @@ const handleSubmit = async () => {
     return
   }
 
-  // Opened straight from the submit so the browser treats it as the visitor's own action and doesn't block the new tab
-  window.open(buildLineMessageUrl(briefMessage.value), '_blank', 'noopener')
-  isSent.value = true
-  scrollToStepper()
+  isReviewOpen.value = true
 }
 
-const startOver = () => {
-  reset()
-  scrollToStepper()
+// Opened straight from the send click so the browser treats it as the visitor's own action and doesn't block the new tab.
+// The preview stays open behind it, so a visitor whose LINE didn't open can still copy or download the brief
+const sendBrief = () => {
+  window.open(buildLineMessageUrl(briefMessage.value), '_blank', 'noopener')
 }
 </script>
 
@@ -152,13 +147,13 @@ const startOver = () => {
         <p v-reveal class="flex items-center gap-4 font-sans text-sm font-normal text-neutral-600 uppercase xl:text-base 2xl:text-xl">
           <span class="h-0.5 w-8 bg-brand-red 2xl:w-12" aria-hidden="true" />
           <Transition name="stage" mode="out-in">
-            <span :key="stageKey" class="trim-cap-start">{{ stageCopy.eyebrow }}</span>
+            <span :key="step" class="trim-cap-start">{{ stageCopy.eyebrow }}</span>
           </Transition>
         </p>
 
         <h1 v-reveal="120" class="mt-5 text-5xl leading-[1.3] text-ink uppercase sm:text-6xl lg:text-7xl 2xl:mt-6 2xl:text-8xl">
           <Transition name="stage" mode="out-in">
-            <span :key="stageKey" class="block">
+            <span :key="step" class="block">
               <span class="sr-only">{{ stageCopy.srHeading }} </span>
               <span class="-ml-[0.05em] block font-sans">{{ stageCopy.heading }}</span>
               <span class="-ml-[0.05em] block">
@@ -184,8 +179,7 @@ const startOver = () => {
 
       <div class="mt-8 lg:mt-10">
         <Transition name="stage" mode="out-in" @after-enter="focusStepHeading">
-          <StartProjectSent v-if="isSent" :message="briefMessage" />
-          <StartProjectTypeStep v-else-if="step === 1" :error="errors.type" />
+          <StartProjectTypeStep v-if="step === 1" :error="errors.type" />
           <StartProjectDetailStep v-else-if="step === 2" :errors="errors" />
           <StartProjectContactStep v-else :errors="errors" @edit-details="goToStep(2)" />
         </Transition>
@@ -213,15 +207,16 @@ const startOver = () => {
           ย้อนกลับ
         </button>
         <button
-          :type="isSent ? 'button' : 'submit'"
+          type="submit"
           class="inline-flex h-12 grow items-center justify-center gap-3 bg-brand-red px-5 text-sm text-white transition-colors hover:bg-deep-red sm:grow-0 lg:text-base 2xl:h-14.25 2xl:min-w-64 2xl:px-6 2xl:text-xl"
-          @click="isSent && startOver()"
         >
           {{ stageCopy.nextLabel }}
-          <Icon :name="isSent ? 'lucide:rotate-ccw' : 'lucide:arrow-right'" class="size-4 2xl:size-5" />
+          <Icon name="lucide:arrow-right" class="size-4 2xl:size-5" />
         </button>
       </div>
     </form>
+
+    <StartProjectReviewDialog v-model:open="isReviewOpen" :message="briefMessage" @send="sendBrief" />
   </section>
 </template>
 

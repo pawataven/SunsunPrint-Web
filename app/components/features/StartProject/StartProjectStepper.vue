@@ -11,10 +11,10 @@ const steps: { id: BriefStep, label: string }[] = [
   { id: 3, label: 'ข้อมูลติดต่อ' }
 ]
 
-const { step, isSent } = useProjectBrief()
+const { step } = useProjectBrief()
 
-const isDone = (id: BriefStep) => isSent.value || id < step.value
-const isCurrent = (id: BriefStep) => !isSent.value && id === step.value
+const isDone = (id: BriefStep) => id < step.value
+const isCurrent = (id: BriefStep) => id === step.value
 
 const formatIndex = (value: number) => String(value).padStart(2, '0')
 
@@ -28,7 +28,7 @@ const pillClass = 'inline-flex h-10 items-center justify-center gap-2 whitespace
 
       <!-- Earlier steps can be revisited; later ones open only through the form's own next button, which checks the step first -->
       <button
-        v-if="isDone(item.id) && !isSent"
+        v-if="isDone(item.id)"
         type="button"
         :class="[pillClass, 'border-ink text-ink transition-colors hover:border-brand-red hover:text-brand-red']"
         @click="emit('select', item.id)"
@@ -44,9 +44,7 @@ const pillClass = 'inline-flex h-10 items-center justify-center gap-2 whitespace
         :class="[pillClass, isCurrent(item.id) ? 'border-ink bg-ink text-white' : 'border-neutral-400 text-ink']"
       >
         {{ formatIndex(item.id) }}
-        <span :class="{ 'max-sm:sr-only': !isCurrent(item.id) }">{{ item.label }}</span>
-        <Icon v-if="isDone(item.id)" name="lucide:check" class="size-4 text-brand-red 2xl:size-5" />
-      </span>
+        <span :class="{ 'max-sm:sr-only': !isCurrent(item.id) }">{{ item.label }}</span>      </span>
     </li>
   </ol>
 </template>

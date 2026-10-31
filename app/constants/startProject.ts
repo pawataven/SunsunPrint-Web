@@ -48,4 +48,6 @@ export const UNSURE_MATERIAL = 'ไม่แน่ใจ / ให้ร้าน
 
 export const INSTALLATION_OPTIONS = ['ไม่แน่ใจ', 'ต้องการให้ติดตั้ง', 'รับไปติดตั้งเอง']
 
-export const ACCEPTED_FILE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'pdf', 'ai', 'psd', 'svg', 'zip']
+// The shop's shared Google Drive folder for customer files. Anyone with the link can edit it, so customers can also see
+// each other's uploads; the shop moves files out regularly
+export const FILE_UPLOAD_FOLDER_URL = 'https://drive.google.com/drive/folders/1_a52Nq3SLIqEdSxAWR0QKITiUXW3zcdx?usp=sharing'

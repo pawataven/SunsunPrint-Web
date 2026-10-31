@@ -1,6 +1,10 @@
 import { PROJECT_TYPES } from '~/constants/startProject'
 import type { ProjectBrief } from '~/types'
 
+const NOT_GIVEN = 'ไม่ระบุ'
+
+const orNotGiven = (value: string | undefined) => value?.trim() || NOT_GIVEN
+
 // The date input gives a bare yyyy-mm-dd; reading it as UTC and formatting in UTC keeps the day from shifting by timezone
 const formatDueDate = (isoDate: string) =>
   new Date(`${isoDate}T00:00:00Z`).toLocaleDateString('th-TH', { dateStyle: 'long', timeZone: 'UTC' })
@@ -10,32 +14,24 @@ export const formatBriefSize = (width: string, height: string) => {
   return parts.length ? `${parts.join(' x ')} ซม.` : ''
 }
 
-const toLines = (fields: [label: string, value: string][]) =>
-  fields.filter(([, value]) => value.trim()).map(([label, value]) => `${label}: ${value.trim()}`)
-
-export const buildBriefMessage = (brief: ProjectBrief) => {
-  const typeTitle = PROJECT_TYPES.find(type => type.id === brief.type)?.title ?? ''
-  const fileNames = brief.files.map(file => file.name).join(', ')
-
-  const projectLines = toLines([
-    ['ประเภทงาน', typeTitle],
-    ['ประเภทงานย่อย', brief.subtype],
-    ['วัสดุ', brief.material],
-    ['ขนาด', formatBriefSize(brief.width, brief.height)],
-    ['จำนวน', brief.quantity && `${brief.quantity} ชิ้น`],
-    ['ต้องการใช้งาน', brief.dueDate ? formatDueDate(brief.dueDate) : ''],
-    ['การติดตั้ง', brief.installation],
-    ['สถานที่ติดตั้ง', brief.location],
-    ['รายละเอียดเพิ่มเติม', brief.notes],
-    ['ไฟล์แนบ (จะส่งตามในแชท)', fileNames]
-  ])
-
-  const contactLines = toLines([
-    ['ชื่อ', brief.name],
-    ['เบอร์โทร', brief.phone],
-    ['อีเมล', brief.email],
-    ['LINE ID', brief.lineId]
-  ])
-
-  return ['สวัสดี SUNSUN PRINT ขอใบเสนอราคางานตามนี้', '', ...projectLines, '', ...contactLines].join('\n')
-}
+// Every field is listed, empty ones as "ไม่ระบุ", so the shop sees what the visitor skipped as well as what they filled
+// in. The same text is previewed, copied, downloaded and sent to LINE
+export const buildBriefMessage = (brief: ProjectBrief) => [
+  `ประเภทงานหลัก: ${orNotGiven(PROJECT_TYPES.find(type => type.id === brief.type)?.title)}`,
+  `ประเภทย่อย: ${orNotGiven(brief.subtype)}`,
+  '',
+  `วัสดุ: ${orNotGiven(brief.material)}`,
+  `ขนาด (กว้าง × สูง): ${orNotGiven(brief.width)} × ${orNotGiven(brief.height)} ซม.`,
+  `จำนวน: ${brief.quantity.trim() ? `${brief.quantity.trim()} ชิ้น` : NOT_GIVEN}`,
+  `วันที่ต้องการใช้: ${brief.dueDate ? formatDueDate(brief.dueDate) : 'ยังไม่ระบุ'}`,
+  `ต้องการติดตั้ง: ${orNotGiven(brief.installation)}`,
+  `สถานที่ติดตั้ง: ${orNotGiven(brief.location)}`,
+  `รายละเอียดเพิ่มเติม: ${orNotGiven(brief.notes)}`,
+  '',
+  `ไฟล์แนบ: ${brief.hasFiles ? orNotGiven(brief.fileLink) : 'ไม่มี'}`,
+  '',
+  `ชื่อผู้ติดต่อ: ${orNotGiven(brief.name)}`,
+  `เบอร์โทรศัพท์: ${orNotGiven(brief.phone)}`,
+  `LINE ID: ${orNotGiven(brief.lineId)}`,
+  `อีเมล: ${orNotGiven(brief.email)}`
+].join('\n')

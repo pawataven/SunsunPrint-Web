@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ACCEPTED_FILE_EXTENSIONS, INSTALLATION_OPTIONS, PROJECT_TYPES, UNSURE_MATERIAL } from '~/constants/startProject'
+import { INSTALLATION_OPTIONS, PROJECT_TYPES, UNSURE_MATERIAL } from '~/constants/startProject'
 
 defineProps<{
-  errors: { subtype?: string, quantity?: string }
+  errors: { subtype?: string, quantity?: string, fileLink?: string, hasUploadedFiles?: string }
 }>()
 
 const { brief } = useProjectBrief()
@@ -52,18 +52,13 @@ const today = `${now.getFullYear()}-${padDatePart(now.getMonth() + 1)}-${padDate
       <FormField v-model="brief.location" label="สถานที่ติดตั้ง / จังหวัด (ถ้ามี)" placeholder="เช่น กรุงเทพฯ เขต..." class="col-span-2 sm:col-span-6" />
       <FormField
         v-model="brief.notes"
-        label="รายละเอียดเพิ่มเติม / ไอเดียงาน"
+        label="รายละเอียดเพิ่มเติม / ไอเดียงาน (ถ้ามี)"
         placeholder="อธิบายลักษณะงาน สี ข้อความที่ต้องมี หรือสิ่งที่อยากให้ร้านช่วยแนะนำ..."
         multiline
         class="col-span-2 sm:col-span-6"
       />
 
-      <FileDropZone
-        v-model="brief.files"
-        :extensions="ACCEPTED_FILE_EXTENSIONS"
-        hint="คลิกเพื่อเลือกไฟล์ หรือวางไฟล์ที่นี่ - PNG, JPG, PDF, AI, PSD, SVG, ZIP"
-        class="col-span-2 sm:col-span-6"
-      />
+      <StartProjectFileUpload :errors="errors" class="col-span-2 sm:col-span-6" />
     </div>
   </div>
 </template>

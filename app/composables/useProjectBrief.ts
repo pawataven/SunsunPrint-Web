@@ -14,7 +14,9 @@ const createEmptyBrief = (): ProjectBrief => ({
   installation: INSTALLATION_OPTIONS[0]!,
   location: '',
   notes: '',
-  files: [],
+  hasFiles: false,
+  fileLink: '',
+  hasUploadedFiles: false,
   name: '',
   phone: '',
   email: '',
@@ -26,7 +28,6 @@ const createEmptyBrief = (): ProjectBrief => ({
 export const useProjectBrief = () => {
   const brief = useState('project-brief', createEmptyBrief)
   const step = useState<BriefStep>('project-brief-step', () => 1)
-  const isSent = useState('project-brief-sent', () => false)
 
   // The subtype and material lists belong to the type, so a different type starts them over
   const selectType = () => {
@@ -34,11 +35,5 @@ export const useProjectBrief = () => {
     brief.value.material = UNSURE_MATERIAL
   }
 
-  const reset = () => {
-    brief.value = createEmptyBrief()
-    step.value = 1
-    isSent.value = false
-  }
-
-  return { brief, step, isSent, selectType, reset }
+  return { brief, step, selectType }
 }
