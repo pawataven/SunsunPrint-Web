@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { LINE_ADD_FRIEND_URL } from '~/constants/navigation'
+
 const props = defineProps<{
   message: string
 }>()
 
 const emit = defineEmits<{
-  send: []
+  sent: []
 }>()
 
 const isOpen = defineModel<boolean>('open', { required: true })
@@ -23,6 +25,27 @@ const closeOnBackdropClick = (event: MouseEvent) => {
   if (event.target === dialogRef.value) dialogRef.value?.close()
 }
 
+const { brief } = useProjectBrief()
+const web3formsAccessKey = useRuntimeConfig().public.web3formsAccessKey
+
+const sendState = ref<'idle' | 'sending' | 'sent' | 'failed'>('idle')
+
+const sendBrief = async () => {
+  sendState.value = 'sending'
+  try {
+    await sendBriefEmail(web3formsAccessKey, brief.value, props.message)
+    sendState.value = 'sent'
+    emit('sent')
+  } catch (error) {
+    console.error('Sending the brief failed', error)
+    sendState.value = 'failed'
+  }
+}
+
+// A brief edited after a failed or finished send is a new one, so the button offers to send again
+watch(() => props.message, () => {
+  if (sendState.value !== 'sending') sendState.value = 'idle'
+})
 
 const { copyState, copy } = useCopyText(() => dialogRef.value)
 const copyButtonLabel = computed(() => ({ idle: 'คัดลอกบรีฟ', copied: 'คัดลอกแล้ว', failed: 'คัดลอกไม่สำเร็จ' })[copyState.value])
@@ -73,7 +96,7 @@ const secondaryButtonClass = 'inline-flex h-12 items-center justify-center gap-2
         <span class="block font-serif text-brand-red">All set.</span>
       </h2>
       <p class="mt-3 font-sans text-xs font-normal text-neutral-600 sm:text-sm">
-        ตรวจรายละเอียดด้านล่าง แล้วส่งให้ร้านทาง LINE หรือคัดลอก / บันทึกไว้ส่งทางช่องทางอื่นที่สะดวก
+        ตรวจรายละเอียดด้านล่าง แล้วกดส่งบรีฟถึงร้าน หรือคัดลอก / บันทึกเก็บไว้
       </p>
 
       <p class="mt-6 inline-block border-b border-neutral-400 pr-16 pb-2 text-xs uppercase sm:mt-8 sm:text-sm">
@@ -82,15 +105,35 @@ const secondaryButtonClass = 'inline-flex h-12 items-center justify-center gap-2
 
       <pre class="mt-4 min-h-24 overflow-y-auto border border-neutral-300 p-5 font-sans text-sm font-normal leading-relaxed whitespace-pre-wrap text-ink sm:p-6 sm:text-base">{{ message }}</pre>
 
-
+      <div v-if="sendState === 'sent'" class="mt-6 flex flex-col gap-4 border-l-4 border-brand-red bg-ivory p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+        <p class="flex items-start gap-2 text-sm sm:text-base">
+          <Icon name="lucide:circle-check" class="mt-0.5 size-5 shrink-0 text-brand-red" />
+          ส่งบรีฟถึงร้านเรียบร้อย ทีมงานจะติดต่อกลับโดยเร็ว
+        </p>
+        <a
+          :href="LINE_ADD_FRIEND_URL"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-11 shrink-0 items-center justify-center gap-2 bg-ink px-4 text-sm text-white transition-colors hover:bg-brand-red"
+        >
+          <Icon name="simple-icons:line" class="size-4" />
+          คุยต่อทาง LINE
+        </a>
+      </div>
       <button
+        v-else
         type="button"
-        class="mt-6 flex h-12 w-full items-center justify-center gap-3 bg-brand-red px-5 text-sm text-white transition-colors hover:bg-deep-red sm:h-14 sm:text-base"
-        @click="emit('send')"
+        :disabled="sendState === 'sending'"
+        class="mt-6 flex h-12 w-full items-center justify-center gap-3 bg-brand-red px-5 text-sm text-white transition-colors hover:bg-deep-red disabled:cursor-wait disabled:opacity-70 sm:h-14 sm:text-base"
+        @click="sendBrief"
       >
-        <Icon name="simple-icons:line" class="size-5" />
-        ส่งบรีฟทาง LINE
+        <Icon :name="sendState === 'sending' ? 'lucide:loader-circle' : 'lucide:send'" class="size-5" :class="{ 'animate-spin': sendState === 'sending' }" />
+        {{ sendState === 'sending' ? 'กำลังส่ง...' : sendState === 'failed' ? 'ลองส่งอีกครั้ง' : 'ส่งบรีฟ' }}
       </button>
+      <p v-if="sendState === 'failed'" class="mt-2 flex items-start gap-1.5 font-sans text-sm text-brand-red">
+        <Icon name="lucide:circle-alert" class="mt-0.5 size-4 shrink-0" />
+        ส่งไม่สำเร็จ ลองอีกครั้ง หรือคัดลอกบรีฟไปส่งทาง LINE ได้
+      </p>
       <div class="mt-3 grid grid-cols-2 gap-3 sm:gap-6">
         <button type="button" :class="secondaryButtonClass" @click="copy(message)">
           <Icon :name="copyState === 'copied' ? 'lucide:check' : 'lucide:copy'" class="size-4" />
@@ -102,6 +145,7 @@ const secondaryButtonClass = 'inline-flex h-12 items-center justify-center gap-2
         </button>
       </div>
       <p class="sr-only" aria-live="polite">{{ copyState === 'idle' ? '' : copyButtonLabel }}</p>
+      <p class="sr-only" aria-live="polite">{{ { idle: '', sending: 'กำลังส่งบรีฟ', sent: 'ส่งบรีฟถึงร้านเรียบร้อย', failed: 'ส่งบรีฟไม่สำเร็จ' }[sendState] }}</p>
     </div>
   </dialog>
 </template>

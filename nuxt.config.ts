@@ -17,7 +17,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // Absolute origin for canonical/OG URLs, the sitemap and robots.txt; override with NUXT_PUBLIC_SITE_URL per environment
-      siteUrl: 'https://sunsunprint.vercel.app'
+      siteUrl: 'https://sunsunprint.vercel.app',
+      // Sends the quote briefs to the shop's inbox; set NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY (it is public by design)
+      web3formsAccessKey: ''
     }
   },
 
@@ -40,9 +42,12 @@ export default defineNuxtConfig({
     // system font instead of the web font
     families: [
       { name: 'Noto Sans', weights: ['400 600'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'] }, fallbacks: ['Arial', 'Helvetica Neue', 'Segoe UI', 'Roboto'] },
-      { name: 'Noto Sans Thai', weights: ['400 600'], styles: ['normal'], subsets: ['thai', 'latin'], provider: 'google', global: true, preload: { subsets: ['thai'] } },
-      { name: 'Noto Sans Display', weights: ['400 600'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, fallbacks: ['Arial', 'Helvetica Neue', 'Segoe UI', 'Roboto'] },
-      { name: 'Noto Serif', weights: ['400 600'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'] } }
+      // Up to 900 for the About hero's Thai heading
+      { name: 'Noto Sans Thai', weights: ['400 900'], styles: ['normal'], subsets: ['thai', 'latin'], provider: 'google', global: true, preload: { subsets: ['thai'] } },
+      // Up to 900 for the About hero's heavy "HELLO. WE'RE"; it is the same variable file, so the range costs nothing extra
+      { name: 'Noto Sans Display', weights: ['400 900'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, fallbacks: ['Arial', 'Helvetica Neue', 'Segoe UI', 'Roboto'] },
+      // Up to 900 for the About page's heavy serif headings ("SUNSUN.", "LESS NOISE.")
+      { name: 'Noto Serif', weights: ['400 900'], styles: ['normal'], subsets: ['latin'], provider: 'google', global: true, preload: { subsets: ['latin'] } }
     ]
   },
 

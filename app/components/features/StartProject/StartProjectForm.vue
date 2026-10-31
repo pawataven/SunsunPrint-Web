@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { buildLineMessageUrl } from '~/constants/navigation'
 import type { BriefStep } from '~/composables/useProjectBrief'
 
 interface StageCopy {
@@ -48,7 +47,7 @@ const MIN_PHONE_DIGITS = 9
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const LINK_PATTERN = /^https?:\/\/\S+\.\S+$/
 
-const { brief, step } = useProjectBrief()
+const { brief, step, saveDraft, restoreDraft, clearDraft, reset } = useProjectBrief()
 
 const stageCopy = computed(() => STEP_COPY[step.value])
 
@@ -132,11 +131,28 @@ const handleSubmit = async () => {
   isReviewOpen.value = true
 }
 
-// Opened straight from the send click so the browser treats it as the visitor's own action and doesn't block the new tab.
-// The preview stays open behind it, so a visitor whose LINE didn't open can still copy or download the brief
-const sendBrief = () => {
-  window.open(buildLineMessageUrl(briefMessage.value), '_blank', 'noopener')
+// The draft only lives until the brief reaches the shop's inbox. The form itself stays filled while the preview is open,
+// for copying or downloading, and starts over once the visitor closes it
+const hasSentBrief = ref(false)
+
+const handleBriefSent = () => {
+  hasSentBrief.value = true
+  clearDraft()
 }
+
+watch(isReviewOpen, (open) => {
+  if (open || !hasSentBrief.value) return
+  hasSentBrief.value = false
+  reset()
+  scrollToStepper()
+})
+
+// Restored after mount rather than during render: the server has no access to the draft, so restoring earlier would
+// make the first client render differ from the server's HTML
+onMounted(() => {
+  restoreDraft()
+  watch([brief, step], saveDraft, { deep: true })
+})
 </script>
 
 <template>
@@ -216,7 +232,7 @@ const sendBrief = () => {
       </div>
     </form>
 
-    <StartProjectReviewDialog v-model:open="isReviewOpen" :message="briefMessage" @send="sendBrief" />
+    <StartProjectReviewDialog v-model:open="isReviewOpen" :message="briefMessage" @sent="handleBriefSent" />
   </section>
 </template>
 
