@@ -28,7 +28,7 @@ watch(isMenuOpen, (open) => {
       <NuxtLink
         to="/"
         aria-label="SunsunPrint หน้าแรก"
-        class="absolute top-0 flex size-24 items-center justify-center bg-brand-red p-3 sm:h-28 sm:w-24 xl:h-[200px] xl:w-[165px] xl:p-5 2xl:h-[240px] 2xl:w-[198px] 2xl:p-6"
+        class="flex size-18 shrink-0 items-center justify-center rounded-full bg-brand-red p-2.5 xl:size-22 xl:p-3 2xl:size-27 2xl:p-3.5"
       >
         <img :src="logoUrl" alt="SunsunPrint" class="size-full object-contain">
       </NuxtLink>

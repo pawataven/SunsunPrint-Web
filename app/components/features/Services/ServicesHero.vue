@@ -1,7 +1,5 @@
 <template>
-  <!-- This design starts right under the logo block (which overhangs the header by 32/104/120px at lg/xl/2xl)
-       instead of using the shared hero-offset gap -->
-  <section class="page-x overflow-x-clip pt-12 pb-8 lg:pt-16 lg:pb-10 xl:pt-34 2xl:pt-38 2xl:pb-16">
+  <section class="page-x overflow-x-clip pt-12 pb-8 lg:pt-16 lg:pb-10 2xl:pb-16">
     <div class="grid gap-12 lg:grid-cols-[880fr_800fr] lg:gap-0">
       <div class="@container flex flex-col gap-8 lg:justify-between lg:gap-[2cqw]">
         <p v-reveal class="flex items-center gap-4 text-sm uppercase text-ink xl:text-base 2xl:text-lg">

@@ -1,6 +1,5 @@
 <template>
-  <!-- Starts 155px under the header bar in the design (35px below the logo block that overhangs it) -->
-  <section class="mt-12 grid lg:mt-16 lg:grid-cols-[1112fr_808fr] xl:mt-35 2xl:mt-38.75">
+  <section class="mt-12 grid lg:mt-16 lg:grid-cols-[1112fr_808fr]">
     <!-- Bleeds to the left edge of the screen; everything inside is sized in cqw of the panel so the type and the rings
          keep the design's proportions at every width -->
     <div class="@container relative flex flex-col overflow-hidden bg-ink text-cream lg:aspect-1112/853">

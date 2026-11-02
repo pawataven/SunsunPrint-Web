@@ -44,7 +44,7 @@ onBeforeUnmount(() => {
 <template>
   <!--
     Teleported out of the header and layered just below it (z-40 vs the header's z-50), so the panel slides down from
-    behind the header bar and the logo that hangs below the bar stays in front of it. The panel is placed on the page
+    behind the header bar. The panel is placed on the page
     rather than the screen, so it stays attached to the bar even when the page is scrolled a little
   -->
   <Teleport to="body">
@@ -64,8 +64,7 @@ onBeforeUnmount(() => {
         ref="panel"
         class="absolute inset-x-0 top-(--header-h) z-40 max-h-[calc(100svh-var(--header-h))] overflow-y-auto bg-white shadow-xl xl:hidden"
       >
-        <!-- Top padding clears the part of the logo that hangs below the header bar -->
-        <nav aria-label="เมนูหลัก" class="page-x pt-10 sm:pt-14">
+        <nav aria-label="เมนูหลัก" class="page-x pt-6">
           <ul class="flex flex-col">
             <li
               v-for="(link, index) in navLinks"

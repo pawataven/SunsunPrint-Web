@@ -159,8 +159,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Starts right under the logo block, which overhangs the header by 32/104/120px at lg/xl/2xl -->
-  <section class="page-x pt-16 pb-14 lg:pt-24 xl:pt-48 2xl:pt-56 2xl:pb-16">
+  <section class="page-x pt-16 pb-14 lg:pt-24 2xl:pb-16">
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div>
         <p v-reveal class="flex items-center gap-4 font-sans text-sm font-normal text-neutral-600 uppercase xl:text-base 2xl:text-xl">

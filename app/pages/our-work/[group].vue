@@ -56,8 +56,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <!-- From xl the logo hangs ~100–120px below the header bar, so the top padding clears it with room to spare -->
-    <section aria-labelledby="work-group-heading" class="page-x pt-10 pb-12 lg:pt-24 lg:pb-24 xl:pt-36 2xl:pt-44 2xl:pb-30">
+    <section aria-labelledby="work-group-heading" class="page-x pt-10 pb-12 lg:pt-24 lg:pb-24 2xl:pb-30">
       <nav v-reveal aria-label="เส้นทางนำทาง">
         <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600 xl:text-base 2xl:text-xl">
           <template v-for="(crumb, index) in breadcrumbs" :key="crumb.path">
