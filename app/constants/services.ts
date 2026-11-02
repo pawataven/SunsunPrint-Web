@@ -6,8 +6,15 @@ export const SERVICES: Service[] = [
     category: 'signage',
     nameTh: 'งานป้าย',
     nameEn: 'Signage',
-    items: 'อะคริลิก, พลาสวูด, สแตนเลส, ป้ายไฟ, ไวนิล, สติ๊กเกอร์',
+    items: 'อะคริลิก, พลาสวูด, สแตนเลส, ป้ายไฟ, ไวนิล',
     to: '/our-work/signage'
+  },
+  {
+    category: 'stickers-graphics',
+    nameTh: 'งานสติ๊กเกอร์',
+    nameEn: 'Stickers',
+    items: 'ติดกระจก, ติดผนัง, ติดพื้น, ติดบันได',
+    to: '/our-work/stickers'
   },
   {
     category: 'event-exhibition',

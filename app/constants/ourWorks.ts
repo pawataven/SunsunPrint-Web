@@ -1,7 +1,7 @@
 import type { Work, WorkFilter, WorkGroup } from '~/types'
 import { WORK_DETAILS } from './workDetails'
 
-const ALL_WORKS: Work[] = [
+const FEATURED_WORKS: Work[] = [
   {
     slug: 'all-vinyl-banner',
     title: 'Vinyl Banner',
@@ -243,8 +243,7 @@ const SIGNAGE_FILTERS: WorkFilter[] = [
   { id: 'plaswood-signs', label: 'พลาสวูด' },
   { id: 'stainless-signs', label: 'สแตนเลส' },
   { id: 'illuminated-signs', label: 'ป้ายไฟ' },
-  { id: 'vinyl-banners', label: 'ไวนิล' },
-  { id: 'sticker-installation', label: 'สติ๊กเกอร์' }
+  { id: 'vinyl-banners', label: 'ไวนิล' }
 ]
 
 const SIGNAGE_WORKS: Work[] = [
@@ -423,25 +422,46 @@ const SIGNAGE_WORKS: Work[] = [
     orientation: 'landscape',
     details: WORK_DETAILS.admissionCenterBanner,
     image: '/images/01_Signage/05_Vinyl_Banners/signage_p05_04.png'
-  },
+  }
+]
+
+const STICKER_WORKS: Work[] = [
   {
-    slug: 'signage-sticker-installation',
+    slug: 'stickers-pharmacy-window',
     title: 'Sticker Installation',
     description: 'งานติดตั้งสติ๊กเกอร์',
-    tag: 'Signage',
-    category: 'signage',
-    subcategory: 'sticker-installation',
+    tag: 'Graphic',
+    category: 'stickers-graphics',
     orientation: 'landscape',
     details: WORK_DETAILS.pharmacyWindowSticker,
     image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p06_02.png'
   },
   {
-    slug: 'signage-stair-graphics',
+    slug: 'stickers-window',
+    title: 'Window Stickers',
+    description: 'สติ๊กเกอร์ติดกระจกและผนัง',
+    tag: 'Graphic',
+    category: 'stickers-graphics',
+    orientation: 'landscape',
+    details: WORK_DETAILS.comingSoonWindowGraphics,
+    image: '/images/02_Stickers_Graphics/02_Window_Wall_Stickers/signage_p07_01.png'
+  },
+  {
+    slug: 'stickers-floor',
+    title: 'Floor Graphics',
+    description: 'งานสติ๊กเกอร์ติดพื้น',
+    tag: 'Graphic',
+    category: 'stickers-graphics',
+    orientation: 'landscape',
+    details: WORK_DETAILS.ohJuiceFloorGraphic,
+    image: '/images/02_Stickers_Graphics/01_Floor_Graphics/signage_p06_01.png'
+  },
+  {
+    slug: 'stickers-stair',
     title: 'Stair Graphics',
     description: 'งานสติ๊กเกอร์ติดบันได',
-    tag: 'Signage',
-    category: 'signage',
-    subcategory: 'sticker-installation',
+    tag: 'Graphic',
+    category: 'stickers-graphics',
     orientation: 'landscape',
     details: WORK_DETAILS.stairGraphics,
     image: '/images/02_Stickers_Graphics/03_Stair_Graphics/signage_p07_02.png'
@@ -623,10 +643,20 @@ const PACKAGING_WORKS: Work[] = [
   }
 ]
 
+// Featured entries repeat category pieces with their own copy, so the same piece is matched by its shared details
+const listedDetails = new Set<string[]>()
+const ALL_WORKS: Work[] = [...FEATURED_WORKS, ...EVENT_WORKS, ...SIGNAGE_WORKS, ...STICKER_WORKS, ...DISPLAY_WORKS, ...PACKAGING_WORKS]
+  .filter((work) => {
+    if (listedDetails.has(work.details)) return false
+    listedDetails.add(work.details)
+    return true
+  })
+
 export const WORK_GROUPS: WorkGroup[] = [
-  { id: 'all', title: 'ผลงานทั้งหมด', label: 'ทั้งหมด', description: 'รวมตัวอย่างผลงานจริงของ SUNSUN PRINT ทุกหมวด ทั้งป้ายไวนิล ป้ายไฟ สติ๊กเกอร์ บูธอีเวนต์ ชั้นวางสินค้า กล่องบรรจุภัณฑ์ และถุงกระดาษ', works: ALL_WORKS, exploreTo: '/our-work/all' },
+  { id: 'all', title: 'ผลงานทั้งหมด', label: 'งานทั้งหมด', description: 'รวมตัวอย่างผลงานจริงของ SUNSUN PRINT ทุกหมวด ทั้งป้ายไวนิล ป้ายไฟ สติ๊กเกอร์ บูธอีเวนต์ ชั้นวางสินค้า กล่องบรรจุภัณฑ์ และถุงกระดาษ', works: ALL_WORKS, exploreTo: '/our-work/all' },
   { id: 'event', title: 'งานอีเวนต์', label: 'งานอีเวนต์', description: 'ตัวอย่างงานอีเวนต์จาก SUNSUN PRINT: แบ็คดรอปผ้า โต๊ะพับพร้อมผ้าคลุม แบ็คดรอปแขวนผนัง โรลอัพ สแตนดี้พีพีบอร์ด และบูธแสดงสินค้า', works: EVENT_WORKS, filters: EVENT_FILTERS, exploreTo: '/our-work/event' },
-  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', description: 'ตัวอย่างงานป้ายจาก SUNSUN PRINT: ป้ายอะคริลิก ป้ายพลาสวูด ป้ายสแตนเลส ป้ายไฟ ป้ายไวนิล และงานติดตั้งสติ๊กเกอร์', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/our-work/signage' },
-  { id: 'display', title: 'งานดิสเพลย์', label: 'ดิสเพลย์', description: 'ตัวอย่างงานดิสเพลย์จาก SUNSUN PRINT: ชั้นวางสินค้าพลาสวูด ชั้นวางแบบขั้นบันได ดิสเพลย์ตั้งโต๊ะ และสแตนด์ป้ายข้อมูลสินค้าสำหรับจุดขาย', works: DISPLAY_WORKS, exploreTo: '/our-work/display' },
-  { id: 'packaging', title: 'งานบรรจุภัณฑ์', label: 'บรรจุภัณฑ์', description: 'ตัวอย่างงานบรรจุภัณฑ์จาก SUNSUN PRINT: กล่องขนม กล่องของขวัญ กล่องเครื่องสำอาง ถุงกระดาษพิมพ์ลาย และเทคนิคปั๊มนูน ปั๊มฟอยล์ทอง สปอตยูวี', works: PACKAGING_WORKS, filters: PACKAGING_FILTERS, exploreTo: '/our-work/packaging' }
+  { id: 'signage', title: 'งานป้าย', label: 'งานป้าย', description: 'ตัวอย่างงานป้ายจาก SUNSUN PRINT: ป้ายอะคริลิก ป้ายพลาสวูด ป้ายสแตนเลส ป้ายไฟ และป้ายไวนิล', works: SIGNAGE_WORKS, filters: SIGNAGE_FILTERS, exploreTo: '/our-work/signage' },
+  { id: 'stickers', title: 'งานสติ๊กเกอร์', label: 'งานสติ๊กเกอร์', description: 'ตัวอย่างงานสติ๊กเกอร์จาก SUNSUN PRINT: สติ๊กเกอร์ติดกระจกหน้าร้าน สติ๊กเกอร์ติดผนัง สติ๊กเกอร์ติดพื้น และสติ๊กเกอร์ติดบันได', works: STICKER_WORKS, exploreTo: '/our-work/stickers' },
+  { id: 'display', title: 'งานดิสเพลย์', label: 'งานดิสเพลย์', description: 'ตัวอย่างงานดิสเพลย์จาก SUNSUN PRINT: ชั้นวางสินค้าพลาสวูด ชั้นวางแบบขั้นบันได ดิสเพลย์ตั้งโต๊ะ และสแตนด์ป้ายข้อมูลสินค้าสำหรับจุดขาย', works: DISPLAY_WORKS, exploreTo: '/our-work/display' },
+  { id: 'packaging', title: 'งานบรรจุภัณฑ์', label: 'งานบรรจุภัณฑ์', description: 'ตัวอย่างงานบรรจุภัณฑ์จาก SUNSUN PRINT: กล่องขนม กล่องของขวัญ กล่องเครื่องสำอาง ถุงกระดาษพิมพ์ลาย และเทคนิคปั๊มนูน ปั๊มฟอยล์ทอง สปอตยูวี', works: PACKAGING_WORKS, filters: PACKAGING_FILTERS, exploreTo: '/our-work/packaging' }
 ]
