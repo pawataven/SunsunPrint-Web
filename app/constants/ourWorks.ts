@@ -479,7 +479,8 @@ const DISPLAY_WORKS: Work[] = [
     category: 'product-display',
     orientation: 'landscape',
     details: WORK_DETAILS.displayShelfShapes,
-    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_01.png'
+    image: '/images/04_Product_Displays/01_Plaswood_Display_Shelves/display_p01_01.png',
+    showWholeImage: true
   },
   {
     slug: 'display-counter',
