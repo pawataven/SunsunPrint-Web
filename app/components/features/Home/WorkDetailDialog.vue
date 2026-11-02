@@ -83,8 +83,8 @@ const closeOnBackdropClick = (event: MouseEvent) => {
           :aria-hidden="index !== photoIndex"
           sizes="sm:100vw md:100vw lg:100vw xl:60vw 2xl:60vw"
           format="webp"
-          class="absolute inset-0 size-full object-cover transition-opacity duration-300"
-          :class="index === photoIndex ? 'opacity-100' : 'opacity-0'"
+          class="absolute inset-0 size-full transition-opacity duration-300"
+          :class="[work.showWholeImage ? 'object-contain' : 'object-cover', index === photoIndex ? 'opacity-100' : 'opacity-0']"
         />
 
         <div v-if="hasManyPhotos" class="absolute right-4 bottom-4 left-4 flex items-center justify-between gap-4 lg:right-6 lg:bottom-6 lg:left-6">

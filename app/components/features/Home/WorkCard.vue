@@ -31,7 +31,8 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
         sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw"
         format="webp"
         loading="lazy"
-        class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-105"
+        class="absolute inset-0 size-full transition-transform duration-500 group-hover:scale-105"
+        :class="work.showWholeImage ? 'object-contain' : 'object-cover'"
       />
       <span
         v-if="work.gallery?.length"

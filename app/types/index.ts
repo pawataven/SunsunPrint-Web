@@ -93,6 +93,8 @@ export interface Work {
   details: string[]
   /** Path under /public, e.g. /images/works/brand-space-graphics.jpg — leave empty to show a placeholder */
   image?: string
+  /** Fits the whole photo inside the frame instead of cropping it to fill, for shots whose edges matter, e.g. very wide pieces */
+  showWholeImage?: boolean
   /** More photos of the same piece, shown after `image` in the work detail popup */
   gallery?: string[]
 }

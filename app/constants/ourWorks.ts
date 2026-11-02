@@ -135,7 +135,8 @@ const EVENT_WORKS: Work[] = [
     subcategory: 'fabric-displays',
     orientation: 'landscape',
     details: WORK_DETAILS.carrierDpuFabricBackdrops,
-    image: '/images/03_Event_Exhibition/01_Fabric_Backdrops/event_p01_01.png'
+    image: '/images/03_Event_Exhibition/01_Fabric_Backdrops/event_p01_01.png',
+    showWholeImage: true
   },
   {
     slug: 'event-fabric-backdrop-2',
@@ -146,7 +147,8 @@ const EVENT_WORKS: Work[] = [
     subcategory: 'fabric-displays',
     orientation: 'landscape',
     details: WORK_DETAILS.ramkhamhaengFabricBackdrop,
-    image: '/images/03_Event_Exhibition/01_Fabric_Backdrops/event_p01_02.png'
+    image: '/images/03_Event_Exhibition/01_Fabric_Backdrops/event_p01_02.png',
+    showWholeImage: true
   },
   {
     slug: 'event-table-cover',
