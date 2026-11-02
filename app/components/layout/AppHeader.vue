@@ -8,6 +8,8 @@ const route = useRoute()
 // Category pages like /our-work/signage live under their menu item, so it stays highlighted there too
 const isLinkActive = (to: string) => (to === '/' ? route.path === '/' : route.path === to || route.path.startsWith(`${to}/`))
 
+const formatIndex = (value: number) => String(value).padStart(2, '0')
+
 const menuButtonRef = useTemplateRef<HTMLButtonElement>('menuButton')
 
 watch(() => route.fullPath, () => {
@@ -49,23 +51,57 @@ watch(isMenuOpen, (open) => {
           <!--
             Opens on keyboard focus only: a mouse click leaves the link focused after navigating, which would keep it open.
             Hidden with opacity rather than visibility, because tabbing from the parent link briefly leaves the group unfocused,
-            and a visibility-hidden submenu would refuse the focus and drop it to the page
+            and a visibility-hidden submenu would refuse the focus and drop it to the page.
+            The clipping wrapper starts at the bar's bottom edge so the panel slides out from behind the bar, as the mobile menu does;
+            its side and bottom padding leave room for the panel's shadow
           -->
-          <ul
-            v-if="link.children"
-            :aria-label="`หมวด${link.label}`"
-            class="pointer-events-none absolute top-full left-1/2 min-w-56 -translate-x-1/2 translate-y-2 border border-t-2 border-neutral-200 border-t-brand-red bg-white py-2 opacity-0 shadow-lg transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-has-focus-visible:pointer-events-auto group-has-focus-visible:translate-y-0 group-has-focus-visible:opacity-100"
-          >
-            <li v-for="child in link.children" :key="child.to">
-              <NuxtLink
-                :to="child.to"
-                class="block px-5 py-2.5 text-lg font-semibold whitespace-nowrap transition-colors hover:bg-ivory hover:text-brand-red 2xl:text-xl"
-                :class="route.path === child.to ? 'text-brand-red' : 'text-ink'"
+          <div v-if="link.children" class="submenu absolute top-full left-1/2 -translate-x-1/2 overflow-hidden px-8 pb-10">
+            <div class="submenu-panel w-80 border-t-2 border-brand-red bg-white shadow-xl 2xl:w-88">
+              <p
+                class="submenu-item flex items-center justify-between border-b border-neutral-200 px-5 py-3 text-xs text-neutral-500 uppercase"
+                style="--item-delay: 150ms"
+                aria-hidden="true"
               >
-                {{ child.label }}
-              </NuxtLink>
-            </li>
-          </ul>
+                <span>Our work / Categories</span>
+                <span class="text-brand-red">{{ formatIndex(link.children.length) }}</span>
+              </p>
+              <ul :aria-label="`หมวด${link.label}`" class="py-2">
+                <li
+                  v-for="(child, index) in link.children"
+                  :key="child.to"
+                  class="submenu-item"
+                  :style="{ '--item-delay': `${200 + index * 50}ms` }"
+                >
+                  <NuxtLink
+                    :to="child.to"
+                    class="group/item relative grid grid-cols-[1.75rem_1fr_auto] items-center gap-2 px-5 py-2.5 transition-colors hover:bg-ivory"
+                  >
+                    <span
+                      class="absolute inset-y-1.5 left-0 w-0.5 origin-top bg-brand-red transition-transform duration-300 group-hover/item:scale-y-100"
+                      :class="route.path === child.to ? 'scale-y-100' : 'scale-y-0'"
+                      aria-hidden="true"
+                    />
+                    <span
+                      class="text-xs transition-colors group-hover/item:text-brand-red"
+                      :class="route.path === child.to ? 'text-brand-red' : 'text-neutral-400'"
+                      aria-hidden="true"
+                    >{{ formatIndex(index + 1) }}</span>
+                    <span class="flex flex-col">
+                      <span
+                        class="text-lg leading-snug font-semibold transition-colors group-hover/item:text-brand-red 2xl:text-xl"
+                        :class="route.path === child.to ? 'text-brand-red' : 'text-ink'"
+                      >{{ child.label }}</span>
+                      <span class="text-[0.6875rem] tracking-wider text-neutral-500 uppercase 2xl:text-xs">{{ child.labelEn }}</span>
+                    </span>
+                    <ArrowUpRight
+                      :stroke-width="1.5"
+                      class="size-5 -translate-x-1 translate-y-1 text-brand-red opacity-0 transition group-hover/item:translate-0 group-hover/item:opacity-100"
+                    />
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <NuxtLink
           to="/start-project"
@@ -106,3 +142,43 @@ watch(isMenuOpen, (open) => {
     <MobileMenu v-model="isMenuOpen" :is-link-active="isLinkActive" />
   </header>
 </template>
+
+<style scoped>
+/* Same curves as the mobile menu: a long ease-out to glide down, a quicker ease-in-out to fold back up */
+.submenu {
+  pointer-events: none;
+}
+
+/* Lifted past its own height by the depth of its shadow, which would otherwise peek out under the bar while closed */
+.submenu-panel {
+  transform: translateY(calc(-100% - 3rem));
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Closing fades the items first, so the panel folds up already empty */
+.submenu-item {
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  transition: opacity 0.15s ease;
+}
+
+.group:hover > .submenu,
+.group:has(:focus-visible) > .submenu {
+  pointer-events: auto;
+}
+
+.group:hover > .submenu .submenu-panel,
+.group:has(:focus-visible) > .submenu .submenu-panel {
+  transform: translateY(0);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover > .submenu .submenu-item,
+.group:has(:focus-visible) > .submenu .submenu-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease var(--item-delay, 0ms),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--item-delay, 0ms);
+}
+</style>
