@@ -223,25 +223,19 @@
 }
 
 /*
-  Below lg the columns stack, so delays tuned to stagger side-by-side items on desktop turn into dead time before content
-  that is already on screen appears, and phone visitors scroll faster than the desktop pacing allows. Durations and travel
-  are shortened and every delay is scaled down to a third, keeping the order of the stagger
+  Below lg content shows at once: phone visitors scroll to read, one section at a time, and waiting for each block to fade in
+  read as a slow site (the site owner's call). Divider lines keep their draw since nothing waits on them, with the
+  desktop stagger cut to a third because stacked columns turn it into dead time
 */
 @media (scripting: enabled) and (max-width: 63.98rem) {
-  [data-reveal] {
-    transition:
-      opacity 0.5s var(--reveal-ease) calc(var(--reveal-delay, 0ms) * 0.3),
-      transform 0.6s var(--reveal-ease) calc(var(--reveal-delay, 0ms) * 0.3),
-      clip-path 0.7s var(--reveal-ease) calc(var(--reveal-delay, 0ms) * 0.3);
+  [data-reveal]:not([data-reveal="line"]) {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
   }
 
-  [data-reveal="pop"] {
-    transition-duration: 0.4s, 0.7s, 0s;
-  }
-}
-
-@media (scripting: enabled) and (max-width: 63.98rem) and (prefers-reduced-motion: no-preference) {
-  [data-reveal="up"] {
-    transform: translateY(1.25rem);
+  [data-reveal="line"] {
+    transition: transform 0.6s var(--reveal-ease) calc(var(--reveal-delay, 0ms) * 0.3);
   }
 }
