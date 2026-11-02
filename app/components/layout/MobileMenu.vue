@@ -82,6 +82,18 @@ onBeforeUnmount(() => {
                 <span class="text-xs font-normal text-neutral-400">{{ formatIndex(index + 1) }}</span>
                 <span class="text-2xl">{{ link.label }}</span>
               </NuxtLink>
+              <ul v-if="link.children" :aria-label="`หมวด${link.label}`" class="-mt-1 grid grid-cols-2 gap-x-4 pb-4 pl-7.5">
+                <li v-for="child in link.children" :key="child.to">
+                  <NuxtLink
+                    :to="child.to"
+                    class="block py-1.5 text-base transition-colors hover:text-brand-red"
+                    :class="$route.path === child.to ? 'text-brand-red' : 'text-neutral-600'"
+                    @click="close"
+                  >
+                    {{ child.label }}
+                  </NuxtLink>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>

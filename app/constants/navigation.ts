@@ -1,6 +1,17 @@
+// Mirrors the labels and pages of WORK_GROUPS in ourWorks.ts, kept here so the header on every page doesn't pull in the whole works data.
+// "All" opens the main works page rather than /our-work/all, at the site owner's request
+const WORK_MENU_LINKS = [
+  { label: 'งานทั้งหมด', to: '/our-work' },
+  { label: 'งานอีเวนต์', to: '/our-work/event' },
+  { label: 'งานป้าย', to: '/our-work/signage' },
+  { label: 'งานสติ๊กเกอร์', to: '/our-work/stickers' },
+  { label: 'งานดิสเพลย์', to: '/our-work/display' },
+  { label: 'งานบรรจุภัณฑ์', to: '/our-work/packaging' }
+]
+
 export const NAV_LINKS = [
   { label: 'หน้าแรก', to: '/' },
-  { label: 'ผลงาน', to: '/our-work' },
+  { label: 'ผลงาน', to: '/our-work', children: WORK_MENU_LINKS },
   { label: 'บริการ', to: '/services' },
   { label: 'เกี่ยวกับเรา', to: '/about' }
 ]
