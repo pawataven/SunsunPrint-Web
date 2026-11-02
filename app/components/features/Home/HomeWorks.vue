@@ -29,7 +29,7 @@ const getCardPlacementClass = (work: Work) => {
 <template>
   <section aria-labelledby="works-heading" class="page-x pt-12 pb-12 lg:pt-28 lg:pb-24 2xl:pt-36 2xl:pb-30">
     <SectionHeading id="works-heading" v-reveal title="Selected" accent="Works.">
-      งานป้าย งานอีเวนต์ งานสติกเกอร์ ดิสเพลย์ และบรรจุภัณฑ์<br>
+      งานป้าย งานอีเวนต์ งานสติ๊กเกอร์ ดิสเพลย์ และบรรจุภัณฑ์<br>
       สำรวจรูปแบบงานพิมพ์และงานผลิตจากตัวอย่างที่ร้านส่งมา
     </SectionHeading>
 
