@@ -1,5 +1,5 @@
 <template>
-  <section class="page-x overflow-x-clip pt-12 pb-8 lg:pt-16 lg:pb-10 2xl:pb-16">
+  <section class="hero-offset page-x overflow-x-clip pb-8 lg:pb-10 2xl:pb-16">
     <div class="grid gap-12 lg:grid-cols-[880fr_800fr] lg:gap-0">
       <div class="@container flex flex-col gap-8 lg:justify-between lg:gap-[2cqw]">
         <p v-reveal class="flex items-center gap-4 text-sm uppercase text-ink xl:text-base 2xl:text-lg">
@@ -15,7 +15,7 @@
         </h1>
 
         <p v-reveal="360" class="font-sans text-[max(0.875rem,2.7cqw)] leading-relaxed text-neutral-700">
-          <span class="lg:block">ไม่ใช่แค่งานพิมพ์ แต่คือวิธีทำให้แบรนด์เป็นที่มองเห็น</span> <span class="lg:block">สำรวจงานป้าย สติ๊กเกอร์ งานอีเวนต์ ชั้นวางสินค้า และบรรจุภัณฑ์</span> <span class="lg:block">ในรูปแบบที่เหมาะกับงานของคุณ</span>
+          <span class="2xl:block">ไม่ใช่แค่งานพิมพ์ แต่คือวิธีทำให้แบรนด์เป็นที่มองเห็น</span> <span class="2xl:block">สำรวจงานป้าย สติ๊กเกอร์ งานอีเวนต์ ชั้นวางสินค้า และบรรจุภัณฑ์</span> <span class="2xl:block">ในรูปแบบที่เหมาะกับงานของคุณ</span>
         </p>
       </div>
 

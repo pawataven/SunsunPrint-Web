@@ -31,7 +31,7 @@ const surfaces = ['Window', 'Floor', 'Wall', 'Stairs', 'Die-cut logo']
         </h2>
 
         <p v-reveal="340" class="mt-[max(1.5rem,4cqw)] font-sans text-[max(0.875rem,2.53cqw)] leading-relaxed text-neutral-700">
-          <span class="lg:block">กราฟิกสติ๊กเกอร์สำหรับเปลี่ยนพื้นที่ธรรมดาให้เป็นพื้นที่สื่อสาร ทั้งงานตกแต่งกระจก พื้น</span> <span class="lg:block">บันได ผนัง หน้าร้าน และเคาน์เตอร์</span>
+          <span class="2xl:block">กราฟิกสติ๊กเกอร์สำหรับเปลี่ยนพื้นที่ธรรมดาให้เป็นพื้นที่สื่อสาร ทั้งงานตกแต่งกระจก พื้น</span> <span class="2xl:block">บันได ผนัง หน้าร้าน และเคาน์เตอร์</span>
         </p>
 
         <ul v-reveal="400" aria-label="พื้นผิวที่ติดสติ๊กเกอร์ได้" class="mt-[max(1.5rem,4.6cqw)] flex flex-wrap gap-[max(0.5rem,1.84cqw)]">

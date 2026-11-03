@@ -29,7 +29,7 @@ const formats = ['Gift box', 'Cosmetic box', 'Paper bag', 'Emboss', 'Gold foil',
         </h2>
 
         <p v-reveal="340" class="mt-[max(1.5rem,3.5cqw)] font-sans text-[max(0.875rem,2.2cqw)] leading-relaxed text-neutral-300">
-          <span class="lg:block">กล่องบรรจุภัณฑ์และถุงกระดาษพิมพ์ลาย สำหรับขนม เครื่องสำอาง ของขวัญ และสินค้าทั่วไป</span> <span class="lg:block">เลือกเพิ่มเทคนิคปั๊มนูน ปั๊มฟอยล์ทอง หรือสปอตยูวี ให้งานดูพิเศษขึ้น</span>
+          <span class="2xl:block">กล่องบรรจุภัณฑ์และถุงกระดาษพิมพ์ลาย สำหรับขนม เครื่องสำอาง ของขวัญ และสินค้าทั่วไป</span> <span class="2xl:block">เลือกเพิ่มเทคนิคปั๊มนูน ปั๊มฟอยล์ทอง หรือสปอตยูวี ให้งานดูพิเศษขึ้น</span>
         </p>
 
         <ul v-reveal="400" aria-label="รูปแบบงานบรรจุภัณฑ์" class="mt-[max(1.5rem,4cqw)] flex flex-wrap gap-[max(0.5rem,1.6cqw)]">

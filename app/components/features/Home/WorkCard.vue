@@ -22,13 +22,13 @@ const formatIndex = (value: number) => String(value).padStart(3, '0')
   <article class="group relative flex h-full flex-col">
     <div
       class="relative overflow-hidden bg-ivory"
-      :class="work.orientation === 'portrait' ? 'aspect-7/8 lg:aspect-auto lg:min-h-80 lg:flex-1' : 'aspect-6/5'"
+      :class="work.orientation === 'portrait' ? 'aspect-7/8 md:aspect-auto md:min-h-80 md:flex-1' : 'aspect-6/5'"
     >
       <NuxtImg
         v-if="work.image"
         :src="work.image"
         :alt="`${work.description} ผลงานของ SUNSUN PRINT`"
-        sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw"
+        sizes="sm:100vw md:50vw lg:50vw xl:50vw 2xl:50vw"
         format="webp"
         loading="lazy"
         class="absolute inset-0 size-full transition-transform duration-500 group-hover:scale-105"

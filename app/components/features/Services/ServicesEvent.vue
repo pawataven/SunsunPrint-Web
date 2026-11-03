@@ -37,7 +37,7 @@ const items = ['Fabric backdrop', 'Roll-up', 'X-stand', 'PP board', 'Table cover
         </h2>
 
         <p v-reveal="340" class="mt-[max(1.5rem,3.5cqw)] font-sans text-[max(0.875rem,2.2cqw)] leading-relaxed text-neutral-300">
-          <span class="lg:block">ชุดอุปกรณ์สำหรับการจัดงานอีเวนต์และพื้นที่จัดแสดง ทั้งแบ็คดรอปผ้า โรลอัพ สแตนดี้ โต๊ะ</span> <span class="lg:block">พับพร้อมผ้า และโฟมบอร์ดสำหรับตกแต่งบูธ</span>
+          <span class="2xl:block">ชุดอุปกรณ์สำหรับการจัดงานอีเวนต์และพื้นที่จัดแสดง ทั้งแบ็คดรอปผ้า โรลอัพ สแตนดี้ โต๊ะ</span> <span class="2xl:block">พับพร้อมผ้า และโฟมบอร์ดสำหรับตกแต่งบูธ</span>
         </p>
 
         <ul v-reveal="400" aria-label="อุปกรณ์งานอีเวนต์" class="mt-[max(1.5rem,4cqw)] flex flex-wrap gap-[max(0.5rem,1.6cqw)]">

@@ -53,8 +53,8 @@ const copyButtonLabel = computed(() => ({ idle: 'คัดลอก ID', copied:
       <p class="mt-2 font-sans text-sm font-normal text-neutral-600">สแกน QR ด้วยแอป LINE หรือกดเปิดในแอปเพื่อเพิ่มเพื่อน</p>
 
       <!--
-        The 10% padding is the code's quiet zone (4 of its 41 modules a side), which scanners need to find the edges.
-        The code leaves a blank square of 8 modules (~20% of this card) in the middle for the logo; error correction H
+        The 10% padding is the code's quiet zone (~4.6 of its ~46 modules a side), which scanners need to find the edges.
+        The code leaves a blank square of 9 modules (~20% of this card) in the middle for the logo; error correction H
         keeps it scannable
       -->
       <div class="relative mt-6 border border-neutral-300 bg-white p-[10%] shadow-[0.5rem_0.5rem_0_var(--color-brand-red)]">

@@ -18,7 +18,7 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
         <span class="block">We make.</span>
       </h2>
       <p v-reveal="120" class="font-sans leading-relaxed text-neutral-700 lg:text-lg 2xl:text-2xl">
-        <span class="lg:block">เลือกประเภทงานที่ต้องการ แล้วดูรายละเอียด วัสดุและภาพตัวอย่าง</span> <span class="lg:block">จากเอกสารของ SUNSUN PRINT ในแต่ละหมวด</span>
+        <span class="2xl:block">เลือกประเภทงานที่ต้องการ แล้วดูรายละเอียด วัสดุและภาพตัวอย่าง</span> <span class="2xl:block">จากเอกสารของ SUNSUN PRINT ในแต่ละหมวด</span>
       </p>
     </div>
 

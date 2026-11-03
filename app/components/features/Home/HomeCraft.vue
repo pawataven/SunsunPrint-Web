@@ -10,19 +10,20 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
 
 <template>
   <section aria-labelledby="craft-heading" class="page-x py-12 lg:py-24 2xl:py-30">
-    <div class="grid items-center gap-12 lg:grid-cols-[841fr_718fr] lg:gap-16 2xl:gap-30">
+    <div class="grid items-center gap-12 md:grid-cols-[841fr_718fr] md:gap-10 lg:gap-16 2xl:gap-30">
       <NuxtImg
         v-reveal:wipe
         src="/images/Home/pick up here.png"
         alt="ป้ายอะคริลิกสีแดงข้อความ PICK UP HERE บนพื้นแดง พร้อมข้อความ Creative print production และ Print it loud"
-        sizes="sm:100vw md:100vw lg:100vw xl:50vw 2xl:50vw"
+        sizes="sm:100vw md:50vw lg:50vw xl:50vw 2xl:50vw"
         format="webp"
         loading="lazy"
         class="aspect-square w-full object-cover"
       />
 
-      <div>
-        <h2 id="craft-heading" v-reveal class="text-5xl leading-[1.35] font-semibold text-ink uppercase lg:text-7xl 2xl:text-8xl">
+      <!-- Sized from the column (the serif "Our Craft." is ~6em wide) so neither line wraps beside the image -->
+      <div class="@container">
+        <h2 id="craft-heading" v-reveal class="text-[min(3rem,15cqw)] leading-[1.35] font-semibold text-ink uppercase md:text-[min(6rem,15cqw)]">
           <span class="block font-sans">Your idea</span>
           <span class="block font-serif">Our <span class="text-brand-red">Craft.</span></span>
         </h2>

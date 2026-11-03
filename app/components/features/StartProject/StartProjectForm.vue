@@ -159,7 +159,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="page-x pt-16 pb-14 lg:pt-24 2xl:pb-16">
+  <section class="hero-offset page-x pb-14 2xl:pb-16">
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div>
         <p v-reveal class="flex items-center gap-4 font-sans text-sm font-normal text-neutral-600 uppercase xl:text-base 2xl:text-xl">
@@ -184,7 +184,7 @@ onMounted(() => {
       </div>
 
       <p v-reveal="240" class="font-sans text-sm font-normal leading-relaxed text-neutral-600 lg:pb-[0.6em] lg:text-right lg:text-base 2xl:text-xl 2xl:leading-[1.65]">
-        <span class="lg:block">กรอกข้อมูลที่จำเป็นเพื่อให้ทีมงานเข้าใจลักษณะงาน</span> <span class="lg:block">ติดต่อกลับเพื่อประเมินราคาได้ตรงความต้องการ</span>
+        <span class="2xl:block">กรอกข้อมูลที่จำเป็นเพื่อให้ทีมงานเข้าใจลักษณะงาน</span> <span class="2xl:block">ติดต่อกลับเพื่อประเมินราคาได้ตรงความต้องการ</span>
       </p>
     </div>
 

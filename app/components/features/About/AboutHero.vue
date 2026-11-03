@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-12 grid lg:mt-16 lg:grid-cols-[1112fr_808fr]">
+  <section class="hero-offset grid lg:grid-cols-[1112fr_808fr]">
     <!-- Bleeds to the left edge of the screen; everything inside is sized in cqw of the panel so the type and the rings
          keep the design's proportions at every width -->
     <div class="@container relative flex flex-col overflow-hidden bg-ink text-cream lg:aspect-1112/853">

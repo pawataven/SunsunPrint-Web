@@ -37,7 +37,7 @@ const listClass = 'mt-6 flex flex-col gap-3 text-sm text-mist lg:text-base 2xl:m
 
     <hr class="mt-10 border-neutral-700 2xl:mt-14">
 
-    <div class="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-[389fr_522fr_517fr_252fr] lg:gap-x-0 2xl:mt-20">
+    <div class="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-[389fr_522fr_517fr_252fr] lg:gap-x-6 2xl:mt-20 2xl:gap-x-0">
       <nav aria-labelledby="footer-nav-heading">
         <h2 id="footer-nav-heading" :class="headingClass">เมนู</h2>
         <ul :class="listClass">

@@ -31,7 +31,9 @@
 
 @layer base {
   :root {
-    /* 120px gutter and 120px header come from the design; smaller screens can't afford them */
+    /* 120px gutter and 120px header come from the design; smaller screens can't afford them. From lg the gutter keeps
+       the design's 120/1920 share of the width, so tablets and small laptops (1024–1440px) don't lose a quarter of
+       their width to margins and squeeze the two-column layouts */
     --page-gutter: 1rem;
     --header-h: 5rem;
 
@@ -39,7 +41,7 @@
       --page-gutter: 2.5rem;
     }
     @variant lg {
-      --page-gutter: 120px;
+      --page-gutter: min(6.25vw, 120px);
     }
     @variant xl {
       --header-h: 6rem;
@@ -103,13 +105,12 @@
 }
 
 /* Shared by every page hero so the gap under the header is identical from page to page */
+/* The site owner's pick for every page, in place of the design's viewport-filling gap of up to 240px */
 @utility hero-offset {
-  padding-top: 3rem;
+  padding-top: 4rem;
 
   @media (width >= 64rem) {
-    /* The hero image height follows the viewport width (content width × 599/1680), so the gap above it takes
-       whatever screen height is left — capped at the design's 240px — to keep the hero on one screen */
-    padding-top: clamp(2rem, calc(100svh - var(--header-h) - (100vw - 2 * var(--page-gutter)) * 599 / 1680 - 1.5rem), 15rem);
+    padding-top: 6rem;
   }
 }
 

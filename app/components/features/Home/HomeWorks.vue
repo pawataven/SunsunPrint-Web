@@ -21,8 +21,8 @@ const visibleWorks = computed(() =>
 // Landscape cards are pinned to the right column only for the full set, which is what the design's layout is built from.
 // A filtered set flows from the left instead, so a lone landscape card doesn't leave the left column empty
 const getCardPlacementClass = (work: Work) => {
-  if (work.orientation === 'portrait') return 'lg:col-start-1 lg:row-span-3'
-  return selectedCategory.value === 'all' ? 'lg:col-start-2 lg:row-span-2' : 'lg:row-span-2'
+  if (work.orientation === 'portrait') return 'md:col-start-1 md:row-span-3'
+  return selectedCategory.value === 'all' ? 'md:col-start-2 md:row-span-2' : 'md:row-span-2'
 }
 </script>
 
@@ -55,7 +55,7 @@ const getCardPlacementClass = (work: Work) => {
     -->
     <ul
       v-if="visibleWorks.length"
-      class="mt-10 grid gap-y-10 lg:grid-cols-[843fr_717fr] lg:gap-x-16 lg:gap-y-12 2xl:mt-14 2xl:gap-x-30 2xl:gap-y-16"
+      class="mt-10 grid gap-y-10 md:grid-cols-[843fr_717fr] md:gap-x-8 lg:gap-x-16 lg:gap-y-12 2xl:mt-14 2xl:gap-x-30 2xl:gap-y-16"
     >
       <li v-for="{ work, number } in visibleWorks" :key="work.slug" :class="getCardPlacementClass(work)">
         <!-- v-reveal marks its element with a class that a :class re-render would wipe, so it lives on a wrapper whose

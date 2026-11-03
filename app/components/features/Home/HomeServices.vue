@@ -15,10 +15,10 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
       <li v-for="(service, index) in SERVICES" :key="service.category" v-reveal="index * 100">
         <NuxtLink
           :to="service.to"
-          class="group grid grid-cols-[3rem_1fr_auto] items-center gap-x-4 gap-y-1 border-b border-neutral-700 py-6 lg:min-h-40 lg:grid-cols-[237fr_601fr_755fr_87fr] lg:gap-x-0 lg:py-0 2xl:min-h-60"
+          class="group grid grid-cols-[3rem_1fr_auto] items-center gap-x-4 gap-y-1 border-b border-neutral-700 py-6 lg:min-h-32 lg:grid-cols-[237fr_601fr_755fr_87fr] lg:gap-x-6 lg:py-6 xl:min-h-40 2xl:min-h-60 2xl:gap-x-0 2xl:py-0"
         >
           <span class="text-base lg:text-xl 2xl:text-2xl">{{ formatIndex(index + 1) }} /</span>
-          <span class="text-xl lg:text-2xl 2xl:text-4xl">
+          <span class="text-xl xl:text-2xl 2xl:text-4xl">
             {{ service.nameTh }}
             <span class="text-ash uppercase">/ {{ service.nameEn }}</span>
           </span>

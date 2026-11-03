@@ -19,7 +19,7 @@ const materials = ['Acrylic', 'Plaswood', 'Stainless', 'Illuminated sign', 'Viny
         </h2>
 
         <p v-reveal="340" class="mt-[max(1.5rem,3.5cqw)] font-sans text-[max(0.875rem,2.2cqw)] leading-relaxed text-white/90">
-          <span class="lg:block">ป้ายหน้าร้าน ป้ายบอกทาง และป้ายองค์กร ผลิตด้วยวัสดุที่เลือกให้เหมาะกับพื้นที่ติดตั้ง</span> <span class="lg:block">พร้อมออกแบบ ผลิต และติดตั้งครบในที่เดียว</span>
+          <span class="2xl:block">ป้ายหน้าร้าน ป้ายบอกทาง และป้ายองค์กร ผลิตด้วยวัสดุที่เลือกให้เหมาะกับพื้นที่ติดตั้ง</span> <span class="2xl:block">พร้อมออกแบบ ผลิต และติดตั้งครบในที่เดียว</span>
         </p>
 
         <ul v-reveal="400" aria-label="วัสดุงานป้าย" class="mt-[max(1.5rem,4cqw)] flex flex-wrap gap-[max(0.5rem,1.6cqw)]">

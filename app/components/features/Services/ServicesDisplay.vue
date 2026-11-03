@@ -30,7 +30,7 @@ const formats = ['Plaswood', 'Counter display', 'Product shelf', 'POSM']
         </h2>
 
         <p v-reveal="340" class="mt-[max(1.5rem,4cqw)] font-sans text-[max(0.875rem,2.53cqw)] leading-relaxed text-neutral-700">
-          <span class="lg:block">ชั้นวางและดิสเพลย์สินค้าวัสดุพลาสวูด สำหรับจัดแสดงสินค้าและสื่อสารภาพลักษณ์แบรนด์</span> <span class="lg:block">ณ จุดวางจำหน่าย มีตัวอย่างรูปทรงและชั้นวางหลายลักษณะ</span>
+          <span class="2xl:block">ชั้นวางและดิสเพลย์สินค้าวัสดุพลาสวูด สำหรับจัดแสดงสินค้าและสื่อสารภาพลักษณ์แบรนด์</span> <span class="2xl:block">ณ จุดวางจำหน่าย มีตัวอย่างรูปทรงและชั้นวางหลายลักษณะ</span>
         </p>
 
         <ul v-reveal="400" aria-label="รูปแบบดิสเพลย์สินค้า" class="mt-[max(1.5rem,4.6cqw)] flex flex-wrap gap-[max(0.5rem,1.84cqw)]">

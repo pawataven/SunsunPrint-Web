@@ -49,7 +49,7 @@ const stats = [
 
       <!-- Sized in cqw so the frame offset, labels and badge keep the design's proportions to the photo at every width;
            stretches to the text column when that runs taller, so the two always share a top and bottom edge -->
-      <div class="@container relative aspect-800/599 min-w-0 lg:self-stretch">
+      <div class="@container relative aspect-800/599 w-full min-w-0 lg:self-stretch">
         <div
           class="absolute inset-0 translate-x-[-2cqw] translate-y-[2cqw] border border-neutral-400"
           aria-hidden="true"

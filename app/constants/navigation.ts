@@ -16,7 +16,7 @@ export const NAV_LINKS = [
   { label: 'เกี่ยวกับเรา', to: '/about' }
 ]
 
-export const LINE_ID = '@npn3701j'
+export const LINE_ID = '@sunsunprint'
 export const LINE_ADD_FRIEND_URL = `https://line.me/R/ti/p/${LINE_ID}`
 
 // LINE opens the QR dialog instead of leaving the site; its href stays as the fallback before the page is interactive

@@ -13,12 +13,12 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
     <p v-reveal class="text-xs text-brand-red uppercase 2xl:text-sm">06 / Start your project</p>
 
     <div class="mt-6 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between 2xl:mt-8">
-      <h2 id="steps-heading" class="text-6xl leading-[0.9] uppercase lg:text-[7rem] 2xl:text-[8.75rem]">
+      <h2 id="steps-heading" class="text-6xl leading-[0.9] uppercase lg:shrink-0 lg:text-[7rem] 2xl:text-[8.75rem]">
         <span v-reveal="100" class="-ml-[0.06em] block font-sans text-ink">Let's</span>
         <span v-reveal="180" class="-ml-[0.04em] block font-serif text-brand-red">Make it.</span>
       </h2>
-      <p v-reveal="260" class="font-sans leading-relaxed text-neutral-700 lg:pb-2 lg:text-lg 2xl:text-xl">
-        <span class="lg:block">เตรียมข้อมูลเบื้องต้นตาม 3 ขั้นตอนนี้เพื่อส่งรายละเอียด</span> <span class="lg:block">ให้ร้านพิจารณา เป็นแนวทางการขอราคาบนเว็บไซต์ ไม่ใช่</span> <span class="lg:block">การยืนยันขั้นตอนผลิตของร้าน</span>
+      <p v-reveal="260" class="font-sans leading-relaxed text-neutral-700 lg:max-w-xl lg:pb-2 lg:text-lg 2xl:max-w-none 2xl:text-xl">
+        <span class="2xl:block">เตรียมข้อมูลเบื้องต้นตาม 3 ขั้นตอนนี้เพื่อส่งรายละเอียด</span> <span class="2xl:block">ให้ร้านพิจารณา เป็นแนวทางการขอราคาบนเว็บไซต์ ไม่ใช่</span> <span class="2xl:block">การยืนยันขั้นตอนผลิตของร้าน</span>
       </p>
     </div>
 
@@ -31,7 +31,8 @@ const formatIndex = (value: number) => String(value).padStart(2, '0')
         class="flex min-h-56 flex-col justify-between gap-10 bg-white p-6 lg:min-h-72 2xl:h-88 2xl:px-10 2xl:pt-11 2xl:pb-12"
       >
         <span class="text-4xl leading-none text-brand-red 2xl:text-[3.5rem]">{{ formatIndex(index + 1) }}.</span>
-        <div>
+        <!-- The detail runs to one or two lines depending on width; a two-line minimum keeps the titles level across the row -->
+        <div class="lg:min-h-[calc(1.75rem+0.5rem+2*1.25rem)] 2xl:min-h-[calc(2rem+0.75rem+2*1.5rem)]">
           <h3 class="text-xl text-ink 2xl:text-2xl">{{ step.title }}</h3>
           <p class="mt-2 font-sans text-sm font-normal text-neutral-600 2xl:mt-3 2xl:text-base">{{ step.detail }}</p>
         </div>

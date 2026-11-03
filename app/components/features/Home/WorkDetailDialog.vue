@@ -74,7 +74,7 @@ const closeOnBackdropClick = (event: MouseEvent) => {
     <div v-if="work" class="grid lg:h-[min(47.5rem,90vh)] lg:grid-cols-[525fr_388fr]">
       <!-- Every photo of the set is stacked and only the current one shows, so switching cross-fades instead of going
            blank while the next file loads. pan-y leaves vertical scrolling to the browser and horizontal swipes to us -->
-      <div class="relative aspect-4/3 touch-pan-y overflow-hidden bg-white lg:aspect-auto" @pointerdown="startSwipe" @pointerup="endSwipe">
+      <div class="relative aspect-4/3 touch-pan-y overflow-hidden bg-white md:aspect-16/10 lg:aspect-auto" @pointerdown="startSwipe" @pointerup="endSwipe">
         <NuxtImg
           v-for="(photo, index) in photos"
           :key="photo"

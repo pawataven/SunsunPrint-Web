@@ -24,8 +24,8 @@
         </h2>
 
         <p v-reveal="350" class="mt-12 font-sans leading-relaxed text-neutral-600 lg:mt-24 lg:text-lg 2xl:mt-[216px] 2xl:text-[22px] 2xl:leading-[1.6]">
-          <span class="lg:block">ไอเดียดี ๆ ไม่ควรอยู่แค่บนหน้าจอ ให้ SUNSUN PRINT เปลี่ยนไอเดียของ</span>
-          <span class="lg:block">คุณเป็นงานป้าย งานพิมพ์ และงานดิสเพลย์ที่จับต้องได้จริง</span>
+          <!-- No whitespace between the lines: the break falls inside "ของคุณ", which must stay one word when they run inline -->
+          <span class="2xl:block">ไอเดียดี ๆ ไม่ควรอยู่แค่บนหน้าจอ ให้ SUNSUN PRINT เปลี่ยนไอเดียของ</span><span class="2xl:block">คุณเป็นงานป้าย งานพิมพ์ และงานดิสเพลย์ที่จับต้องได้จริง</span>
         </p>
 
         <div v-reveal="450" class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 2xl:mt-[37px]">
